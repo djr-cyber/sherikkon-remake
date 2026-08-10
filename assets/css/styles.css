@@ -268,32 +268,44 @@
     left: 0;
     z-index: var(--z-cursor);
     pointer-events: none;
-    border-radius: 50%;
     will-change: transform;
   }
   .cursor {
     width: 6px;
     height: 6px;
     margin: -3px 0 0 -3px;
+    border-radius: 50%;
     background: var(--accent);
   }
+  /* Кольцо-спутник курсора: символ доллара вместо окружности —
+     полупрозрачный, тёмно-фиолетовый, в гарнитуре сайта (Exo 2) */
   .cursor-ring {
-    width: 34px;
-    height: 34px;
-    margin: -17px 0 0 -17px;
-    border: 1px solid color-mix(in srgb, var(--primary-light) 60%, transparent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    margin: -20px 0 0 -20px;
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 34px;
+    line-height: 1;
+    color: var(--primary-deep);
+    opacity: 0.55;
+    user-select: none;
     transition: width var(--dur) var(--ease-out),
                 height var(--dur) var(--ease-out),
                 margin var(--dur) var(--ease-out),
-                border-color var(--dur) var(--ease-out),
-                background-color var(--dur) var(--ease-out);
+                font-size var(--dur) var(--ease-out),
+                opacity var(--dur) var(--ease-out);
   }
+  .cursor-ring::before { content: '$'; }
   .cursor-ring.is-active {
-    width: 58px;
-    height: 58px;
-    margin: -29px 0 0 -29px;
-    border-color: var(--accent);
-    background: color-mix(in srgb, var(--accent) 10%, transparent);
+    width: 64px;
+    height: 64px;
+    margin: -32px 0 0 -32px;
+    font-size: 56px;
+    opacity: 0.8;
   }
   /* Прячем на тач-устройствах и при reduced-motion */
   @media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
@@ -621,6 +633,13 @@
     left: 45%;
     background: var(--glow-gold);
     filter: blur(120px);
+  }
+  /* Тяжёлый blur() дорог в отрисовке на слабых мобильных GPU —
+     на десктопе пятна ещё и двигаются (см. initAurora в motion.js),
+     на мобильном они статичны, поэтому и радиус можно держать легче */
+  @media (max-width: 767px) {
+    .hero__blob { filter: blur(46px); }
+    .hero__blob--3 { filter: blur(60px); }
   }
   .hero__inner { position: relative; z-index: var(--z-raised); }
   .hero__title { max-width: 18ch; }

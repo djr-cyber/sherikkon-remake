@@ -484,19 +484,24 @@ window.SK.motion = (function () {
       initCounters();
       initSteps();
       initScrollProgress();
-      initAurora();
     });
 
-    /* --- Ветка 3: десктоп — кинематографика с pin --- */
+    /* --- Ветка 3: десктоп — кинематографика с pin ---
+       Аврора (бесконечный дрейф + параллакс на мышь) — тоже сюда:
+       на мобильном это просто вечный GPU-расход без мыши для параллакса
+       и без реальной пользы на маленьком экране. На мобильном пятна
+       остаются статичными декоративными пятнами на CSS-позициях. */
     mm.add('(min-width: 1024px) and (prefers-reduced-motion: no-preference)', function () {
       var cleanPin = initPinSection();
       var cleanRail = initRail();
       var cleanMagnetic = initMagnetic();
+      var cleanAurora = initAurora();
 
       return function () {
         if (cleanPin) cleanPin();
         if (cleanRail) cleanRail();
         if (cleanMagnetic) cleanMagnetic();
+        if (cleanAurora) cleanAurora();
       };
     });
 
