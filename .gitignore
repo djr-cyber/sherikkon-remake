@@ -1,0 +1,16 @@
+# Служебные файлы ОС
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Редакторы
+.vscode/
+.idea/
+*.swp
+*~
+
+# Промежуточный файл, оставшийся от скачивания шрифтов
+assets/fonts/_google.css
+
+# Логи
+*.log

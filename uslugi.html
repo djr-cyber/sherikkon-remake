@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Услуги — тренинги, коучинг, оценка бизнеса | Sherikkon Remake</title>
+<meta name="description" content="Тренинги, коучинг, оценка бизнеса, спикеры и презентации для малого и среднего бизнеса в Узбекистане. Открытые и корпоративные программы.">
+<meta name="theme-color" content="#0B0714">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Услуги | Sherikkon Consulting">
+<meta property="og:description" content="Четыре направления работы: тренинги, коучинг, оценка бизнеса, спикеры и презентации.">
+<meta property="og:locale" content="ru_RU">
+
+<link rel="icon" href="assets/icons/logo-mark.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/inter-300-700-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/playfairdisplay-500-700-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/styles.css">
+
+<script>
+(function(d){
+  var r = d.documentElement;
+  r.classList.add('js');
+  try {
+    if (sessionStorage.getItem('sk:entering') === '1') {
+      sessionStorage.removeItem('sk:entering');
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) r.classList.add('is-entering');
+    }
+  } catch (e) {}
+})(document);
+</script>
+</head>
+
+<body>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true" focusable="false">
+  <symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 3h-2A1.5 1.5 0 0 0 3 4.6C3 13.1 10.9 21 19.4 21a1.5 1.5 0 0 0 1.6-1.5v-2a1.5 1.5 0 0 0-1.2-1.5l-2.7-.5a1.5 1.5 0 0 0-1.5.7l-.8 1.3a13 13 0 0 1-5.3-5.3l1.3-.8a1.5 1.5 0 0 0 .7-1.5l-.5-2.7A1.5 1.5 0 0 0 6.5 3Z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7 7.6 5.3a1.5 1.5 0 0 0 1.8 0L20.5 7"/></symbol>
+  <symbol id="i-telegram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 4.5 2.9 11.4c-.7.3-.7 1.3 0 1.5l4.5 1.4L19 6.6"/><path d="m7.4 14.3.6 4.6c.3.2.7.1 1-.1l2.4-2.3L21 4.5"/><path d="m11.4 16.5 5.6 3.3c.5.3 1.1 0 1.2-.6L21 4.5"/></symbol>
+  <symbol id="i-whatsapp" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 20.5 4.9 16A8.2 8.2 0 1 1 8 19.1l-4.5 1.4Z"/><path d="M9.2 8.4c.2-.5.5-.5.8-.5h.6c.2 0 .4.1.6.5l.7 1.6c.1.3 0 .5-.1.7l-.5.6c-.1.2-.2.4 0 .7a6 6 0 0 0 2.6 2.3c.3.1.5.1.7-.1l.6-.7c.2-.2.4-.2.6-.1l1.6.8c.3.1.4.3.4.5a2 2 0 0 1-1.9 1.8c-1.1 0-2.9-.7-4.4-2.2A9 9 0 0 1 9 11a2.6 2.6 0 0 1 .2-2.6Z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12.3 2.7 2.7L16 9.7"/></symbol>
+</svg>
+
+<a class="skip-link" href="#main">Перейти к содержимому</a>
+
+<div class="curtain" id="curtain" aria-hidden="true"></div>
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true"></div>
+<div class="cursor" id="cursorDot" aria-hidden="true"></div>
+
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a class="header__brand" href="index.html">
+      <img src="assets/icons/logo-mark.svg" alt="" width="40" height="23">
+      <span>SHERIKKON</span>
+    </a>
+
+    <nav class="nav" aria-label="Основная навигация">
+      <a class="nav__link" href="index.html">Главная</a>
+      <a class="nav__link" href="o-nas.html">О нас</a>
+      <a class="nav__link" href="uslugi.html" aria-current="page">Услуги</a>
+      <a class="nav__link" href="proekti.html">Проекты</a>
+      <a class="nav__link" href="kontakti.html">Контакты</a>
+    </nav>
+
+    <div class="header__actions">
+      <a class="header__phone" href="tel:+998901753420">
+        <svg width="18" height="18" aria-hidden="true"><use href="#i-phone"/></svg>
+        +998 90 175 3420
+      </a>
+      <a class="btn btn--primary" href="kontakti.html#zayavka" data-magnetic style="min-height:44px;padding-inline:var(--space-5)">Консультация</a>
+      <button class="burger" id="burger" type="button" aria-label="Открыть меню" aria-expanded="false" aria-controls="menu">
+        <span class="burger__box"><span class="burger__line"></span><span class="burger__line"></span><span class="burger__line"></span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="menu" id="menu" hidden>
+  <nav aria-label="Мобильная навигация">
+    <ul class="menu__list">
+      <li><a class="menu__link" href="index.html">Главная</a></li>
+      <li><a class="menu__link" href="o-nas.html">О нас</a></li>
+      <li><a class="menu__link" href="uslugi.html" aria-current="page">Услуги</a></li>
+      <li><a class="menu__link" href="proekti.html">Проекты</a></li>
+      <li><a class="menu__link" href="kontakti.html">Контакты</a></li>
+    </ul>
+  </nav>
+  <div class="menu__footer">
+    <a class="btn btn--primary" href="kontakti.html#zayavka">Получить консультацию</a>
+    <a class="contact-item__value contact-item__value--tabular" href="tel:+998901753420">+998 90 175 3420</a>
+  </div>
+</div>
+
+<main id="main">
+
+  <section class="page-hero">
+    <div class="container page-hero__inner">
+      <nav class="crumbs" aria-label="Хлебные крошки">
+        <a href="index.html">Главная</a>
+        <span class="crumbs__sep" aria-hidden="true">/</span>
+        <span aria-current="page">Услуги</span>
+      </nav>
+
+      <p class="eyebrow" data-reveal>Партнёрство для вашего успеха</p>
+      <h1 data-reveal-words>Проверенные инструменты и живой опыт</h1>
+      <p class="lead" data-reveal>
+        Четыре направления, которые закрывают путь от диагностики бизнеса
+        до обучения команды и закрепления результата.
+      </p>
+
+      <nav class="tag-list" aria-label="Быстрый переход к услугам" data-reveal>
+        <a class="tag" href="#treningi">Тренинги</a>
+        <a class="tag" href="#kouching">Коучинг</a>
+        <a class="tag" href="#ocenka">Оценка бизнеса</a>
+        <a class="tag" href="#spikery">Спикеры и презентации</a>
+      </nav>
+    </div>
+  </section>
+
+  <section class="section section--surface">
+    <div class="container section__inner">
+
+      <!-- --------------------------- ТРЕНИНГИ --------------------------- -->
+      <article class="service-block" id="treningi" style="border-top:none">
+        <div class="service-block__aside" data-reveal>
+          <span class="service-block__num">01</span>
+          <div class="card__icon" style="margin:0">
+            <img src="assets/icons/service-training.svg" alt="" width="30" height="30" loading="lazy">
+          </div>
+          <h2 style="font-size:var(--text-3xl)">Тренинги</h2>
+        </div>
+
+        <div data-reveal>
+          <p class="lead">
+            Открытые и закрытые корпоративные тренинги для представителей малого
+            и среднего бизнеса.
+          </p>
+          <p class="mt-6 text-muted measure">
+            Мы разрабатываем стратегические программы и обучаем персонал ключевым
+            soft skills — тем навыкам, от которых напрямую зависит, как быстро
+            команда доводит задачи до результата.
+          </p>
+
+          <h3 class="mt-8" style="font-size:var(--text-xl)">Что входит</h3>
+          <div class="tag-list">
+            <span class="tag">Soft skills</span>
+            <span class="tag">Командообразование</span>
+            <span class="tag">Коммуникация</span>
+            <span class="tag">Менеджмент</span>
+            <span class="tag">Тайм-менеджмент</span>
+            <span class="tag">Целеполагание</span>
+            <span class="tag">Бизнес-стратегия</span>
+            <span class="tag">Корпоративная культура</span>
+            <span class="tag">Личностное развитие</span>
+            <span class="tag">Деловой английский</span>
+          </div>
+
+          <p class="mt-8">
+            <a class="btn btn--secondary" href="kontakti.html#zayavka">
+              Обсудить программу
+              <span class="btn__arrow" aria-hidden="true"><svg width="20" height="20"><use href="#i-arrow-right"/></svg></span>
+            </a>
+          </p>
+        </div>
+      </article>
+
+      <!-- --------------------------- КОУЧИНГ --------------------------- -->
+      <article class="service-block" id="kouching">
+        <div class="service-block__aside" data-reveal>
+          <span class="service-block__num">02</span>
+          <div class="card__icon" style="margin:0">
+            <img src="assets/icons/service-coaching.svg" alt="" width="30" height="30" loading="lazy">
+          </div>
+          <h2 style="font-size:var(--text-3xl)">Коучинг</h2>
+        </div>
+
+        <div data-reveal>
+          <p class="lead">
+            Консультации по тем направлениям, где вы чувствуете, что «застряли».
+          </p>
+          <p class="mt-6 text-muted measure">
+            Индивидуальная поддержка от постановки целей до их достижения. Работаем
+            и с собственником, и с командой — чтобы долгосрочные цели компании
+            перестали быть абстракцией и превратились в конкретный план.
+          </p>
+
+          <h3 class="mt-8" style="font-size:var(--text-xl)">Форматы работы</h3>
+          <ul class="stack mt-4">
+            <li style="display:flex;gap:var(--space-3);align-items:flex-start">
+              <svg width="22" height="22" style="color:var(--accent);flex-shrink:0;margin-top:2px" aria-hidden="true"><use href="#i-check"/></svg>
+              <span>Индивидуальные сессии с собственником или руководителем</span>
+            </li>
+            <li style="display:flex;gap:var(--space-3);align-items:flex-start">
+              <svg width="22" height="22" style="color:var(--accent);flex-shrink:0;margin-top:2px" aria-hidden="true"><use href="#i-check"/></svg>
+              <span>Групповые сессии для управленческой команды</span>
+            </li>
+            <li style="display:flex;gap:var(--space-3);align-items:flex-start">
+              <svg width="22" height="22" style="color:var(--accent);flex-shrink:0;margin-top:2px" aria-hidden="true"><use href="#i-check"/></svg>
+              <span>Выездные ретриты для перезагрузки и стратегических решений</span>
+            </li>
+            <li style="display:flex;gap:var(--space-3);align-items:flex-start">
+              <svg width="22" height="22" style="color:var(--accent);flex-shrink:0;margin-top:2px" aria-hidden="true"><use href="#i-check"/></svg>
+              <span>Персональные планы развития с измеримыми этапами</span>
+            </li>
+          </ul>
+
+          <p class="mt-8">
+            <a class="btn btn--secondary" href="kontakti.html#zayavka">
+              Записаться на сессию
+              <span class="btn__arrow" aria-hidden="true"><svg width="20" height="20"><use href="#i-arrow-right"/></svg></span>
+            </a>
+          </p>
+        </div>
+      </article>
+
+      <!-- ------------------------ ОЦЕНКА БИЗНЕСА ------------------------ -->
+      <article class="service-block" id="ocenka">
+        <div class="service-block__aside" data-reveal>
+          <span class="service-block__num">03</span>
+          <div class="card__icon" style="margin:0">
+            <img src="assets/icons/service-evaluation.svg" alt="" width="30" height="30" loading="lazy">
+          </div>
+          <h2 style="font-size:var(--text-3xl)">Оценка бизнеса</h2>
+        </div>
+
+        <div data-reveal>
+          <p class="lead">
+            Комплексный разбор всех бизнес-процессов и честный анализ текущей ситуации.
+          </p>
+          <p class="mt-6 text-muted measure">
+            Мы используем специализированные инструменты оценки, чтобы найти критические
+            зоны и точки роста. На выходе вы получаете не «отчёт ради отчёта», а
+            рекомендации по стратегии развития с приоритетами: что делать первым,
+            что вторым, а что не трогать вообще.
+          </p>
+
+          <h3 class="mt-8" style="font-size:var(--text-xl)">Что вы получаете</h3>
+          <div class="tag-list">
+            <span class="tag">Карта бизнес-процессов</span>
+            <span class="tag">Анализ текущей ситуации</span>
+            <span class="tag">Критические зоны</span>
+            <span class="tag">План улучшений по приоритетам</span>
+            <span class="tag">Ключевые показатели для контроля</span>
+          </div>
+
+          <p class="mt-8">
+            <a class="btn btn--secondary" href="kontakti.html#zayavka">
+              Заказать оценку
+              <span class="btn__arrow" aria-hidden="true"><svg width="20" height="20"><use href="#i-arrow-right"/></svg></span>
+            </a>
+          </p>
+        </div>
+      </article>
+
+      <!-- --------------------- СПИКЕРЫ И ПРЕЗЕНТАЦИИ --------------------- -->
+      <article class="service-block" id="spikery">
+        <div class="service-block__aside" data-reveal>
+          <span class="service-block__num">04</span>
+          <div class="card__icon" style="margin:0">
+            <img src="assets/icons/service-speakers.svg" alt="" width="30" height="30" loading="lazy">
+          </div>
+          <h2 style="font-size:var(--text-3xl)">Спикеры и презентации</h2>
+        </div>
+
+        <div data-reveal>
+          <p class="lead">
+            Профессиональные выступления и семинары под формат вашего мероприятия.
+          </p>
+          <p class="mt-6 text-muted measure">
+            Подбираем тему и глубину под аудиторию — от короткого выступления
+            на конференции до полноценного семинара на несколько часов.
+          </p>
+
+          <h3 class="mt-8" style="font-size:var(--text-xl)">Темы выступлений</h3>
+          <div class="tag-list">
+            <span class="tag">Запуск стартапа</span>
+            <span class="tag">Решение проблем</span>
+            <span class="tag">Делегирование</span>
+            <span class="tag">Разрешение конфликтов</span>
+            <span class="tag">Эмоциональный интеллект</span>
+            <span class="tag">Нетворкинг</span>
+            <span class="tag">Деловой английский</span>
+          </div>
+
+          <p class="mt-8">
+            <a class="btn btn--secondary" href="kontakti.html#zayavka">
+              Пригласить спикера
+              <span class="btn__arrow" aria-hidden="true"><svg width="20" height="20"><use href="#i-arrow-right"/></svg></span>
+            </a>
+          </p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="section" id="zayavka">
+    <div class="container">
+      <div class="cta text-center">
+        <div class="cta__inner">
+          <p class="eyebrow" style="justify-content:center" data-reveal>Не знаете, что выбрать?</p>
+          <h2 data-reveal>Начнём с бесплатной консультации</h2>
+          <p class="lead mt-6" style="margin-inline:auto" data-reveal>
+            Опишите ситуацию — мы подскажем, какой формат подойдёт именно вам,
+            и честно скажем, если задача решается без нашего участия.
+          </p>
+          <div class="mt-8" style="display:flex;flex-wrap:wrap;gap:var(--space-4);justify-content:center" data-reveal>
+            <a class="btn btn--primary" href="kontakti.html#zayavka" data-magnetic>
+              Оставить заявку
+              <span class="btn__arrow" aria-hidden="true"><svg width="20" height="20"><use href="#i-arrow-right"/></svg></span>
+            </a>
+            <a class="btn btn--secondary" href="proekti.html">Посмотреть проекты</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a class="header__brand" href="index.html">
+          <img src="assets/icons/logo-mark.svg" alt="" width="40" height="23">
+          <span>SHERIKKON</span>
+        </a>
+        <p class="mt-6 text-muted" style="max-width:34ch">
+          Консалтинг, тренинги и коучинг для малого и среднего бизнеса
+          в Узбекистане. Объединяем практики Запада и Востока.
+        </p>
+        <div class="socials mt-6">
+          <a class="social" href="https://t.me/farhod_djabbarov" target="_blank" rel="noopener" aria-label="Telegram">
+            <svg width="22" height="22" aria-hidden="true"><use href="#i-telegram"/></svg>
+          </a>
+          <a class="social" href="https://wa.me/998901753420" target="_blank" rel="noopener" aria-label="WhatsApp">
+            <svg width="22" height="22" aria-hidden="true"><use href="#i-whatsapp"/></svg>
+          </a>
+          <a class="social" href="mailto:info@sherikkon.uz" aria-label="Написать на почту">
+            <svg width="22" height="22" aria-hidden="true"><use href="#i-mail"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <nav aria-label="Разделы сайта">
+        <h2 class="footer__title">Разделы</h2>
+        <div class="footer__list">
+          <a href="index.html">Главная</a>
+          <a href="o-nas.html">О нас</a>
+          <a href="uslugi.html">Услуги</a>
+          <a href="proekti.html">Проекты</a>
+          <a href="kontakti.html">Контакты</a>
+        </div>
+      </nav>
+
+      <nav aria-label="Услуги">
+        <h2 class="footer__title">Услуги</h2>
+        <div class="footer__list">
+          <a href="uslugi.html#treningi">Тренинги</a>
+          <a href="uslugi.html#kouching">Коучинг</a>
+          <a href="uslugi.html#ocenka">Оценка бизнеса</a>
+          <a href="uslugi.html#spikery">Спикеры и презентации</a>
+        </div>
+      </nav>
+
+      <div>
+        <h2 class="footer__title">Контакты</h2>
+        <div class="footer__list">
+          <a class="tabular" href="tel:+998901753420">+998 90 175 3420</a>
+          <a class="tabular" href="tel:+998998053420">+998 99 805 3420</a>
+          <a href="mailto:info@sherikkon.uz">info@sherikkon.uz</a>
+          <span class="text-muted" style="display:block;margin-top:var(--space-2)">
+            Ташкент, Чиланзарский район,<br>массив Чиланзар, квартал Ц, 28А
+          </span>
+          <span class="text-muted">Пн–Пт, 09:00 — 18:00</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <span>© 2020–2026 Sherikkon Consulting</span>
+      <span>Консалтинг и тренинги для бизнеса в Узбекистане</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/vendor/ScrollTrigger.min.js"></script>
+<script src="assets/vendor/SplitText.min.js"></script>
+<script src="assets/js/nav.js"></script>
+<script src="assets/js/forms.js"></script>
+<script src="assets/js/motion.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
