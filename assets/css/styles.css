@@ -72,7 +72,7 @@
   }
 
   h1, h2, h3, h4 {
-    font-family: var(--font-heading);
+    font-family: var(--font-h);
     font-weight: 600;
     line-height: var(--leading-tight);
     letter-spacing: var(--tracking-tight);
@@ -521,14 +521,17 @@
   }
 
   /* ---------- Eyebrow и заголовки секций ---------- */
+  /* Курсивный гуманистический акцент (Alegreya Sans) — короткие подписи
+     секций. Без uppercase/tracking: капс + широкий трекинг ломают ритм
+     курсива, поэтому здесь набор строчными, крупнее обычного текста. */
   .eyebrow {
     display: inline-flex;
     align-items: center;
     gap: var(--space-3);
-    font-size: var(--text-xs);
-    font-weight: 600;
-    letter-spacing: var(--tracking-wide);
-    text-transform: uppercase;
+    font-family: var(--font-accent);
+    font-style: italic;
+    font-size: var(--text-lg);
+    font-weight: 500;
     color: var(--accent);
     margin-bottom: var(--space-4);
   }
@@ -659,11 +662,13 @@
     line-height: 1.1;
     color: var(--accent);
     font-variant-numeric: tabular-nums;
-    /* Текстовые значения («Спокойствие», «Команда») длиннее чисел —
-       без этого длинное слово вылезает за карточку и обрезается
-       (card имеет overflow:hidden), т.к. reset даёт break-word только
-       заголовкам/параграфам, а .stat__value — span */
-    overflow-wrap: break-word;
+  }
+  /* Словесные значения («Команда», «Спокойствие») длиннее чисел и не
+     помещаются в карточку на --text-4xl — переносить их некрасиво,
+     поэтому просто чуть мельче и гарантированно в одну строку */
+  .stat__value--text {
+    font-size: var(--text-2xl);
+    white-space: nowrap;
   }
   .stat__label {
     display: block;
@@ -769,6 +774,11 @@
   .step__text { margin-top: var(--space-3); color: var(--fg-muted); }
 
   /* ---------- Карточка (общая) ---------- */
+  /* Наведение: карточка слегка сжимается, а вокруг нею растут два
+     кольца-обводки (::before/::after) плюс собственное свечение
+     карточки — итого три «пульса» с разной задержкой. При уходе
+     курсора кольца гаснут в обратном порядке: внешнее первым,
+     сама карточка — последней. */
   .card {
     position: relative;
     display: flex;
@@ -777,31 +787,53 @@
     background: var(--surface-2);
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
-    overflow: hidden;
-    transition: transform var(--dur) var(--ease-out),
-                border-color var(--dur) var(--ease-soft),
-                background-color var(--dur) var(--ease-soft),
-                box-shadow var(--dur) var(--ease-soft);
+    transition-property: transform, border-color, background-color, box-shadow;
+    transition-duration: 520ms;
+    transition-timing-function: cubic-bezier(.22, 1, .36, 1);
+    transition-delay: 140ms; /* уход: сама карточка успокаивается последней */
   }
-  /* Градиентное свечение по верхней кромке при наведении */
-  .card::before {
+  .card::before,
+  .card::after {
     content: '';
     position: absolute;
-    inset: 0 0 auto 0;
-    height: 1px;
-    background: var(--gradient-line);
+    pointer-events: none;
+    border: 1px solid var(--primary-light);
     opacity: 0;
-    transition: opacity var(--dur) var(--ease-soft);
+    transition-property: opacity, transform;
+    transition-duration: 520ms;
+    transition-timing-function: cubic-bezier(.22, 1, .36, 1);
+  }
+  .card::before {
+    inset: -16px;
+    border-radius: 42px;
+    transform: scale(0.88);
+    transition-delay: 70ms; /* середина — одна и та же задержка в обе стороны */
+  }
+  .card::after {
+    inset: -32px;
+    border-radius: 58px;
+    transform: scale(0.9);
+    transition-delay: 0ms; /* уход: внешнее кольцо гаснет первым */
   }
   .card:hover,
   .card:focus-within {
-    transform: translateY(-6px);
-    border-color: var(--border-strong);
+    transform: scale(0.86);
+    border-color: var(--primary-light);
     background: var(--surface-3);
-    box-shadow: var(--shadow-glow);
+    box-shadow: 0 0 0 1px var(--primary-light), 0 0 32px 0 var(--glow-violet);
+    transition-delay: 0ms; /* наведение: сама карточка реагирует первой */
   }
   .card:hover::before,
-  .card:focus-within::before { opacity: 1; }
+  .card:focus-within::before {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  .card:hover::after,
+  .card:focus-within::after {
+    opacity: 0.28;
+    transform: scale(1);
+    transition-delay: 140ms; /* наведение: внешнее кольцо загорается последним */
+  }
 
   .card__icon {
     width: 56px;
@@ -864,6 +896,10 @@
   .project__media {
     aspect-ratio: 16 / 10;
     overflow: hidden;
+    /* Раньше верхние углы скруглялись через overflow:hidden родителя
+       .card — теперь .card сам без overflow (нужно для колец при
+       наведении, см. ниже), поэтому скругляем здесь напрямую */
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     background: var(--surface-3);
   }
   .project__media img {
@@ -934,9 +970,10 @@
   .person__name { font-size: var(--text-xl); }
   .person__role {
     margin-top: var(--space-2);
-    font-size: var(--text-sm);
-    letter-spacing: var(--tracking-wide);
-    text-transform: uppercase;
+    font-family: var(--font-accent);
+    font-style: italic;
+    font-size: var(--text-base);
+    font-weight: 500;
     color: var(--accent);
   }
 
