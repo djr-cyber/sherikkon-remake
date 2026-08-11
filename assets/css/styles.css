@@ -261,55 +261,22 @@
   }
 
   /* ---------- Кастомный курсор (только мышь) ---------- */
-  .cursor,
-  .cursor-ring {
+  .cursor {
     position: fixed;
     top: 0;
     left: 0;
     z-index: var(--z-cursor);
     pointer-events: none;
     will-change: transform;
-  }
-  .cursor {
     width: 6px;
     height: 6px;
     margin: -3px 0 0 -3px;
     border-radius: 50%;
     background: var(--accent);
   }
-  /* Кольцо-спутник курсора: символ доллара вместо окружности —
-     полупрозрачный, тёмно-фиолетовый, в гарнитуре сайта (Exo 2) */
-  .cursor-ring {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    margin: -20px 0 0 -20px;
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: 34px;
-    line-height: 1;
-    color: var(--primary-deep);
-    opacity: 0.55;
-    user-select: none;
-    transition: width var(--dur) var(--ease-out),
-                height var(--dur) var(--ease-out),
-                margin var(--dur) var(--ease-out),
-                font-size var(--dur) var(--ease-out),
-                opacity var(--dur) var(--ease-out);
-  }
-  .cursor-ring::before { content: '$'; }
-  .cursor-ring.is-active {
-    width: 64px;
-    height: 64px;
-    margin: -32px 0 0 -32px;
-    font-size: 56px;
-    opacity: 0.8;
-  }
   /* Прячем на тач-устройствах и при reduced-motion */
   @media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
-    .cursor, .cursor-ring { display: none; }
+    .cursor { display: none; }
   }
 
   /* ---------- Шапка ---------- */
@@ -689,9 +656,14 @@
     font-family: var(--font-heading);
     font-size: var(--text-4xl);
     font-weight: 600;
-    line-height: 1;
+    line-height: 1.1;
     color: var(--accent);
     font-variant-numeric: tabular-nums;
+    /* Текстовые значения («Спокойствие», «Команда») длиннее чисел —
+       без этого длинное слово вылезает за карточку и обрезается
+       (card имеет overflow:hidden), т.к. reset даёт break-word только
+       заголовкам/параграфам, а .stat__value — span */
+    overflow-wrap: break-word;
   }
   .stat__label {
     display: block;

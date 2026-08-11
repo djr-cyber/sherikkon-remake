@@ -74,43 +74,30 @@ window.SK.motion = (function () {
   }
 
   /* ============================================================
-     Кастомный курсор (только точный указатель)
+     Кастомный курсор (только точный указатель) — просто точка,
+     без сопровождающего кольца/значка
      ============================================================ */
   function initCursor() {
     var dot = $('#cursorDot');
-    var ring = $('#cursorRing');
-    if (!dot || !ring) return;
+    if (!dot) return;
 
     var dotX = gsap.quickTo(dot, 'x', { duration: 0.12, ease: 'power3' });
     var dotY = gsap.quickTo(dot, 'y', { duration: 0.12, ease: 'power3' });
-    var ringX = gsap.quickTo(ring, 'x', { duration: 0.5, ease: 'power3' });
-    var ringY = gsap.quickTo(ring, 'y', { duration: 0.5, ease: 'power3' });
 
     window.addEventListener('mousemove', function (e) {
       dotX(e.clientX); dotY(e.clientY);
-      ringX(e.clientX); ringY(e.clientY);
     }, { passive: true });
-
-    // Кольцо расширяется над интерактивным
-    var interactive = 'a, button, input, textarea, select, [role="button"], .card';
-    document.addEventListener('mouseover', function (e) {
-      if (e.target.closest(interactive)) ring.classList.add('is-active');
-    });
-    document.addEventListener('mouseout', function (e) {
-      if (e.target.closest(interactive)) ring.classList.remove('is-active');
-    });
 
     // За пределами окна курсор прячем
     document.addEventListener('mouseleave', function () {
-      gsap.to([dot, ring], { opacity: 0, duration: 0.2 });
+      gsap.to(dot, { opacity: 0, duration: 0.2 });
     });
     document.addEventListener('mouseenter', function () {
-      gsap.to([dot, ring], { opacity: 1, duration: 0.2 });
+      gsap.to(dot, { opacity: 1, duration: 0.2 });
     });
 
     return function cleanup() {
-      gsap.set([dot, ring], { clearProps: 'all' });
-      ring.classList.remove('is-active');
+      gsap.set(dot, { clearProps: 'all' });
     };
   }
 
