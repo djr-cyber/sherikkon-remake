@@ -242,6 +242,25 @@ window.SK.nav = (function () {
     });
   }
 
+  /* ---------- Плавающий блок быстрой связи ----------
+     Свёрнут в одну кнопку, раскрывается по клику — как на оригинале
+     (виджет "chaty"), без анимации выезда. */
+  function initQuickContact() {
+    var wrap = document.getElementById('quickContact');
+    var toggle = document.getElementById('quickContactToggle');
+    var list = document.getElementById('quickContactList');
+    if (!wrap || !toggle || !list) return;
+
+    toggle.addEventListener('click', function () {
+      var open = !wrap.classList.contains('is-open');
+      wrap.classList.toggle('is-open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Закрыть контакты' : 'Открыть контакты');
+      if (open) list.removeAttribute('hidden');
+      else list.setAttribute('hidden', '');
+    });
+  }
+
   /* ---------- Подсветка текущего пункта меню ---------- */
   function initCurrentLink() {
     var here = window.location.pathname.split('/').pop() || 'index.html';
@@ -258,6 +277,7 @@ window.SK.nav = (function () {
     init: function () {
       initHeaderState();
       initMenu();
+      initQuickContact();
       initTransitions();
       initCurrentLink();
     },
