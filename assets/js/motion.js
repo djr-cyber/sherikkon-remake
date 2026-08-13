@@ -138,48 +138,6 @@ window.SK.motion = (function () {
   }
 
   /* ============================================================
-     Аврора в герое: медленный дрейф + параллакс на мышь
-     ============================================================ */
-  function initAurora() {
-    var blobs = $$('.hero__blob');
-    if (!blobs.length) return;
-
-    blobs.forEach(function (blob, i) {
-      gsap.to(blob, {
-        xPercent: i % 2 === 0 ? 8 : -10,
-        yPercent: i % 2 === 0 ? -6 : 9,
-        duration: 16 + i * 4,
-        ease: 'sine.inOut',
-        repeat: -1,
-        yoyo: true
-      });
-    });
-
-    var hero = $('.hero');
-    if (!hero) return;
-
-    var setters = blobs.map(function (blob) {
-      return {
-        x: gsap.quickTo(blob, 'xPercent', { duration: 1.2, ease: 'power2' }),
-        y: gsap.quickTo(blob, 'yPercent', { duration: 1.2, ease: 'power2' })
-      };
-    });
-
-    function onMove(e) {
-      var cx = (e.clientX / window.innerWidth - 0.5) * 2;   // -1..1
-      var cy = (e.clientY / window.innerHeight - 0.5) * 2;
-      setters.forEach(function (s, i) {
-        var depth = (i + 1) * 2.5;
-        s.x(cx * depth);
-        s.y(cy * depth);
-      });
-    }
-
-    hero.addEventListener('mousemove', onMove, { passive: true });
-    return function cleanup() { hero.removeEventListener('mousemove', onMove); };
-  }
-
-  /* ============================================================
      Таймлайн героя
      ============================================================ */
   function heroTimeline() {
@@ -473,22 +431,16 @@ window.SK.motion = (function () {
       initScrollProgress();
     });
 
-    /* --- Ветка 3: десктоп — кинематографика с pin ---
-       Аврора (бесконечный дрейф + параллакс на мышь) — тоже сюда:
-       на мобильном это просто вечный GPU-расход без мыши для параллакса
-       и без реальной пользы на маленьком экране. На мобильном пятна
-       остаются статичными декоративными пятнами на CSS-позициях. */
+    /* --- Ветка 3: десктоп — кинематографика с pin --- */
     mm.add('(min-width: 1024px) and (prefers-reduced-motion: no-preference)', function () {
       var cleanPin = initPinSection();
       var cleanRail = initRail();
       var cleanMagnetic = initMagnetic();
-      var cleanAurora = initAurora();
 
       return function () {
         if (cleanPin) cleanPin();
         if (cleanRail) cleanRail();
         if (cleanMagnetic) cleanMagnetic();
-        if (cleanAurora) cleanAurora();
       };
     });
 
