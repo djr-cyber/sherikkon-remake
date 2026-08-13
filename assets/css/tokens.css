@@ -185,6 +185,9 @@
   --gradient-brand: linear-gradient(120deg, var(--primary) 0%, #C026D3 100%);
   --gradient-gold:  linear-gradient(120deg, var(--accent) 0%, var(--accent-light) 100%);
   --gradient-line:  linear-gradient(90deg, var(--primary) 0%, #C026D3 50%, var(--accent) 100%);
+  /* Более контрастный разбег внутри золота — для акцентных слов в
+     заголовках (.grad), где --gradient-gold читается почти плоским. */
+  --gradient-heading-accent: linear-gradient(120deg, var(--accent-deep) 0%, var(--accent) 55%, var(--accent-light) 100%);
 
   /* ---------- Типографика ---------- */
   --font-heading: 'Exo 2', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;

@@ -1349,11 +1349,12 @@
      остаётся прозрачным, то есть невидимым. */
   .grad,
   .grad * {
-    background: var(--gradient-gold);
+    background: var(--gradient-heading-accent);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
+  .grad { font-size: 0.78em; }
 
   /* ---------- Точки входа анимаций ----------
      Начальные состояния применяются ТОЛЬКО когда JS доступен
