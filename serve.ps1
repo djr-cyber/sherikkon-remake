@@ -51,42 +51,50 @@ try {
     $request  = $context.Request
     $response = $context.Response
 
-    $rel = [System.Uri]::UnescapeDataString($request.Url.AbsolutePath).TrimStart('/')
-    if ([string]::IsNullOrWhiteSpace($rel)) { $rel = 'index.html' }
+    try {
+      $rel = [System.Uri]::UnescapeDataString($request.Url.AbsolutePath).TrimStart('/')
+      if ([string]::IsNullOrWhiteSpace($rel)) { $rel = 'index.html' }
 
-    $path = Join-Path $Root ($rel.Replace('/', [char]92))
+      $path = Join-Path $Root ($rel.Replace('/', [char]92))
 
-    # Never serve anything outside the project folder
-    $fullPath = $null
-    try { $fullPath = [System.IO.Path]::GetFullPath($path) } catch { $fullPath = $null }
+      # Never serve anything outside the project folder
+      $fullPath = $null
+      try { $fullPath = [System.IO.Path]::GetFullPath($path) } catch { $fullPath = $null }
 
-    $ok = $false
-    if ($fullPath) {
-      if ($fullPath.StartsWith($fullRoot) -and (Test-Path $fullPath -PathType Leaf)) { $ok = $true }
+      $ok = $false
+      if ($fullPath) {
+        if ($fullPath.StartsWith($fullRoot) -and (Test-Path $fullPath -PathType Leaf)) { $ok = $true }
+      }
+
+      if ($ok) {
+        $ext  = [System.IO.Path]::GetExtension($fullPath).ToLower()
+        $type = $mime[$ext]
+        if (-not $type) { $type = 'application/octet-stream' }
+
+        $bytes = [System.IO.File]::ReadAllBytes($fullPath)
+        $response.ContentType     = $type
+        $response.ContentLength64 = $bytes.Length
+        $response.AddHeader('Cache-Control', 'no-cache')
+        if ($request.HttpMethod -ne 'HEAD') {
+          $response.OutputStream.Write($bytes, 0, $bytes.Length)
+        }
+        Write-Host ("200  " + $rel)
+      }
+      else {
+        $body = [System.Text.Encoding]::UTF8.GetBytes('404 not found')
+        $response.StatusCode      = 404
+        $response.ContentType     = 'text/plain; charset=utf-8'
+        $response.ContentLength64 = $body.Length
+        $response.OutputStream.Write($body, 0, $body.Length)
+        Write-Host ("404  " + $rel)
+      }
     }
-
-    if ($ok) {
-      $ext  = [System.IO.Path]::GetExtension($fullPath).ToLower()
-      $type = $mime[$ext]
-      if (-not $type) { $type = 'application/octet-stream' }
-
-      $bytes = [System.IO.File]::ReadAllBytes($fullPath)
-      $response.ContentType     = $type
-      $response.ContentLength64 = $bytes.Length
-      $response.AddHeader('Cache-Control', 'no-cache')
-      $response.OutputStream.Write($bytes, 0, $bytes.Length)
-      Write-Host ("200  " + $rel)
+    catch {
+      Write-Host ("ERR  " + $rel + "  " + $_.Exception.Message)
     }
-    else {
-      $body = [System.Text.Encoding]::UTF8.GetBytes('404 not found')
-      $response.StatusCode      = 404
-      $response.ContentType     = 'text/plain; charset=utf-8'
-      $response.ContentLength64 = $body.Length
-      $response.OutputStream.Write($body, 0, $body.Length)
-      Write-Host ("404  " + $rel)
+    finally {
+      try { $response.OutputStream.Close() } catch {}
     }
-
-    $response.OutputStream.Close()
   }
 }
 finally {

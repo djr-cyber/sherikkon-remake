@@ -297,6 +297,19 @@
     -webkit-backdrop-filter: blur(14px) saturate(140%);
     border-bottom-color: var(--chrome-border);
   }
+  /* Шапка на главной — светлая, пока в качестве промежуточного шага
+     к белой: лёгкий тон бренд-синего вместо --chrome-bg. Переопределяет
+     токены локально, остальные страницы не затронуты. */
+  .header--home {
+    --chrome-bg:        color-mix(in srgb, #095486 10%, var(--bg));
+    --chrome-fg:         var(--fg);
+    --chrome-fg-muted:   var(--fg-muted);
+    --chrome-border:     var(--border-strong);
+  }
+  .header--home .header__brand:hover,
+  .header--home .header__phone:hover {
+    color: var(--accent-deep);
+  }
   .header__inner {
     display: flex;
     align-items: center;
@@ -312,13 +325,26 @@
     color: var(--chrome-fg);
     text-decoration: none;
     font-family: var(--font-heading);
-    font-size: var(--text-xl);
-    font-weight: 600;
-    letter-spacing: 0.04em;
     flex-shrink: 0;
   }
   .header__brand:hover { color: var(--accent); }
   .header__brand img { width: 40px; height: auto; }
+  .header__brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+  }
+  .header__brand-name {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+  .header__brand-sub {
+    font-size: 0.6rem;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    color: var(--chrome-fg-muted);
+  }
 
   .nav { display: none; }
   @media (min-width: 1024px) {
