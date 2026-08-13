@@ -273,10 +273,15 @@
   }
 
   /* ---------- Шапка ----------
-     Остаётся тёмной («рамка» сайта, --chrome-*) поверх светлого контента —
-     поэтому фон не завязан на скролл, а виден сразу, иначе тёмный/светлый
-     текст навигации потерялся бы на светлом герое под шапкой. */
+     Светлая на всех страницах — промежуточный шаг к белой: лёгкий тон
+     бренд-синего вместо тёмного --chrome-bg. Переопределяет токены
+     локально на самой шапке; фон не завязан на скролл, виден сразу.
+     Футер (тоже на --chrome-*) не затронут — остаётся тёмным. */
   .header {
+    --chrome-bg:       color-mix(in srgb, #095486 10%, var(--bg));
+    --chrome-fg:       var(--fg);
+    --chrome-fg-muted: var(--fg-muted);
+    --chrome-border:   var(--border-strong);
     position: fixed;
     top: 0;
     left: 0;
@@ -297,17 +302,8 @@
     -webkit-backdrop-filter: blur(14px) saturate(140%);
     border-bottom-color: var(--chrome-border);
   }
-  /* Шапка на главной — светлая, пока в качестве промежуточного шага
-     к белой: лёгкий тон бренд-синего вместо --chrome-bg. Переопределяет
-     токены локально, остальные страницы не затронуты. */
-  .header--home {
-    --chrome-bg:        color-mix(in srgb, #095486 10%, var(--bg));
-    --chrome-fg:         var(--fg);
-    --chrome-fg-muted:   var(--fg-muted);
-    --chrome-border:     var(--border-strong);
-  }
-  .header--home .header__brand:hover,
-  .header--home .header__phone:hover {
+  .header__brand:hover,
+  .header__phone:hover {
     color: var(--accent-deep);
   }
   .header__inner {
@@ -327,7 +323,6 @@
     font-family: var(--font-heading);
     flex-shrink: 0;
   }
-  .header__brand:hover { color: var(--accent); }
   .header__brand img { width: 40px; height: auto; }
   .header__brand-text {
     display: flex;
@@ -398,7 +393,6 @@
     white-space: nowrap;
   }
   @media (min-width: 1280px) { .header__phone { display: inline-flex; } }
-  .header__phone:hover { color: var(--accent); }
 
   /* Бургер */
   .burger {
