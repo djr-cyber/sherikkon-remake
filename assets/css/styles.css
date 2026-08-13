@@ -775,65 +775,22 @@
   .step__text { margin-top: var(--space-3); color: var(--fg-muted); }
 
   /* ---------- Карточка (общая) ---------- */
-  /* Наведение: карточка слегка сжимается, а вокруг нею растут два
-     кольца-обводки (::before/::after) плюс собственное свечение
-     карточки — итого три «пульса» с разной задержкой. При уходе
-     курсора кольца гаснут в обратном порядке: внешнее первым,
-     сама карточка — последней. */
+  /* Тонкая синяя окантовка (цвет из логотипа SC, #095486) — едва
+     заметная в покое, чуть плотнее при наведении. Без сжатия карточки
+     и колец вокруг неё — эффект убран по просьбе клиента. */
   .card {
     position: relative;
     display: flex;
     flex-direction: column;
     padding: var(--space-6);
     background: var(--surface-2);
-    border: 1px solid var(--border);
+    border: 1px solid color-mix(in srgb, #095486 18%, var(--border));
     border-radius: var(--radius-lg);
-    transition-property: transform, border-color, background-color, box-shadow;
-    transition-duration: 520ms;
-    transition-timing-function: cubic-bezier(.22, 1, .36, 1);
-    transition-delay: 140ms; /* уход: сама карточка успокаивается последней */
-  }
-  .card::before,
-  .card::after {
-    content: '';
-    position: absolute;
-    pointer-events: none;
-    border: 1px solid var(--primary-light);
-    opacity: 0;
-    transition-property: opacity, transform;
-    transition-duration: 520ms;
-    transition-timing-function: cubic-bezier(.22, 1, .36, 1);
-  }
-  .card::before {
-    inset: -16px;
-    border-radius: 42px;
-    transform: scale(0.88);
-    transition-delay: 70ms; /* середина — одна и та же задержка в обе стороны */
-  }
-  .card::after {
-    inset: -32px;
-    border-radius: 58px;
-    transform: scale(0.9);
-    transition-delay: 0ms; /* уход: внешнее кольцо гаснет первым */
+    transition: border-color var(--dur) var(--ease-soft);
   }
   .card:hover,
   .card:focus-within {
-    transform: scale(0.86);
-    border-color: var(--primary-light);
-    background: var(--surface-3);
-    box-shadow: 0 0 0 1px var(--primary-light), 0 0 32px 0 var(--glow-violet);
-    transition-delay: 0ms; /* наведение: сама карточка реагирует первой */
-  }
-  .card:hover::before,
-  .card:focus-within::before {
-    opacity: 0.5;
-    transform: scale(1);
-  }
-  .card:hover::after,
-  .card:focus-within::after {
-    opacity: 0.28;
-    transform: scale(1);
-    transition-delay: 140ms; /* наведение: внешнее кольцо загорается последним */
+    border-color: color-mix(in srgb, #095486 38%, var(--border));
   }
 
   .card__icon {
