@@ -244,20 +244,26 @@ window.SK.nav = (function () {
 
   /* ---------- Плавающий блок быстрой связи ----------
      Свёрнут в одну кнопку, раскрывается по клику — как на оригинале
-     (виджет "chaty"), без анимации выезда. */
+     (виджет "chaty"). Разметка помечена hidden — это состояние «нет
+     JS»; здесь переключаемся на inert, как и в мобильном меню, чтобы
+     список оставался в потоке и иконки могли анимированно выезжать
+     (CSS transform/opacity), а не просто появляться. */
   function initQuickContact() {
     var wrap = document.getElementById('quickContact');
     var toggle = document.getElementById('quickContactToggle');
     var list = document.getElementById('quickContactList');
     if (!wrap || !toggle || !list) return;
 
+    list.removeAttribute('hidden');
+    list.setAttribute('inert', '');
+
     toggle.addEventListener('click', function () {
       var open = !wrap.classList.contains('is-open');
       wrap.classList.toggle('is-open', open);
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       toggle.setAttribute('aria-label', open ? 'Закрыть контакты' : 'Открыть контакты');
-      if (open) list.removeAttribute('hidden');
-      else list.setAttribute('hidden', '');
+      if (open) list.removeAttribute('inert');
+      else list.setAttribute('inert', '');
     });
   }
 
