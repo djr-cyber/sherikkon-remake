@@ -605,19 +605,6 @@
     background-size: 32px 32px;
     pointer-events: none;
   }
-  .hero::after {
-    content: '$';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: var(--font-heading);
-    font-weight: 700;
-    font-size: 20vw;
-    line-height: 1;
-    color: rgba(255, 255, 255, 0.16);
-    pointer-events: none;
-  }
   .hero__inner { position: relative; z-index: var(--z-raised); }
   .hero__title { max-width: 18ch; color: #FFFFFF; }
   @media (min-width: 1024px) { .hero__title { font-size: 48px; } }
