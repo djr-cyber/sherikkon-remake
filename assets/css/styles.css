@@ -585,10 +585,9 @@
   }
 
   /* ---------- Hero ----------
-     Раньше здесь было три размытых цветных пятна (blur 90–120px) —
-     дорого в отрисовке и не вяжется со светлой минималистичной темой.
-     Вместо них — обычный CSS-градиент: он не требует blur/GPU-слоя
-     и не «грузит» страницу декором. */
+     Фон — фирменный синий→оранжевый градиент (цвета из логотипа SC),
+     поверх — точечный паттерн и водяной знак "$" (тот же символ, что
+     и у кастомного курсора). Текст здесь белый, как в оригинале. */
   .hero {
     position: relative;
     min-height: 100svh;
@@ -596,17 +595,37 @@
     align-items: center;
     padding-block: calc(var(--header-h) + var(--space-9)) var(--space-10);
     overflow: hidden;
-    background:
-      radial-gradient(55% 45% at 88% -6%, color-mix(in srgb, var(--primary) 7%, transparent), transparent 70%),
-      radial-gradient(45% 40% at -4% 104%, color-mix(in srgb, var(--accent) 10%, transparent), transparent 70%);
+    background: linear-gradient(90deg, #095486 0%, #F6882B 100%);
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(255, 255, 255, 0.28) 1.5px, transparent 1.5px);
+    background-size: 32px 32px;
+    pointer-events: none;
+  }
+  .hero::after {
+    content: '$';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 20vw;
+    line-height: 1;
+    color: rgba(255, 255, 255, 0.16);
+    pointer-events: none;
   }
   .hero__inner { position: relative; z-index: var(--z-raised); }
-  .hero__title { max-width: 18ch; }
+  .hero__title { max-width: 18ch; color: #FFFFFF; }
+  @media (min-width: 1024px) { .hero__title { font-size: 48px; } }
   .hero__text {
     margin-top: var(--space-6);
     max-width: 52ch;
     font-size: var(--text-lg);
-    color: var(--fg-muted);
+    color: #FFFFFF;
   }
   .hero__actions {
     margin-top: var(--space-8);
@@ -632,7 +651,7 @@
     font-size: var(--text-xs);
     letter-spacing: var(--tracking-wide);
     text-transform: uppercase;
-    color: var(--fg-subtle);
+    color: rgba(255, 255, 255, 0.7);
     text-decoration: none;
   }
   @media (min-width: 1024px) and (min-height: 700px) {
