@@ -147,8 +147,10 @@
 
   @media (min-width: 640px)  { .grid--2 { grid-template-columns: repeat(2, 1fr); } }
   @media (min-width: 900px)  { .grid--3 { grid-template-columns: repeat(3, 1fr); } }
+  /* На оригинальном сайте 4 карточки (услуги, команда) всегда идут
+     сеткой 2×2, а не в один ряд — так и оставляем на всех desktop-
+     ширинах, не переходя на 4 колонки. */
   @media (min-width: 640px)  { .grid--4 { grid-template-columns: repeat(2, 1fr); } }
-  @media (min-width: 1100px) { .grid--4 { grid-template-columns: repeat(4, 1fr); } }
 
   .split {
     display: grid;
@@ -1187,6 +1189,16 @@
   }
   @media (min-width: 768px)  { .footer__grid { grid-template-columns: 1.4fr 1fr 1fr; } }
   @media (min-width: 1100px) { .footer__grid { grid-template-columns: 1.6fr 1fr 1fr 1.2fr; } }
+  /* Футер оригинального сайта — только лого и две соцсети, без колонок.
+     display:flex перебивает grid у .footer__grid, grid-template-columns
+     из его медиа-запросов на flex-контейнере просто не действует. */
+  .footer__grid--simple {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+  }
 
   .footer__title {
     font-family: var(--font-body);
@@ -1232,6 +1244,31 @@
     background: var(--chrome-surface);
     transform: translateY(-2px);
   }
+
+  /* ---------- Плавающий блок быстрой связи ----------
+     На оригинальном сайте есть на каждой странице (виджет "chaty").
+     Здесь — статичный список иконок без сворачивания. */
+  .quick-contact {
+    position: fixed;
+    right: var(--space-5);
+    bottom: var(--space-5);
+    z-index: var(--z-header);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+  .quick-contact__item {
+    width: 44px;
+    height: 44px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--primary);
+    color: var(--on-primary);
+    box-shadow: var(--shadow-lg);
+    transition: transform var(--dur) var(--ease-out), background-color var(--dur) var(--ease-soft);
+  }
+  .quick-contact__item:hover { background: var(--primary-deep); transform: translateY(-2px); }
 
   .footer__bottom {
     margin-top: var(--space-9);
