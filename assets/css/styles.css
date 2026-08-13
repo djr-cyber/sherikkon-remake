@@ -128,6 +128,7 @@
     position: relative;
     padding-block: var(--section-y);
   }
+  .section--tight { padding-block: var(--space-9); }
 
   .section--surface { background: var(--surface); }
 
@@ -775,22 +776,22 @@
   .step__text { margin-top: var(--space-3); color: var(--fg-muted); }
 
   /* ---------- Карточка (общая) ---------- */
-  /* Тонкая синяя окантовка (цвет из логотипа SC, #095486) — едва
-     заметная в покое, чуть плотнее при наведении. Без сжатия карточки
-     и колец вокруг неё — эффект убран по просьбе клиента. */
+  /* Синяя окантовка (цвет из логотипа SC, #095486) и тускловатый
+     синеватый фон вместо чистого белого. Без сжатия карточки и колец
+     вокруг неё — эффект убран по просьбе клиента. */
   .card {
     position: relative;
     display: flex;
     flex-direction: column;
     padding: var(--space-6);
-    background: var(--surface-2);
-    border: 1px solid color-mix(in srgb, #095486 18%, var(--border));
+    background: color-mix(in srgb, #095486 6%, var(--surface-2));
+    border: 1px solid color-mix(in srgb, #095486 32%, var(--border));
     border-radius: var(--radius-lg);
     transition: border-color var(--dur) var(--ease-soft);
   }
   .card:hover,
   .card:focus-within {
-    border-color: color-mix(in srgb, #095486 38%, var(--border));
+    border-color: color-mix(in srgb, #095486 55%, var(--border));
   }
 
   .card__icon {
@@ -1086,7 +1087,7 @@
     pointer-events: none;
   }
   .cta__inner { position: relative; z-index: var(--z-raised); }
-  @media (min-width: 900px) { .cta { padding: var(--space-11) var(--space-10); } }
+  @media (min-width: 900px) { .cta { padding: var(--space-8) var(--space-9); } }
 
   /* ---------- Контактные строки ---------- */
   .contact-item {
@@ -1253,7 +1254,6 @@
     display: grid;
     place-items: center;
     border-radius: 50%;
-    background: #03E78B;
     box-shadow: var(--shadow-lg);
     cursor: pointer;
     transition: transform var(--dur) var(--ease-out);
