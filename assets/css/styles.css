@@ -1162,6 +1162,11 @@
   .cta__inner { position: relative; z-index: var(--z-raised); }
   @media (min-width: 900px) { .cta { padding: var(--space-8) var(--space-9); } }
 
+  /* Блок "Бесплатная консультация" — компактнее: h2 был на общей
+     h2-шкале (до 64px), заголовок и отступы карточки уменьшены. */
+  #konsultaciya .cta { padding: var(--space-6) var(--space-7); }
+  #konsultaciya h2 { font-size: var(--text-4xl); }
+
   /* ---------- Контактные строки ---------- */
   .contact-item {
     display: grid;
