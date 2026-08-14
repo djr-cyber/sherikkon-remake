@@ -791,6 +791,15 @@
     background-position: center;
     border: none;
   }
+  /* Карточка "Результаты" — тот же приём: присланная картинка вместо
+     обычной заливки, цифры оранжевые. */
+  #reshenie #rezultaty .plain-list__num { color: #F6882B; }
+  #reshenie #rezultaty {
+    background-image: url('../img/card-arrow-blue.png');
+    background-size: cover;
+    background-position: center;
+    border: none;
+  }
 
   /* Декоративный разделитель между "Проблема" и "Решение" — заполняет
      пустую полосу на стыке секций (фон прозрачный, ложится прямо на
