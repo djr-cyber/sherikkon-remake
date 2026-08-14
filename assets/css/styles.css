@@ -504,15 +504,15 @@
   }
   .btn:active { transform: scale(0.97); }
 
-  /* Синий с логотипа вместо золота — общий "главный" цвет действия. */
+  /* Оранжевый с логотипа — общий "главный" цвет действия. */
   .btn--primary {
-    background: linear-gradient(120deg, #095486 0%, #0C6BA8 100%);
-    color: #FFFFFF;
-    box-shadow: 0 10px 30px -12px rgba(9, 84, 134, 0.5);
+    background: linear-gradient(120deg, #F6882B 0%, #FF9F45 100%);
+    color: #1A1026;
+    box-shadow: 0 10px 30px -12px rgba(246, 136, 43, 0.5);
   }
   .btn--primary:hover {
-    color: #FFFFFF;
-    box-shadow: 0 16px 40px -12px rgba(9, 84, 134, 0.5);
+    color: #1A1026;
+    box-shadow: 0 16px 40px -12px rgba(246, 136, 43, 0.5);
   }
 
   .btn--secondary {
@@ -1085,8 +1085,8 @@
     position: relative;
     padding: var(--space-9) var(--gutter);
     border-radius: var(--radius-lg);
-    background: var(--surface);
-    border: 1px solid var(--border);
+    background: color-mix(in srgb, #095486 6%, var(--surface));
+    border: 1px solid color-mix(in srgb, #095486 32%, var(--border));
     overflow: hidden;
   }
   .cta::before {
