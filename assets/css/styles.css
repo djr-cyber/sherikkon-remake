@@ -779,6 +779,18 @@
   #reshenie p,
   #reshenie .plain-list__text,
   #reshenie .plain-list__num { font-family: 'Luga', var(--font-heading); }
+  /* Только карточка "Наше решение" — цифры в фирменном тёмно-синем,
+     карточку "Результаты" не трогаем. */
+  #reshenie .card:first-child .plain-list__num { color: #17243A; }
+  /* Фон карточки "Наше решение" — присланная картинка (скруглённая
+     рамка + стрелка-график уже нарисованы в самом файле), вместо
+     обычной синеватой заливки .card. Текст остаётся как есть. */
+  #reshenie .card:first-child {
+    background-image: url('../img/card-arrow-orange.png');
+    background-size: cover;
+    background-position: center;
+    border: none;
+  }
 
   /* Декоративный разделитель между "Проблема" и "Решение" — заполняет
      пустую полосу на стыке секций (фон прозрачный, ложится прямо на
