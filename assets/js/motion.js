@@ -80,42 +80,6 @@ window.SK.motion = (function () {
   }
 
   /* ============================================================
-     Магнитные кнопки
-     ============================================================ */
-  function initMagnetic() {
-    var handlers = [];
-
-    $$('[data-magnetic]').forEach(function (el) {
-      var xTo = gsap.quickTo(el, 'x', { duration: 0.4, ease: 'power3' });
-      var yTo = gsap.quickTo(el, 'y', { duration: 0.4, ease: 'power3' });
-
-      function onMove(e) {
-        var r = el.getBoundingClientRect();
-        var relX = e.clientX - (r.left + r.width / 2);
-        var relY = e.clientY - (r.top + r.height / 2);
-        // Тянемся не более чем на треть размера — кнопка не «убегает»
-        xTo(relX * 0.28);
-        yTo(relY * 0.36);
-      }
-      function onLeave() {
-        gsap.to(el, { x: 0, y: 0, duration: 0.7, ease: 'elastic.out(1, 0.3)' });
-      }
-
-      el.addEventListener('mousemove', onMove);
-      el.addEventListener('mouseleave', onLeave);
-      handlers.push({ el: el, onMove: onMove, onLeave: onLeave });
-    });
-
-    return function cleanup() {
-      handlers.forEach(function (h) {
-        h.el.removeEventListener('mousemove', h.onMove);
-        h.el.removeEventListener('mouseleave', h.onLeave);
-        gsap.set(h.el, { clearProps: 'transform' });
-      });
-    };
-  }
-
-  /* ============================================================
      Таймлайн героя
      ============================================================ */
   function heroTimeline() {
@@ -404,12 +368,10 @@ window.SK.motion = (function () {
     mm.add('(min-width: 1024px) and (prefers-reduced-motion: no-preference)', function () {
       var cleanPin = initPinSection();
       var cleanRail = initRail();
-      var cleanMagnetic = initMagnetic();
 
       return function () {
         if (cleanPin) cleanPin();
         if (cleanRail) cleanRail();
-        if (cleanMagnetic) cleanMagnetic();
       };
     });
 
