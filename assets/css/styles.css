@@ -1486,6 +1486,9 @@
      @layer utilities всегда перебивает более ранние слои по спецификации,
      сколько бы классов/id ни было у селектора там. */
   #problema .text-muted { color: var(--fg); }
+  /* Карточка "Наше решение" на оранжевом фоне картинки — серый плохо
+     читался, чёрный (--fg) читаемее. */
+  #reshenie .card:first-child .text-muted { color: var(--fg); }
   .text-accent { color: var(--accent-deep); }
   .text-center { text-align: center; }
   .measure     { max-width: var(--measure); }
