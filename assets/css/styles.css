@@ -305,6 +305,7 @@
     font-weight: 500;
     padding-block: var(--space-2);
     font-family: 'Luga', var(--font-heading);
+    letter-spacing: 0.03em;
   }
   .nav__link::after {
     content: '';
@@ -342,6 +343,7 @@
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
     font-family: 'Luga', var(--font-heading);
+    letter-spacing: 0.03em;
   }
   @media (min-width: 1280px) { .header__phone { display: inline-flex; } }
   /* Подчёркивание, как у пунктов навигации — не подсветка цветом. */
@@ -481,6 +483,7 @@
     background-image: none;
     color: #2B1400;
     font-family: 'Luga', var(--font-heading);
+    letter-spacing: 0.03em;
     border: 1px solid #D9660A;
     box-shadow:
       0 8px 18px -10px rgba(232, 114, 15, 0.4),
@@ -615,7 +618,7 @@
             mask-image: linear-gradient(to right, transparent, black 30%);
   }
   @media (min-width: 1024px) { .hero__waves { display: block; } }
-  .hero__title { max-width: 30ch; color: #FFFFFF; font-family: 'Luga', var(--font-heading); }
+  .hero__title { max-width: 30ch; color: #FFFFFF; font-family: 'Luga', var(--font-heading); letter-spacing: 0.03em; }
   @media (min-width: 1024px) { .hero__title { font-size: 48px; } }
   .hero__text {
     margin-top: var(--space-6);
@@ -623,6 +626,7 @@
     font-size: 22px;
     color: #FFFFFF;
     font-family: 'Luga', var(--font-body);
+    letter-spacing: 0.03em;
   }
   .hero__text + .hero__text { font-size: 18px; }
   .hero__actions {
@@ -732,8 +736,8 @@
   .problema__image { width: 100%; height: 100%; object-fit: cover; display: block; }
   #problema h2,
   #problema p,
-  #problema .plain-list__text { font-family: 'Luga', var(--font-heading); }
-  #problema .plain-list__num { color: #F6882B; font-family: 'Luga', var(--font-heading); }
+  #problema .plain-list__text { font-family: 'Luga', var(--font-heading); letter-spacing: 0.03em; }
+  #problema .plain-list__num { color: #F6882B; font-family: 'Luga', var(--font-heading); letter-spacing: 0.03em; }
   #problema p,
   #problema .plain-list__text { line-height: var(--leading-normal); }
   /* Заголовок блока крупнее обычного h2 (--text-5xl, до 64px) — приравниваем
@@ -750,7 +754,7 @@
   #reshenie h2,
   #reshenie p,
   #reshenie .plain-list__text,
-  #reshenie .plain-list__num { font-family: 'Luga', var(--font-heading); }
+  #reshenie .plain-list__num { font-family: 'Luga', var(--font-heading); letter-spacing: 0.03em; }
   /* Только карточка "Наше решение" — цифры в синем цвете логотипа,
      карточку "Результаты" не трогаем. */
   #reshenie .card:first-child .plain-list__num { color: #095486; }
