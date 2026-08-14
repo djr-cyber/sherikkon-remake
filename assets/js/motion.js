@@ -49,28 +49,6 @@ window.SK.motion = (function () {
       el.textContent = el.dataset.count + (el.dataset.suffix || '');
     });
     $$('[data-step]').forEach(function (el) { el.classList.add('is-lit'); });
-
-    var progress = $('#scrollProgress');
-    if (progress) progress.style.display = 'none';
-  }
-
-  /* ============================================================
-     Прогресс скролла
-     ============================================================ */
-  function initScrollProgress() {
-    var bar = $('#scrollProgress');
-    if (!bar) return;
-
-    gsap.to(bar, {
-      scaleX: 1,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: document.documentElement,
-        start: 'top top',
-        end: 'bottom bottom',
-        scrub: 0.3
-      }
-    });
   }
 
   /* ============================================================
@@ -420,7 +398,6 @@ window.SK.motion = (function () {
       initReveals();
       initCounters();
       initSteps();
-      initScrollProgress();
     });
 
     /* --- Ветка 3: десктоп — кинематографика с pin --- */
