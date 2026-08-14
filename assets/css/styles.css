@@ -763,6 +763,10 @@
   /* Карточка "Результаты" — тот же приём: присланная картинка вместо
      обычной заливки, цифры оранжевые. */
   #reshenie #rezultaty .plain-list__num { color: #F6882B; }
+  /* Убираем жирность у <strong>-фрагментов в списках "Проблема" и
+     "Результаты" — весь текст пункта одного веса. */
+  #problema .plain-list__text strong,
+  #reshenie .plain-list__text strong { font-weight: inherit; }
   #reshenie #rezultaty {
     background-image: url('../img/card-arrow-blue.png');
     background-size: cover;
