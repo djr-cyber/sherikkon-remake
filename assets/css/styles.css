@@ -774,6 +774,13 @@
   /* Заголовок блока крупнее обычного h2 (--text-5xl, до 64px) — приравниваем
      к размеру героя (48px на десктопе), чтобы не выглядел жирнее верхнего блока. */
   @media (min-width: 1024px) { #problema h2 { font-size: 48px; } }
+  /* Весь текст списка "Проблема" — жирным (было: жирный только в
+     <strong>-фрагментах пунктов 2-3, пункт 1 обычным). */
+  #problema .plain-list__text { font-weight: 700; }
+
+  /* Серый фон .section--surface — только для #reshenie убираем, у
+     #proekty (тоже .section--surface) остаётся как есть. */
+  #reshenie { background: var(--bg); }
 
   #reshenie h2,
   #reshenie p,
