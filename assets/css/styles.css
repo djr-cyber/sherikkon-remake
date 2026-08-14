@@ -303,9 +303,11 @@
     background: var(--chrome-bg);
     border-bottom-color: var(--chrome-border);
   }
-  .header__brand:hover,
-  .header__phone:hover {
+  .header__brand:hover {
     color: var(--accent-deep);
+  }
+  .header__phone:hover {
+    color: #F6882B;
   }
   .header__inner {
     display: flex;
@@ -392,7 +394,7 @@
     gap: var(--space-2);
     color: var(--chrome-fg);
     text-decoration: none;
-    font-size: 16px;
+    font-size: 32px;
     font-weight: 600;
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
