@@ -1164,8 +1164,12 @@
 
   /* Блок "Бесплатная консультация" — компактнее: h2 был на общей
      h2-шкале (до 64px), заголовок и отступы карточки уменьшены. */
-  #konsultaciya .cta { padding: var(--space-6) var(--space-7); }
+  #konsultaciya .cta { padding: var(--space-6) var(--space-7); border-color: #17243A; }
   #konsultaciya h2 { font-size: var(--text-4xl); }
+  #konsultaciya h2,
+  #konsultaciya p,
+  #konsultaciya li,
+  #konsultaciya a { font-family: 'Luga', var(--font-heading); letter-spacing: 0.03em; }
 
   /* ---------- Контактные строки ---------- */
   .contact-item {
