@@ -641,7 +641,7 @@
     top: 0;
     right: 0;
     height: 100%;
-    width: min(38vw, 600px);
+    width: min(46vw, 680px);
     object-fit: cover;
     object-position: right center;
     z-index: 0;
@@ -674,23 +674,6 @@
     padding-top: var(--space-6);
     border-top: 1px solid var(--border);
   }
-  .hero__scroll {
-    display: none;
-    position: absolute;
-    left: 50%;
-    bottom: var(--space-6);
-    translate: -50% 0;
-    z-index: var(--z-raised);
-    font-size: var(--text-xs);
-    letter-spacing: var(--tracking-wide);
-    text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.7);
-    text-decoration: none;
-  }
-  @media (min-width: 1024px) and (min-height: 700px) {
-    .hero__scroll { display: block; }
-  }
-
   /* Маска для построчного/пословного выезда текста */
   .line-mask { display: block; overflow: hidden; }
 
@@ -763,6 +746,50 @@
     color: var(--primary);
   }
   .plain-list__text { color: var(--fg); }
+
+  /* Блок "Проблема": картинка — одна колонка слева, весь текст
+     (заголовок, подзаголовок, список, заключительный абзац) — единой
+     колонкой справа. Этот блок целиком на Luga и с оранжевыми номерами —
+     по запросу клиента, остальные .plain-list на сайте (карточки
+     "Решение"/"Результаты") не тронуты. */
+  /* Сдвигаем блок ближе к шапке (section--tight даёт 64px сверху — тут
+     сокращаем ещё) — только верхний паддинг, нижний не трогаем. */
+  #problema { padding-top: var(--space-6); }
+  /* stretch — картинка тянется на всю высоту строки, вровень с текстом
+     и сверху, и снизу; сам текстовый столбец задаёт высоту строки. */
+  .problema__top { align-items: stretch; }
+  .problema__image-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 380px;
+    justify-self: center;
+  }
+  .problema__image { width: 100%; height: 100%; object-fit: cover; display: block; }
+  #problema h2,
+  #problema p,
+  #problema .plain-list__text { font-family: 'Luga', var(--font-heading); }
+  #problema .plain-list__num { color: #F6882B; font-family: 'Luga', var(--font-heading); }
+  #problema p,
+  #problema .plain-list__text { line-height: var(--leading-normal); }
+  /* Заголовок блока крупнее обычного h2 (--text-5xl, до 64px) — приравниваем
+     к размеру героя (48px на десктопе), чтобы не выглядел жирнее верхнего блока. */
+  @media (min-width: 1024px) { #problema h2 { font-size: 48px; } }
+
+  #reshenie h2,
+  #reshenie p,
+  #reshenie .plain-list__text,
+  #reshenie .plain-list__num { font-family: 'Luga', var(--font-heading); }
+
+  /* Декоративный разделитель между "Проблема" и "Решение" — заполняет
+     пустую полосу на стыке секций (фон прозрачный, ложится прямо на
+     белую страницу). */
+  .section-divider {
+    display: block;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+  }
 
   /* На десктопе боли складываются друг на друга и сменяются по скроллу */
   @media (min-width: 1024px) {
@@ -1426,6 +1453,11 @@
   }
 
   .text-muted  { color: var(--fg-muted); }
+  /* Блок "Проблема" на белом фоне с Luga — серый читался плохо, чёрный
+     (--fg) читаемее. Живёт здесь, а не в @layer components, потому что
+     @layer utilities всегда перебивает более ранние слои по спецификации,
+     сколько бы классов/id ни было у селектора там. */
+  #problema .text-muted { color: var(--fg); }
   .text-accent { color: var(--accent-deep); }
   .text-center { text-align: center; }
   .measure     { max-width: var(--measure); }
@@ -1436,6 +1468,14 @@
   .mt-6 { margin-top: var(--space-6); }
   .mt-8 { margin-top: var(--space-8); }
   .mt-9 { margin-top: var(--space-9); }
+
+  /* Блок "Проблема" — плотнее: меньшие отступы между заголовком,
+     подзаголовком, списком и заключительным абзацем. Шрифт и цвет не
+     трогаем, только вертикальные интервалы. */
+  #problema .problema__intro > p.mt-6 { margin-top: var(--space-3); }
+  #problema .plain-list.mt-8,
+  #problema .problema__intro > p.mt-8 { margin-top: var(--space-5); }
+  #problema .plain-list { gap: var(--space-3); }
 
   /* Градиентный текст для акцентных слов в заголовках.
      Селектор включает потомков: SplitText выносит слова в свои элементы,

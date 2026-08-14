@@ -179,19 +179,6 @@ window.SK.motion = (function () {
       tl.fromTo(waves, { opacity: 0, xPercent: 5 }, { opacity: 1, xPercent: 0, duration: 1.2 }, 0.15);
     }
 
-    var scrollHint = $('.hero__scroll');
-    if (scrollHint) {
-      tl.fromTo(scrollHint, { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.6 }, 0.9);
-      gsap.to(scrollHint, {
-        y: 8,
-        duration: 1.4,
-        ease: 'sine.inOut',
-        repeat: -1,
-        yoyo: true,
-        delay: 1.4
-      });
-    }
-
     return tl;
   }
 
