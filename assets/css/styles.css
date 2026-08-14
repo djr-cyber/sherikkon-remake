@@ -254,9 +254,6 @@
   .header__brand:hover {
     color: var(--accent-deep);
   }
-  .header__phone:hover {
-    color: #F6882B;
-  }
   .header__inner {
     display: flex;
     align-items: center;
@@ -347,6 +344,26 @@
     font-family: 'Luga', var(--font-heading);
   }
   @media (min-width: 1280px) { .header__phone { display: inline-flex; } }
+  /* Подчёркивание, как у пунктов навигации — не подсветка цветом. */
+  .header__phone-num {
+    position: relative;
+  }
+  .header__phone-num::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 1.5px;
+    background: #F6882B;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform var(--dur) var(--ease-out);
+  }
+  .header__phone:hover .header__phone-num::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
 
   /* Бургер */
   .burger {
