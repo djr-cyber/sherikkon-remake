@@ -1153,6 +1153,14 @@
   /* Блок "Бесплатная консультация" — компактнее: h2 был на общей
      h2-шкале (до 64px), заголовок и отступы карточки уменьшены. */
   #konsultaciya .cta { padding: var(--space-6) var(--space-7); border-color: #17243A; border-width: 2px; }
+  /* Рисунок "ручка + лист" по центру между текстом и формой — своя
+     колонка в гриде, только на десктопе (на мобиле .split складывается
+     в один столбец, картинка просто окажется отдельной строкой). */
+  .konsultaciya__pen { display: none; width: 220px; height: auto; justify-self: center; align-self: center; }
+  @media (min-width: 900px) {
+    #konsultaciya .cta__inner { grid-template-columns: 1.15fr auto 0.85fr; }
+    .konsultaciya__pen { display: block; }
+  }
   #konsultaciya h2 { font-size: var(--text-4xl); }
   #konsultaciya h2,
   #konsultaciya p,
