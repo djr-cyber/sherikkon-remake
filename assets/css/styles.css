@@ -504,16 +504,41 @@
   }
   .btn:active { transform: scale(0.97); }
 
-  /* Оранжевый с логотипа — общий "главный" цвет действия. */
+  /* "Лампочка": в покое — приглушённый плоский оранжевый, ничего не
+     светится. Глянцевый блик и яркое свечение появляются только при
+     наведении (opacity 0→1), а не постоянно. Кнопка неподвижна —
+     магнитный эффект с неё снят в разметке (data-magnetic убран). */
   .btn--primary {
-    background: linear-gradient(120deg, #F6882B 0%, #FF9F45 100%);
-    color: #1A1026;
-    box-shadow: 0 10px 30px -12px rgba(246, 136, 43, 0.5);
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(180deg, #F0973E 0%, #E8720F 60%, #D9660A 100%);
+    color: #2B1400;
+    font-family: 'Luga', var(--font-heading);
+    border: 1px solid #D9660A;
+    box-shadow:
+      0 8px 18px -10px rgba(232, 114, 15, 0.4),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+  }
+  .btn--primary::before {
+    content: '';
+    position: absolute;
+    inset: 2px 2px 50% 2px;
+    border-radius: 999px 999px 40% 40% / 999px 999px 100% 100%;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0) 100%);
+    opacity: 0;
+    transition: opacity var(--dur) var(--ease-soft);
+    pointer-events: none;
   }
   .btn--primary:hover {
-    color: #1A1026;
-    box-shadow: 0 16px 40px -12px rgba(246, 136, 43, 0.5);
+    background: linear-gradient(180deg, #FFB870 0%, #F6882B 45%, #E8720F 100%);
+    color: #2B1400;
+    transform: scale(1.04);
+    box-shadow:
+      0 14px 34px -8px rgba(246, 136, 43, 0.75),
+      inset 0 -3px 6px rgba(0, 0, 0, 0.18),
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
   }
+  .btn--primary:hover::before { opacity: 1; }
 
   .btn--secondary {
     background: transparent;
@@ -589,9 +614,9 @@
   }
 
   /* ---------- Hero ----------
-     Фон — фирменный синий→оранжевый градиент (цвета из логотипа SC),
-     поверх — точечный паттерн и водяной знак "$" (тот же символ, что
-     и у кастомного курсора). Текст здесь белый, как в оригинале. */
+     Фон — сплошной тёмно-синий, тот же тон, что на затемнённом фото
+     оригинала (#17243A — цвет текста/лого сайта, подтверждён замером
+     на живой странице). Точечный паттерн убран. Текст белый. */
   .hero {
     position: relative;
     min-height: 100svh;
@@ -599,17 +624,33 @@
     align-items: center;
     padding-block: calc(var(--header-h) + var(--space-9)) var(--space-10);
     overflow: hidden;
-    background: linear-gradient(90deg, #095486 0%, #F6882B 100%);
-  }
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(rgba(255, 255, 255, 0.3) 2px, transparent 2px);
-    background-size: 44px 44px;
-    pointer-events: none;
+    background: #17243A;
+    border-radius: 0 0 56px 56px;
   }
   .hero__inner { position: relative; z-index: var(--z-raised); }
+  /* Декоративный ноутбук справа — только на десктопе, там, где под
+     текстом остаётся пустое место (в оригинале там фото). */
+  .hero__laptop {
+    display: none;
+    position: absolute;
+    right: 30%;
+    bottom: var(--space-6);
+    width: min(22vw, 300px);
+    z-index: var(--z-raised);
+    pointer-events: none;
+  }
+  @media (min-width: 1024px) { .hero__laptop { display: block; } }
+  .hero__stripes {
+    display: none;
+    position: absolute;
+    left: 4%;
+    bottom: var(--space-6);
+    width: min(11vw, 150px);
+    z-index: var(--z-raised);
+    pointer-events: none;
+    filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.3));
+  }
+  @media (min-width: 1024px) { .hero__stripes { display: block; } }
   .hero__title { max-width: 30ch; color: #FFFFFF; }
   @media (min-width: 1024px) { .hero__title { font-size: 48px; } }
   .hero__text {
