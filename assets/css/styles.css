@@ -1170,6 +1170,7 @@
   #konsultaciya p,
   #konsultaciya li,
   #konsultaciya a { font-family: 'Luga', var(--font-heading); letter-spacing: 0.03em; }
+  #konsultaciya .field__control { border-color: #17243A; }
 
   /* ---------- Контактные строки ---------- */
   .contact-item {
