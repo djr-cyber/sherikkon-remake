@@ -174,6 +174,11 @@ window.SK.motion = (function () {
       }, 0.25);
     }
 
+    var waves = $('.hero__waves');
+    if (waves) {
+      tl.fromTo(waves, { opacity: 0, xPercent: 5 }, { opacity: 1, xPercent: 0, duration: 1.2 }, 0.15);
+    }
+
     var scrollHint = $('.hero__scroll');
     if (scrollHint) {
       tl.fromTo(scrollHint, { opacity: 0, y: -8 }, { opacity: 1, y: 0, duration: 0.6 }, 0.9);

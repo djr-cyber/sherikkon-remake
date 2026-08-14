@@ -281,9 +281,9 @@
      локально на самой шапке; фон не завязан на скролл, виден сразу.
      Футер (тоже на --chrome-*) не затронут — остаётся тёмным. */
   .header {
-    --chrome-bg:       color-mix(in srgb, #095486 10%, var(--bg));
+    --chrome-bg:       var(--bg);
     --chrome-fg:       var(--fg);
-    --chrome-fg-muted: var(--fg-muted);
+    --chrome-fg-muted: var(--fg);
     --chrome-border:   var(--border-strong);
     position: fixed;
     top: 0;
@@ -293,16 +293,14 @@
     height: var(--header-h);
     display: flex;
     align-items: center;
-    background: color-mix(in srgb, var(--chrome-bg) 94%, transparent);
+    background: var(--chrome-bg);
     transition: background-color var(--dur) var(--ease-soft),
                 border-color var(--dur) var(--ease-soft),
                 backdrop-filter var(--dur) var(--ease-soft);
     border-bottom: 1px solid transparent;
   }
   .header.is-scrolled {
-    background: color-mix(in srgb, var(--chrome-bg) 97%, transparent);
-    backdrop-filter: blur(14px) saturate(140%);
-    -webkit-backdrop-filter: blur(14px) saturate(140%);
+    background: var(--chrome-bg);
     border-bottom-color: var(--chrome-border);
   }
   .header__brand:hover,
@@ -359,6 +357,7 @@
     font-size: 17px;
     font-weight: 500;
     padding-block: var(--space-2);
+    font-family: 'Luga', var(--font-heading);
   }
   .nav__link::after {
     content: '';
@@ -397,6 +396,7 @@
     font-weight: 600;
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
+    font-family: 'Luga', var(--font-heading);
   }
   @media (min-width: 1280px) { .header__phone { display: inline-flex; } }
 
@@ -504,14 +504,16 @@
   }
   .btn:active { transform: scale(0.97); }
 
-  /* "Лампочка": в покое — приглушённый плоский оранжевый, ничего не
-     светится. Глянцевый блик и яркое свечение появляются только при
-     наведении (opacity 0→1), а не постоянно. Кнопка неподвижна —
-     магнитный эффект с неё снят в разметке (data-magnetic убран). */
+  /* В покое — чистый плоский оранжевый (тот же #F6882B, что в волнах
+     hero), ничего не светится. Глянцевый блик и яркое свечение
+     появляются только при наведении (opacity 0→1), а не постоянно.
+     Кнопка неподвижна — магнитный эффект с неё снят в разметке
+     (data-magnetic убран). */
   .btn--primary {
     position: relative;
     overflow: hidden;
-    background: linear-gradient(180deg, #F0973E 0%, #E8720F 60%, #D9660A 100%);
+    background-color: #F6882B;
+    background-image: none;
     color: #2B1400;
     font-family: 'Luga', var(--font-heading);
     border: 1px solid #D9660A;
@@ -530,7 +532,8 @@
     pointer-events: none;
   }
   .btn--primary:hover {
-    background: linear-gradient(180deg, #FFB870 0%, #F6882B 45%, #E8720F 100%);
+    background-color: #F6882B;
+    background-image: linear-gradient(180deg, #FFB870 0%, #F6882B 45%, #E8720F 100%);
     color: #2B1400;
     transform: scale(1.04);
     box-shadow:
@@ -628,36 +631,33 @@
     border-radius: 0 0 56px 56px;
   }
   .hero__inner { position: relative; z-index: var(--z-raised); }
-  /* Декоративный ноутбук справа — только на десктопе, там, где под
-     текстом остаётся пустое место (в оригинале там фото). */
-  .hero__laptop {
+  /* Декоративные волнистые линии справа — только на десктопе, в пустом
+     пространстве под текстом (в оригинале там фото). Растушёвываются
+     слева направо: тёмно-синий (сливается с фоном) → яркий оранжевый
+     у самого края. */
+  .hero__waves {
     display: none;
     position: absolute;
-    right: 30%;
-    bottom: var(--space-6);
-    width: min(22vw, 300px);
-    z-index: var(--z-raised);
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: min(38vw, 600px);
+    object-fit: cover;
+    object-position: right center;
+    z-index: 0;
     pointer-events: none;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 30%);
+            mask-image: linear-gradient(to right, transparent, black 30%);
   }
-  @media (min-width: 1024px) { .hero__laptop { display: block; } }
-  .hero__stripes {
-    display: none;
-    position: absolute;
-    left: 4%;
-    bottom: var(--space-6);
-    width: min(11vw, 150px);
-    z-index: var(--z-raised);
-    pointer-events: none;
-    filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.3));
-  }
-  @media (min-width: 1024px) { .hero__stripes { display: block; } }
-  .hero__title { max-width: 30ch; color: #FFFFFF; }
+  @media (min-width: 1024px) { .hero__waves { display: block; } }
+  .hero__title { max-width: 30ch; color: #FFFFFF; font-family: 'Luga', var(--font-heading); }
   @media (min-width: 1024px) { .hero__title { font-size: 48px; } }
   .hero__text {
     margin-top: var(--space-6);
     max-width: 52ch;
     font-size: 22px;
     color: #FFFFFF;
+    font-family: 'Luga', var(--font-body);
   }
   .hero__text + .hero__text { font-size: 18px; }
   .hero__actions {
