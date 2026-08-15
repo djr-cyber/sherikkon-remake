@@ -1622,6 +1622,14 @@
     padding: var(--space-6) var(--space-7);
     margin-bottom: var(--space-5);
   }
+  /* "Наша направленность" — заголовок по центру, карточки Видение/
+     Миссия/Ценности получают стандартную рамку/градиент, иконки были
+     на старом фиолетовом токене (var(--primary)) — теперь navy. */
+  #napravlennost .card {
+    background: linear-gradient(90deg, #B0B6CA 0%, #FFFFFF 100%);
+    border: 2px solid #17243A;
+  }
+  #napravlennost .card__icon svg { color: #17243A; }
 
   /* ---------- Крупный блок услуги ---------- */
   .service-block {
