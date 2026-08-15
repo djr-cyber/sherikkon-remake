@@ -1221,7 +1221,8 @@
     pointer-events: none;
   }
   @media (min-width: 640px) {
-    #uslugi .grid--4 > article:nth-child(2) .card__meeting-icon { display: block; }
+    #uslugi .grid--4 > article:nth-child(2) .card__meeting-icon,
+    #uslugi .grid--4 > article:nth-child(3) .card__meeting-icon { display: block; }
   }
 
   /* ---------- Контактные строки ---------- */
