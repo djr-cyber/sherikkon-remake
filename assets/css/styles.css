@@ -1216,7 +1216,7 @@
     right: var(--space-6);
     top: 50%;
     translate: 0 -50%;
-    width: 130px;
+    width: 180px;
     height: auto;
     pointer-events: none;
   }
