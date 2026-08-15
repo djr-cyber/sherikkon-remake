@@ -57,11 +57,6 @@
     font-size: var(--text-md);
     line-height: var(--leading-body);
     font-weight: 400;
-    /* Плавный тёмный градиент вместо плоской заливки */
-    background-image:
-      radial-gradient(1200px 600px at 80% -10%, rgba(124, 58, 237, 0.12), transparent 60%),
-      radial-gradient(900px 500px at 0% 20%, rgba(192, 38, 211, 0.07), transparent 60%);
-    background-attachment: fixed;
   }
 
   /* Блокировка скролла при открытом меню — без сдвига контента */
@@ -130,14 +125,11 @@
   }
   .section--tight { padding-block: var(--space-9); }
 
-  .section--surface { background: var(--surface); }
+  /* Серый .surface убран по просьбе клиента — фон сайта везде белый,
+     без сероватых "прослоек" между секциями. */
+  .section--surface { background: var(--bg); }
 
-  /* Секция-акцент: раньше была самой тёмной зоной страницы с размытым
-     свечением — теперь тёмное зарезервировано за шапкой/футером, здесь
-     просто мягкая фиолетовая подложка без blur-пятен (чисто и минимально) */
-  .section--accent {
-    background: linear-gradient(180deg, var(--surface-3) 0%, var(--surface) 100%);
-  }
+  .section--accent { background: var(--bg); }
 
   .section__inner { position: relative; z-index: var(--z-raised); }
 
@@ -728,10 +720,6 @@
   /* Заголовок блока крупнее обычного h2 (--text-5xl, до 64px) — приравниваем
      к размеру героя (48px на десктопе), чтобы не выглядел жирнее верхнего блока. */
   @media (min-width: 1024px) { #problema h2 { font-size: 48px; } }
-  /* Серый фон .section--surface — только для #reshenie убираем, у
-     #proekty (тоже .section--surface) остаётся как есть. */
-  #reshenie { background: var(--bg); }
-
   #reshenie h2,
   #reshenie p,
   #reshenie .plain-list__text,
