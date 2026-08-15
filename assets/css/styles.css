@@ -1045,23 +1045,34 @@
   .person__more.is-open:hover {
     transform: none;
   }
+  /* Раскрытие анимировано через max-height, высота содержимого
+     замеряется в JS (scrollHeight) при клике — надёжнее, чем
+     grid-template-rows 0fr/1fr, который в этом окружении не
+     анимировался. Фон/рамка/паддинги — на внутренней обёртке, иначе
+     рамка была бы видна тонкой полоской даже в свёрнутом состоянии. */
   .person__bio {
     margin-top: 0;
     width: 100%;
     max-width: 452px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height var(--dur-slow) var(--ease-soft);
+  }
+  .person__bio-inner {
     text-align: left;
-    padding: var(--space-6);
     background-color: #F6882B;
     border: 1px solid #D9660A;
     border-top: none;
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
     border-bottom-left-radius: var(--radius-lg);
     border-bottom-right-radius: var(--radius-lg);
     color: #000000;
+    padding-inline: var(--space-6);
+    padding-block: 0;
+    transition: padding-block var(--dur-slow) var(--ease-soft);
   }
-  .person__bio p + p { margin-top: var(--space-4); }
-  .person__bio strong { color: #000000; font-weight: 400; }
+  .person__bio.is-open .person__bio-inner { padding-block: var(--space-6); }
+  .person__bio-inner p + p { margin-top: var(--space-4); }
+  .person__bio-inner strong { color: #000000; font-weight: 400; }
   #komanda .grid--4 { align-items: start; }
 
   /* ---------- Нумерованный список причин ---------- */
