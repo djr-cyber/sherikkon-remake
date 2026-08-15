@@ -1004,6 +1004,7 @@
   }
   .person__name {
     font-size: var(--text-xl);
+    font-weight: 400;
     color: #FFFFFF;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
   }
