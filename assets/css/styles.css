@@ -1524,6 +1524,14 @@
      ним) подтянут ближе к шапке, было слишком много пустого места. */
   .page-hero--onas { padding-block: var(--space-6) var(--space-5); }
   .page-hero--onas .lead { margin-top: var(--space-4); }
+  /* Заголовочный блок — та же стандартная рамка/градиент, что у
+     "Услуги"/"Проекты"/"Команда" ниже по странице. */
+  .page-hero--onas .page-hero__inner {
+    background: linear-gradient(90deg, #B0B6CA 0%, #FFFFFF 100%);
+    border: 2px solid #17243A;
+    border-radius: var(--radius-lg);
+    padding: var(--space-7);
+  }
   /* "Сила в единстве: наша команда" — стандартная рамка секции,
      как у "Услуги"/"Проекты". */
   #komanda .section-head {
