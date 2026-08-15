@@ -1179,6 +1179,16 @@
   #uslugi .section-head p,
   #uslugi .section-head a { font-family: 'Luga', var(--font-heading); letter-spacing: 0.03em; }
 
+  /* Карточки услуг — "бенто"-сетка вместо ровного 2×2: чередуются
+     квадратные (1 колонка) и широкие (2 колонки) карточки. */
+  @media (min-width: 640px) {
+    #uslugi .grid--4 { grid-template-columns: repeat(3, 1fr); }
+    #uslugi .grid--4 > article:nth-child(1) { grid-column: span 1; }
+    #uslugi .grid--4 > article:nth-child(2) { grid-column: span 2; }
+    #uslugi .grid--4 > article:nth-child(3) { grid-column: span 2; }
+    #uslugi .grid--4 > article:nth-child(4) { grid-column: span 1; }
+  }
+
   /* ---------- Контактные строки ---------- */
   .contact-item {
     display: grid;
