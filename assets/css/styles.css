@@ -512,14 +512,17 @@
     font-style: italic;
     font-size: var(--text-lg);
     font-weight: 500;
-    color: var(--accent-deep);
+    color: #17243A;
     margin-bottom: var(--space-4);
   }
+  /* Специфичность .section-head p (0,1,1) иначе перебивает .eyebrow
+     (0,1,0) — берём .section-head .eyebrow (0,2,0), чтобы выиграть. */
+  .section-head .eyebrow { color: #17243A; }
   .eyebrow::before {
     content: '';
     width: 28px;
     height: 1px;
-    background: var(--accent);
+    background: #F6882B;
     flex-shrink: 0;
   }
 
