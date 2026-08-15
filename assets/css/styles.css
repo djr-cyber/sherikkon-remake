@@ -1198,6 +1198,9 @@
   #uslugi .grid--4 > article:nth-child(3) .card__icon { display: none; }
   #uslugi .grid--4 > article:nth-child(2),
   #uslugi .grid--4 > article:nth-child(3) { border: 2px solid #17243A; }
+  /* Текст у широких карточек не тянется на всю ширину — узкая колонка слева. */
+  #uslugi .grid--4 > article:nth-child(2) .card__text,
+  #uslugi .grid--4 > article:nth-child(3) .card__text { max-width: 46ch; }
 
   /* ---------- Контактные строки ---------- */
   .contact-item {
