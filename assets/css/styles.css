@@ -1522,6 +1522,10 @@
   .project-detail__media img { width: 100%; height: auto; display: block; }
   .page-hero h1 { font-size: var(--text-5xl); max-width: 20ch; }
   .page-hero .lead { margin-top: var(--space-6); }
+  /* "О нас" — весь блок (крошки, заголовок, текст, силуэт, линия под
+     ним) подтянут ближе к шапке, было слишком много пустого места. */
+  .page-hero--onas { padding-block: var(--space-6) var(--space-5); }
+  .page-hero--onas .lead { margin-top: var(--space-4); }
 
   /* ---------- Крупный блок услуги ---------- */
   .service-block {
