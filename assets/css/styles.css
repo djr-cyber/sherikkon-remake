@@ -1209,6 +1209,9 @@
   #zayavka .form { gap: var(--space-3); }
   /* "* indicates required" — справа над формой, как в оригинале. */
   #zayavka .form > p.text-muted { text-align: right; }
+  /* Кнопке нужно больше воздуха сверху — при узком gap её тень
+     (box-shadow у .btn--primary) наезжала на поле Email. */
+  #zayavka .form__foot { margin-top: var(--space-2); }
   #zayavka h2,
   #zayavka p,
   #zayavka li,
