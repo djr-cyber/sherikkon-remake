@@ -966,6 +966,7 @@
     border-radius: var(--radius-lg);
     overflow: hidden;
     background: var(--surface-3);
+    border: 1px solid var(--border);
     margin-bottom: var(--space-5);
   }
   .person__media img {
@@ -973,12 +974,12 @@
     height: 100%;
     object-fit: cover;
     object-position: center top;
-    filter: grayscale(0) contrast(1);
+    filter: brightness(1);
     transition: filter var(--dur-slow) var(--ease-out),
                 transform var(--dur-slow) var(--ease-out);
   }
   .person:hover .person__media img {
-    filter: grayscale(1) contrast(1.05);
+    filter: brightness(0.7);
     transform: scale(1.04);
   }
   .person__name { font-size: var(--text-xl); }
@@ -988,7 +989,7 @@
     font-style: italic;
     font-size: var(--text-base);
     font-weight: 500;
-    color: var(--accent-deep);
+    color: #F6882B;
   }
 
   /* ---------- Нумерованный список причин ---------- */
