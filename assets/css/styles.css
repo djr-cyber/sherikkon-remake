@@ -1225,6 +1225,7 @@
     border: 2px solid #17243A;
     border-radius: var(--radius-lg);
     padding: var(--space-6) var(--space-7);
+    margin-bottom: var(--space-5);
   }
   #uslugi .section-head h2,
   #uslugi .section-head p,
