@@ -1513,6 +1513,20 @@
      ним) подтянут ближе к шапке, было слишком много пустого места. */
   .page-hero--onas { padding-block: var(--space-6) var(--space-5); }
   .page-hero--onas .lead { margin-top: var(--space-4); }
+  /* Обёртка над hero+разделителем, чтобы декоративные "провода" могли
+     тянуться от границы шапки вниз до самих линий разделителя, не
+     обрезаясь overflow:hidden у .page-hero. */
+  .onas-hero-wrap { position: relative; }
+  .onas-connector {
+    display: none;
+    position: absolute;
+    left: 947px;
+    z-index: var(--z-raised);
+    pointer-events: none;
+  }
+  .onas-connector--blue { top: -5px; width: 506px; }
+  .onas-connector--orange { top: -14px; width: 477px; }
+  @media (min-width: 1024px) { .onas-connector { display: block; } }
 
   /* ---------- Крупный блок услуги ---------- */
   .service-block {
