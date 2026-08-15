@@ -1152,7 +1152,12 @@
 
   /* Блок "Бесплатная консультация" — компактнее: h2 был на общей
      h2-шкале (до 64px), заголовок и отступы карточки уменьшены. */
-  #konsultaciya .cta { padding: var(--space-6) var(--space-7); border-color: #17243A; border-width: 2px; }
+  #konsultaciya .cta {
+    padding: var(--space-6) var(--space-7);
+    background: linear-gradient(90deg, #B0B6CA 0%, #FFFFFF 100%);
+    border-color: #17243A;
+    border-width: 2px;
+  }
   /* Рисунок "ручка + лист" по центру между текстом и формой — своя
      колонка в гриде, только на десктопе (на мобиле .split складывается
      в один столбец, картинка просто окажется отдельной строкой). */
@@ -1197,7 +1202,10 @@
   #uslugi .grid--4 > article:nth-child(2) .card__icon,
   #uslugi .grid--4 > article:nth-child(3) .card__icon { display: none; }
   #uslugi .grid--4 > article:nth-child(2),
-  #uslugi .grid--4 > article:nth-child(3) { border: 2px solid #17243A; }
+  #uslugi .grid--4 > article:nth-child(3) {
+    background: linear-gradient(90deg, #B0B6CA 0%, #FFFFFF 100%);
+    border: 2px solid #17243A;
+  }
   /* Текст у широких карточек не тянется на всю ширину — узкая колонка слева. */
   #uslugi .grid--4 > article:nth-child(2) .card__text,
   #uslugi .grid--4 > article:nth-child(3) .card__text { max-width: 46ch; }
