@@ -926,10 +926,10 @@
     display: flex;
     justify-content: center;
     margin-top: var(--space-9);
-    margin-bottom: -195px;
+    margin-bottom: -184px;
     pointer-events: none;
   }
-  .proekty__flag img { width: 260px; height: auto; }
+  .proekty__flag img { width: 390px; height: auto; }
 
   /* Заголовок "Проекты компании" — по центру, синяя рамка как у
      верхних блоков, Luga. */
