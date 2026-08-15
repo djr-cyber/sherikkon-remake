@@ -98,7 +98,7 @@
   }
 
   /* Якорные переходы не прячут заголовок под шапкой */
-  :target { scroll-margin-top: calc(var(--header-h) + var(--space-5)); }
+  :target { scroll-margin-top: var(--space-5); }
 
   ::selection {
     background: var(--primary);
@@ -225,10 +225,7 @@
     --chrome-fg:       var(--fg);
     --chrome-fg-muted: var(--fg);
     --chrome-border:   var(--border-strong);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
+    position: static;
     z-index: var(--z-header);
     height: var(--header-h);
     display: flex;
@@ -570,7 +567,7 @@
     min-height: 100svh;
     display: flex;
     align-items: center;
-    padding-block: calc(var(--header-h) + var(--space-9)) var(--space-10);
+    padding-block: var(--space-9) var(--space-10);
     overflow: hidden;
     background: #17243A;
     border-radius: 0 0 56px 56px;
@@ -1501,7 +1498,7 @@
   /* ---------- Шапка внутренней страницы ---------- */
   .page-hero {
     position: relative;
-    padding-block: calc(var(--header-h) + var(--space-10)) var(--space-10);
+    padding-block: var(--space-10);
     overflow: hidden;
   }
   .page-hero::before {
