@@ -887,8 +887,15 @@
     flex: 0 0 min(84vw, 380px);
     scroll-snap-align: start;
   }
+  /* Десктоп: статичная сетка 3 колонки, без горизонтального скролла —
+     карточки помещаются в контейнер, ползунок не нужен. */
   @media (min-width: 1024px) {
-    .rail__item { flex-basis: 420px; }
+    .rail__track {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      overflow: visible;
+    }
+    .rail__item { flex: initial; }
   }
 
   .project {
@@ -897,7 +904,19 @@
     text-decoration: none;
     border: 2px solid #F6882B;
   }
-  .project__title { font-family: 'Luga', var(--font-heading); letter-spacing: 0.03em; }
+  .project__title {
+    font-family: 'Luga', var(--font-heading);
+    letter-spacing: 0.03em;
+    font-weight: 400;
+  }
+  /* Общий .card:hover красит рамку в синий — здесь вместо этого
+     просто более тёмный оранжевый. */
+  .project:hover,
+  .project:focus-within {
+    border-color: #D9660A;
+  }
+  /* Кнопка "Посмотреть больше проектов" — во всю ширину, как ряд карточек. */
+  .proekty__more { width: 100%; justify-content: center; }
 
   /* Заголовок "Проекты компании" — по центру, синяя рамка как у
      верхних блоков, Luga. */
@@ -922,17 +941,11 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform var(--dur-slow) var(--ease-out),
-                filter var(--dur-slow) var(--ease-out);
-    /* Раньше картинка ещё и темнела (brightness 0.85), чтобы уйти
-       в тёмный фон карточки — на светлом это просто выглядит грязно.
-       Оставляем только приглушение цвета, оно расцветает на hover. */
-    filter: saturate(0.7);
+    transition: transform var(--dur-slow) var(--ease-out);
   }
   .project:hover .project__media img,
   .project:focus-within .project__media img {
     transform: scale(1.05);
-    filter: saturate(1);
   }
   .project__body {
     display: flex;
