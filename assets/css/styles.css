@@ -1209,6 +1209,20 @@
   /* Текст у широких карточек не тянется на всю ширину — узкая колонка слева. */
   #uslugi .grid--4 > article:nth-child(2) .card__text,
   #uslugi .grid--4 > article:nth-child(3) .card__text { max-width: 46ch; }
+  /* Иконка "переговоры" в "Коучинге" — справа, крупная декоративная картинка. */
+  .card__meeting-icon {
+    display: none;
+    position: absolute;
+    right: var(--space-6);
+    top: 50%;
+    translate: 0 -50%;
+    width: 130px;
+    height: auto;
+    pointer-events: none;
+  }
+  @media (min-width: 640px) {
+    #uslugi .grid--4 > article:nth-child(2) .card__meeting-icon { display: block; }
+  }
 
   /* ---------- Контактные строки ---------- */
   .contact-item {
