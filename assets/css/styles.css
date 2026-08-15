@@ -1508,48 +1508,12 @@
     position: absolute;
     inset: -40% -10% auto -10%;
     height: 120%;
-    /* Было фиолетовое свечение (--glow-violet) — старая палитра,
-       не в фирменных цветах. Заменено на оранжевое под текущий бренд. */
-    background: radial-gradient(45% 50% at 30% 0%, rgba(246, 136, 43, 0.16), transparent 70%);
+    background: radial-gradient(45% 50% at 30% 0%, var(--glow-violet), transparent 70%);
     pointer-events: none;
   }
   .page-hero__inner { position: relative; z-index: var(--z-raised); }
-  .page-hero h1 {
-    font-size: var(--text-5xl);
-    max-width: 20ch;
-    font-family: 'Luga', var(--font-heading);
-    letter-spacing: 0.03em;
-  }
+  .page-hero h1 { font-size: var(--text-5xl); max-width: 20ch; }
   .page-hero .lead { margin-top: var(--space-6); }
-
-  /* ---------- "О нас" — приведено к фирменному стилю главной:
-     Luga на заголовках, рамка navy/градиент на section-head (как
-     у "Услуги"/"Проекты"), убраны фиолетово-золотые цвета старой
-     палитры (иконки карточек, роль в карточке команды, номера причин). */
-  #komanda .section-head,
-  #napravlennost .section-head,
-  #prichiny .section-head {
-    max-width: none;
-    background: linear-gradient(90deg, #B0B6CA 0%, #FFFFFF 100%);
-    border: 2px solid #17243A;
-    border-radius: var(--radius-lg);
-    padding: var(--space-6) var(--space-7);
-  }
-  #komanda h2, #komanda p, #komanda h3,
-  #napravlennost h2, #napravlennost p, #napravlennost h3, #napravlennost .card__text,
-  #prichiny h2, #prichiny p, #prichiny .reason__text {
-    font-family: 'Luga', var(--font-heading);
-    letter-spacing: 0.03em;
-  }
-  #napravlennost .card__icon {
-    background: color-mix(in srgb, #17243A 10%, transparent);
-  }
-  #napravlennost .card__icon svg { color: #17243A; }
-  #komanda .person__role { color: #F6882B; }
-  #prichiny .reason__num {
-    color: #F6882B;
-    -webkit-text-stroke: 0;
-  }
 
   /* ---------- Крупный блок услуги ---------- */
   .service-block {
