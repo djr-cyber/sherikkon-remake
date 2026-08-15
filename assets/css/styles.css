@@ -1038,6 +1038,13 @@
     border-bottom-right-radius: 0;
     border-bottom: none;
   }
+  /* .btn--primary:hover масштабирует кнопку — это должно работать
+     только при наведении на закрытую кнопку, не залипать после
+     раскрытия (клик снимает :hover не сразу/не везде надёжно). */
+  .person__more.is-open,
+  .person__more.is-open:hover {
+    transform: none;
+  }
   .person__bio {
     margin-top: 0;
     width: 100%;
