@@ -1210,8 +1210,11 @@
   /* "* indicates required" — справа над формой, как в оригинале. */
   #zayavka .form > p.text-muted { text-align: right; }
   /* Кнопке нужно больше воздуха сверху — при узком gap её тень
-     (box-shadow у .btn--primary) наезжала на поле Email. */
+     (box-shadow у .btn--primary) наезжала на поле Email. На белом
+     фоне блока (без карточки) та же тень выглядит грязным пятном
+     слева-снизу от кнопки в покое — убираем её здесь, hover не трогаем. */
   #zayavka .form__foot { margin-top: var(--space-2); }
+  #zayavka .btn--primary { box-shadow: none; }
   #zayavka h2,
   #zayavka p,
   #zayavka li,
