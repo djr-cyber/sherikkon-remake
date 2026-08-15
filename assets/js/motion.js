@@ -275,54 +275,6 @@ window.SK.motion = (function () {
   }
 
   /* ============================================================
-     Горизонтальная лента проектов (только десктоп)
-     ============================================================ */
-  function initRail() {
-    var rail = $('[data-rail]');
-    var track = $('[data-rail-track]');
-    if (!rail || !track) return;
-
-    // Замеряем ДО перевода в driven-режим, пока работает нативный скролл
-    var distance = track.scrollWidth - track.offsetWidth;
-    if (distance <= 0) return;
-
-    track.classList.add('is-driven');
-
-    var hint = $('[data-rail-hint]');
-    if (hint) hint.textContent = 'Прокручивайте страницу — лента едет вместе с вами';
-
-    var tween = gsap.to(track, {
-      x: -distance,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: rail,
-        start: 'center center',
-        end: '+=' + distance,
-        pin: true,
-        scrub: 0.7,
-        anticipatePin: 1,
-        invalidateOnRefresh: true
-      }
-    });
-
-    // Клавиатура: браузер пытается доскроллить контейнер к элементу в фокусе —
-    // сбрасываем, чтобы нативный скролл не рассинхронился с трансформом
-    function onFocusIn() {
-      if (track.scrollLeft !== 0) track.scrollLeft = 0;
-    }
-    track.addEventListener('focusin', onFocusIn);
-
-    return function cleanup() {
-      track.removeEventListener('focusin', onFocusIn);
-      track.classList.remove('is-driven');
-      if (tween.scrollTrigger) tween.scrollTrigger.kill();
-      tween.kill();
-      gsap.set(track, { clearProps: 'transform' });
-      if (hint) hint.textContent = 'Листайте ленту вбок, чтобы увидеть все проекты';
-    };
-  }
-
-  /* ============================================================
      Возврат к якорю после пересчёта триггеров
 
      ScrollTrigger.refresh() сохраняет и восстанавливает позицию скролла,
@@ -367,11 +319,9 @@ window.SK.motion = (function () {
     /* --- Ветка 3: десктоп — кинематографика с pin --- */
     mm.add('(min-width: 1024px) and (prefers-reduced-motion: no-preference)', function () {
       var cleanPin = initPinSection();
-      var cleanRail = initRail();
 
       return function () {
         if (cleanPin) cleanPin();
-        if (cleanRail) cleanRail();
       };
     });
 

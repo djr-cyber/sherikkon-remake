@@ -883,12 +883,6 @@
     -webkit-overflow-scrolling: touch;
     padding-bottom: var(--space-4);
   }
-  /* На десктопе трек двигает GSAP — родной скролл отключаем */
-  .rail__track.is-driven {
-    overflow: visible;
-    scroll-snap-type: none;
-    will-change: transform;
-  }
   .rail__item {
     flex: 0 0 min(84vw, 380px);
     scroll-snap-align: start;
@@ -900,7 +894,21 @@
   .project {
     height: 100%;
     padding: 0;
+    text-decoration: none;
+    border: 2px solid #F6882B;
   }
+  .project__title { font-family: 'Luga', var(--font-heading); letter-spacing: 0.03em; }
+
+  /* Заголовок "Проекты компании" — по центру, синяя рамка как у
+     верхних блоков, Luga. */
+  #proekty .section-head {
+    max-width: none;
+    text-align: center;
+    border: 2px solid #17243A;
+    border-radius: var(--radius-lg);
+    padding: var(--space-6) var(--space-7);
+  }
+  #proekty .section-head h2 { font-family: 'Luga', var(--font-heading); letter-spacing: 0.03em; }
   .project__media {
     aspect-ratio: 16 / 10;
     overflow: hidden;
@@ -948,13 +956,6 @@
   .project__title {
     font-size: var(--text-xl);
     line-height: var(--leading-snug);
-  }
-
-  .rail__hint {
-    margin-top: var(--space-6);
-    padding-inline: var(--gutter);
-    font-size: var(--text-sm);
-    color: var(--fg-subtle);
   }
 
   /* ---------- Команда ---------- */
