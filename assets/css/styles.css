@@ -917,6 +917,13 @@
   }
   /* Кнопка "Посмотреть больше проектов" — во всю ширину, как ряд карточек. */
   .proekty__more { width: 100%; justify-content: center; }
+  /* Место под декоративный флаг-иконку между кнопкой и следующим блоком. */
+  .proekty__flag {
+    display: flex;
+    justify-content: center;
+    margin-top: var(--space-9);
+  }
+  .proekty__flag img { width: 150px; height: auto; }
 
   /* Заголовок "Проекты компании" — по центру, синяя рамка как у
      верхних блоков, Luga. */
