@@ -1536,7 +1536,9 @@
     background: linear-gradient(0deg, #B0B6CA 0%, #FFFFFF 100%);
     border: 2px solid #17243A;
     border-top: none;
-    border-radius: var(--radius-lg);
+    /* Без верхней границы скругление верхних углов оставляло висящий
+       "крюк" из левой/правой границы — убираем его, скругляем только низ. */
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
     padding: var(--space-7);
   }
   .page-hero__figure {
