@@ -471,18 +471,14 @@
     font-family: 'Luga', var(--font-heading);
     letter-spacing: 0.03em;
     border: 1px solid #D9660A;
-    box-shadow:
-      0 8px 18px -10px rgba(232, 114, 15, 0.4),
-      inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+    box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.15);
   }
   .btn--primary:hover {
     background-color: #F6882B;
     background-image: linear-gradient(180deg, #FFB870 0%, #F6882B 45%, #E8720F 100%);
     color: #2B1400;
     transform: scale(1.04);
-    box-shadow:
-      0 0 28px rgba(246, 136, 43, 0.75),
-      inset 0 -3px 6px rgba(0, 0, 0, 0.18);
+    box-shadow: inset 0 -3px 6px rgba(0, 0, 0, 0.18);
   }
 
   .btn--secondary {
@@ -1210,12 +1206,9 @@
   /* "* indicates required" — справа над формой, как в оригинале. */
   #zayavka .form > p.text-muted { text-align: right; }
   /* Кнопке нужно больше воздуха сверху — при узком gap её тень
-     (box-shadow у .btn--primary) наезжала на поле Email. Сама кнопка —
-     по центру блока. Свечение по краям (box-shadow, в покое и на
-     hover) убрано — не подошло к белому фону без карточки. */
+     наезжала на поле Email. Сама кнопка — по центру блока.
+     Свечение убрано глобально у .btn--primary (см. выше). */
   #zayavka .form__foot { margin-top: var(--space-2); justify-content: center; }
-  #zayavka .btn--primary,
-  #zayavka .btn--primary:hover { box-shadow: none; }
   #zayavka h2,
   #zayavka p,
   #zayavka li,
