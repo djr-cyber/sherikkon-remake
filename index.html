@@ -27,6 +27,7 @@
      Здесь же поднимаем штору, если пришли переходом с другой страницы. -->
 <script>
 (function(d){
+  if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
   var r = d.documentElement;
   r.classList.add('js');
   try {
