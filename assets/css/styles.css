@@ -184,23 +184,6 @@
   }
   .skip-link:focus-visible { transform: translateY(0); color: var(--on-accent); }
 
-  /* ---------- Штора перехода между страницами ---------- */
-  .curtain {
-    position: fixed;
-    inset: 0;
-    z-index: var(--z-curtain);
-    background: var(--gradient-brand);
-    transform: scaleY(0);
-    transform-origin: bottom;
-    pointer-events: none;
-  }
-  /* Приход по «шторе»: она уже закрывает экран сверху,
-     стартовое состояние ставит инлайн-скрипт в <head>, чтобы не мигало */
-  .is-entering .curtain {
-    transform: scaleY(1);
-    transform-origin: top;
-  }
-
   /* ---------- Кастомный курсор (только мышь) ---------- */
   .cursor {
     position: fixed;

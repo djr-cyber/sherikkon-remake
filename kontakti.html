@@ -21,14 +21,7 @@
 <script>
 (function(d){
   if ('scrollRestoration' in history) { history.scrollRestoration = 'manual'; }
-  var r = d.documentElement;
-  r.classList.add('js');
-  try {
-    if (sessionStorage.getItem('sk:entering') === '1') {
-      sessionStorage.removeItem('sk:entering');
-      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) r.classList.add('is-entering');
-    }
-  } catch (e) {}
+  d.documentElement.classList.add('js');
 })(document);
 </script>
 </head>
@@ -48,7 +41,6 @@
 
 <a class="skip-link" href="#main">Перейти к содержимому</a>
 
-<div class="curtain" id="curtain" aria-hidden="true"></div>
 <div class="cursor" id="cursorDot" aria-hidden="true"></div>
 
 

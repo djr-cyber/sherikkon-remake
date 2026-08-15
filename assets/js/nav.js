@@ -8,12 +8,10 @@ window.SK = window.SK || {};
 window.SK.nav = (function () {
   'use strict';
 
-  var TRANSITION_FLAG = 'sk:entering';
-
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var hasGsap = typeof window.gsap !== 'undefined';
 
-  var header, burger, menu, curtain;
+  var header, burger, menu;
   var lastFocused = null;
 
   /* ---------- Состояние шапки при скролле ---------- */
@@ -167,81 +165,6 @@ window.SK.nav = (function () {
     else desktop.addListener(onChange);
   }
 
-  /* ---------- Переходы между страницами (штора) ---------- */
-  function isInternalNav(link) {
-    if (!link) return false;
-    if (link.target && link.target !== '_self') return false;
-    if (link.hasAttribute('download')) return false;
-
-    var href = link.getAttribute('href') || '';
-    if (!href || href.charAt(0) === '#') return false;
-    if (/^(mailto:|tel:|javascript:)/i.test(href)) return false;
-
-    // Только страницы этого же сайта
-    if (link.origin !== window.location.origin) return false;
-
-    // Тот же документ, отличается только якорь — не перехватываем
-    if (link.pathname === window.location.pathname && link.hash) return false;
-
-    return true;
-  }
-
-  function initTransitions() {
-    curtain = document.getElementById('curtain');
-    if (!curtain) return;
-
-    // Вход: если пришли по «шторе», убираем её сверху вниз.
-    // Стартовое состояние поставил инлайн-скрипт в <head>, чтобы не мигало.
-    if (document.documentElement.classList.contains('is-entering')) {
-      if (hasGsap && !reduced) {
-        gsap.set(curtain, { scaleY: 1, transformOrigin: 'top' });
-        gsap.to(curtain, {
-          scaleY: 0,
-          duration: 0.7,
-          ease: 'power4.inOut',
-          onComplete: function () {
-            document.documentElement.classList.remove('is-entering');
-          }
-        });
-      } else {
-        document.documentElement.classList.remove('is-entering');
-      }
-    }
-
-    // Выход: закрываем шторой снизу вверх, потом переходим
-    document.addEventListener('click', function (e) {
-      if (e.defaultPrevented) return;
-      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
-
-      var link = e.target.closest('a');
-      if (!isInternalNav(link)) return;
-
-      // Без анимаций — обычный переход
-      if (reduced || !hasGsap) return;
-
-      e.preventDefault();
-      var url = link.href;
-
-      try { sessionStorage.setItem(TRANSITION_FLAG, '1'); } catch (err) { /* приватный режим */ }
-
-      gsap.set(curtain, { transformOrigin: 'bottom' });
-      gsap.to(curtain, {
-        scaleY: 1,
-        duration: 0.55,
-        ease: 'power4.inOut',
-        onComplete: function () { window.location.href = url; }
-      });
-    });
-
-    // Возврат «назад» из bfcache: штора могла остаться поднятой
-    window.addEventListener('pageshow', function (e) {
-      if (e.persisted && hasGsap) {
-        gsap.set(curtain, { scaleY: 0 });
-        document.documentElement.classList.remove('is-entering');
-      }
-    });
-  }
-
   /* ---------- Плавающий блок быстрой связи ----------
      Свёрнут в одну кнопку, раскрывается по клику — как на оригинале
      (виджет "chaty"). Разметка помечена hidden — это состояние «нет
@@ -284,7 +207,6 @@ window.SK.nav = (function () {
       initHeaderState();
       initMenu();
       initQuickContact();
-      initTransitions();
       initCurrentLink();
     },
     closeMenu: closeMenu
