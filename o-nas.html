@@ -131,12 +131,17 @@
               <p class="person__role">Директор</p>
             </div>
           </div>
-          <button class="btn btn--primary person__more" type="button">
+          <button class="btn btn--primary person__more" type="button" aria-expanded="false">
             Узнать больше о Фархаде
             <span class="btn__arrow" aria-hidden="true">
-              <svg width="16" height="16"><use href="#i-arrow-right"/></svg>
+              <svg width="16" height="16"><use href="#i-chevron-down"/></svg>
             </span>
           </button>
+          <div class="person__bio" hidden>
+            <p><strong>Опыт:</strong> Получив степень MBA в Лейпцигском университете в 2014 году, Фархад вернулся в Узбекистан, чтобы работать в сфере развития малого и среднего бизнеса. Он выполнял консалтинговые проекты и тренинги для ПРООН, ЕБРР, ВБ, а также для различных МСП. Его специализация — бизнес-стратегия, инновации и развитие.</p>
+            <p><strong>Образование:</strong> BSc Economics, M.B.A.</p>
+            <p><strong>Страсть:</strong> Я страстно желаю привнести инновации, изменения и подъем в бизнес компании и ее руководство. Когда я вижу, как растет потенциал бизнеса, мне хочется сделать еще больше.</p>
+          </div>
         </article>
 
         <article class="person" data-reveal>
@@ -147,12 +152,17 @@
               <p class="person__role">Управляющий партнер</p>
             </div>
           </div>
-          <button class="btn btn--primary person__more" type="button">
+          <button class="btn btn--primary person__more" type="button" aria-expanded="false">
             Узнать больше о Данииле
             <span class="btn__arrow" aria-hidden="true">
-              <svg width="16" height="16"><use href="#i-arrow-right"/></svg>
+              <svg width="16" height="16"><use href="#i-chevron-down"/></svg>
             </span>
           </button>
+          <div class="person__bio" hidden>
+            <p><strong>Опыт:</strong> Родом из США, Дэни живет и работает в Узбекистане с 2005 года. Он участвовал в различных проектах по развитию, тренингах для организаций и консультационных услугах. С 2012 года он помог открыть три бизнеса в сфере услуг.</p>
+            <p><strong>Образование:</strong> B.A. Psychology, M.A. Clinical Psychology</p>
+            <p><strong>Страсть:</strong> Я страстно желаю видеть, как бизнес становится успешным, но невозможно управлять бизнесом без людей. Поэтому больше всего меня мотивирует видеть, как люди растут, как индивидуально, так и в сообществе.</p>
+          </div>
         </article>
 
         <article class="person" data-reveal>
@@ -163,12 +173,17 @@
               <p class="person__role">Финансовый консультант</p>
             </div>
           </div>
-          <button class="btn btn--primary person__more" type="button">
+          <button class="btn btn--primary person__more" type="button" aria-expanded="false">
             Узнать больше об Алишере
             <span class="btn__arrow" aria-hidden="true">
-              <svg width="16" height="16"><use href="#i-arrow-right"/></svg>
+              <svg width="16" height="16"><use href="#i-chevron-down"/></svg>
             </span>
           </button>
+          <div class="person__bio" hidden>
+            <p><strong>Опыт:</strong> У него большой опыт работы в банковской сфере, производстве и финансовом менеджменте. Алишер оказывает услуги по управлению финансами, повышению финансовой грамотности и финансовому моделированию для детского бизнеса. Проводит финансовую оценку и управленческий учет.</p>
+            <p><strong>Образование:</strong> Изучал финансовое управление в Самаркандском Кооперативном Институте. В магистратуре Ташкентской Банковско-Финансовой Академии среднего банковского дела.</p>
+            <p><strong>Страсть:</strong> Служение обществу посредством управления финансовым порядком для малых и средних предприятий (МСП).</p>
+          </div>
         </article>
 
         <article class="person" data-reveal>
@@ -179,12 +194,17 @@
               <p class="person__role">Бухгалтер</p>
             </div>
           </div>
-          <button class="btn btn--primary person__more" type="button">
+          <button class="btn btn--primary person__more" type="button" aria-expanded="false">
             Узнать больше о Мастуре
             <span class="btn__arrow" aria-hidden="true">
-              <svg width="16" height="16"><use href="#i-arrow-right"/></svg>
+              <svg width="16" height="16"><use href="#i-chevron-down"/></svg>
             </span>
           </button>
+          <div class="person__bio" hidden>
+            <p><strong>Опыт:</strong> Имеет обширный опыт работы в различных проектах с акцентом на международный бизнес, международный маркетинг, женское предпринимательство и моделирование управления проектами. Разрабатывала стратегии маркетинга и продаж для местных малых и средних предприятий (например, бренд Lalaku). Кроме того, она организовала несколько B2B-встреч местных предпринимателей с представителями малого и среднего бизнеса в Германии.</p>
+            <p><strong>Образование:</strong> С отличием окончила Ташкентский Государственный Университет Востоковедения. На магистратуре училась в Ташкентском Экономическом Университете (программа М.В.А.).</p>
+            <p><strong>Страсть:</strong> Обучение предпринимателей и повышение их потенциала через проактивный подход к созданию деловых возможностей и их реализации.</p>
+          </div>
         </article>
       </div>
     </div>
@@ -313,5 +333,19 @@
 <script src="assets/js/forms.js"></script>
 <script src="assets/js/motion.js"></script>
 <script src="assets/js/main.js"></script>
+<script>
+(function(){
+  document.querySelectorAll('.person__more').forEach(function(btn){
+    var bio = btn.nextElementSibling;
+    if (!bio || !bio.classList.contains('person__bio')) return;
+    btn.addEventListener('click', function(){
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      btn.setAttribute('aria-expanded', String(!open));
+      btn.classList.toggle('is-open', !open);
+      bio.hidden = open;
+    });
+  });
+})();
+</script>
 </body>
 </html>
