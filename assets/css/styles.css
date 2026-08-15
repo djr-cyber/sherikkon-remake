@@ -961,7 +961,8 @@
 
   /* ---------- Команда ---------- */
   .person__media {
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 1 / 1;
+    max-width: 452px;
     border-radius: var(--radius-lg);
     overflow: hidden;
     background: var(--surface-3);
@@ -972,12 +973,12 @@
     height: 100%;
     object-fit: cover;
     object-position: center top;
-    filter: grayscale(1) contrast(1.05);
+    filter: grayscale(0) contrast(1);
     transition: filter var(--dur-slow) var(--ease-out),
                 transform var(--dur-slow) var(--ease-out);
   }
   .person:hover .person__media img {
-    filter: grayscale(0) contrast(1);
+    filter: grayscale(1) contrast(1.05);
     transform: scale(1.04);
   }
   .person__name { font-size: var(--text-xl); }
@@ -1513,6 +1514,16 @@
      ним) подтянут ближе к шапке, было слишком много пустого места. */
   .page-hero--onas { padding-block: var(--space-6) var(--space-5); }
   .page-hero--onas .lead { margin-top: var(--space-4); }
+  /* "Сила в единстве: наша команда" — стандартная рамка секции,
+     как у "Услуги"/"Проекты". */
+  #komanda .section-head {
+    max-width: none;
+    background: linear-gradient(90deg, #B0B6CA 0%, #FFFFFF 100%);
+    border: 2px solid #17243A;
+    border-radius: var(--radius-lg);
+    padding: var(--space-6) var(--space-7);
+    margin-bottom: var(--space-5);
+  }
 
   /* ---------- Крупный блок услуги ---------- */
   .service-block {
