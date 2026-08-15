@@ -1174,6 +1174,7 @@
   #uslugi { padding-top: var(--space-6); }
   #uslugi .section-head {
     max-width: none;
+    background: linear-gradient(90deg, #B0B6CA 0%, #FFFFFF 100%);
     border: 2px solid #17243A;
     border-radius: var(--radius-lg);
     padding: var(--space-6) var(--space-7);
