@@ -1213,6 +1213,7 @@
   #uslugi .grid--4 > article:nth-child(4) .card__icon { display: none; }
   #uslugi .grid--4 > article:nth-child(1),
   #uslugi .grid--4 > article:nth-child(4) {
+    background: linear-gradient(90deg, color-mix(in srgb, #F6882B 35%, white) 0%, #FFFFFF 100%);
     border: 2px solid #F6882B;
   }
   #uslugi .grid--4 .card__title,
