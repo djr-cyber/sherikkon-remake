@@ -1597,7 +1597,7 @@
   /* "О нас" — весь блок (крошки, заголовок, текст, силуэт, линия под
      ним) подтянут ближе к шапке, было слишком много пустого места. */
   .page-hero--onas { padding-block: var(--space-6) var(--space-5); }
-  .page-hero--onas .lead { margin-top: var(--space-4); }
+  .page-hero--onas .lead { margin-top: var(--space-4); color: #000000; font-weight: 400; }
   /* Рамка вокруг самого текста (крошки+заголовок+абзац), а не во всю
      ширину контейнера — иначе иллюстрация справа оказывалась зажата
      внутри той же рамки. Градиент вертикальный, синий снизу. */
@@ -1633,6 +1633,12 @@
     padding: var(--space-6) var(--space-7);
     margin-bottom: var(--space-5);
   }
+  #komanda .section-head p,
+  #napravlennost .section-head p,
+  #prichiny .reason__text {
+    color: #000000;
+    font-weight: 400;
+  }
   /* "Наша направленность" — заголовок по центру, карточки Видение/
      Миссия/Ценности получают стандартную рамку/градиент, иконки были
      на старом фиолетовом токене (var(--primary)) — теперь navy. */
@@ -1647,6 +1653,10 @@
   }
   #napravlennost .card__icon svg { color: #17243A; }
   #napravlennost .card__text { color: #17243A; }
+  #napravlennost .card__icon {
+    border: 2px solid #17243A;
+    border-radius: var(--radius-lg);
+  }
   /* Слишком много пустого места между блоком "Команда" и следующим
      заголовком — сокращаем нижний отступ секции. */
   #komanda { padding-bottom: var(--space-6); }
