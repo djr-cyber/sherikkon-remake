@@ -1323,10 +1323,12 @@
      теперь тоже белый, локально переопределяем --chrome-* так же, как
      на шапке. */
   .footer {
-    --chrome-bg:       var(--bg);
-    --chrome-fg:       var(--fg);
-    --chrome-fg-muted: var(--fg-muted);
-    --chrome-border:   var(--border-strong);
+    --chrome-bg:            var(--bg);
+    --chrome-fg:            var(--fg);
+    --chrome-fg-muted:      var(--fg-muted);
+    --chrome-border:        var(--border-strong);
+    --chrome-border-strong: #F6882B;
+    --chrome-surface:       var(--surface-2);
     position: relative;
     background: var(--chrome-bg);
     border-top: 1px solid var(--chrome-border);
@@ -1389,7 +1391,7 @@
                 transform var(--dur) var(--ease-out);
   }
   .social:hover {
-    color: var(--accent);
+    color: #F6882B;
     border-color: var(--chrome-border-strong);
     background: var(--chrome-surface);
     transform: translateY(-2px);
