@@ -917,13 +917,19 @@
   }
   /* Кнопка "Посмотреть больше проектов" — во всю ширину, как ряд карточек. */
   .proekty__more { width: 100%; justify-content: center; }
-  /* Место под декоративный флаг-иконку между кнопкой и следующим блоком. */
+  /* Место под декоративный флаг-иконку между кнопкой и следующим блоком —
+     крупнее и с отрицательным отступом снизу, чтобы гора "стояла" на
+     верхнем крае следующего блока, а не просто висела в воздухе. */
   .proekty__flag {
+    position: relative;
+    z-index: 2;
     display: flex;
     justify-content: center;
     margin-top: var(--space-9);
+    margin-bottom: -195px;
+    pointer-events: none;
   }
-  .proekty__flag img { width: 150px; height: auto; }
+  .proekty__flag img { width: 260px; height: auto; }
 
   /* Заголовок "Проекты компании" — по центру, синяя рамка как у
      верхних блоков, Luga. */
