@@ -1169,8 +1169,11 @@
   #konsultaciya .field__control { border-color: #17243A; }
 
   /* Заголовочный блок "Услуги" — рамка в фирменном цвете + Luga,
-     как в остальных таких блоках по сайту. */
+     как в остальных таких блоках по сайту. На всю ширину контейнера
+     (было --container-narrow) и секция подтянута к предыдущему блоку. */
+  #uslugi { padding-top: var(--space-6); }
   #uslugi .section-head {
+    max-width: none;
     border: 2px solid #17243A;
     border-radius: var(--radius-lg);
     padding: var(--space-6) var(--space-7);
