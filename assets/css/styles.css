@@ -990,7 +990,7 @@
     object-position: center top;
     transition: transform var(--dur-slow) var(--ease-out);
   }
-  .person:hover .person__media img { transform: scale(1.04); }
+  .person__media:hover img { transform: scale(1.04); }
   /* Тёмный градиент-подложка снизу фото — имя и роль лежат прямо на
      фото, читаемо на любом фоне, без затемнения самой фотографии. */
   .person__overlay {
