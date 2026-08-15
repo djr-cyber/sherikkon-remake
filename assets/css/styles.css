@@ -1383,8 +1383,8 @@
     display: grid;
     place-items: center;
     border-radius: var(--radius);
-    border: 1px solid var(--chrome-border);
-    color: var(--chrome-fg-muted);
+    border: 1px solid #17243A;
+    color: #17243A;
     transition: color var(--dur) var(--ease-soft),
                 border-color var(--dur) var(--ease-soft),
                 background-color var(--dur) var(--ease-soft),
