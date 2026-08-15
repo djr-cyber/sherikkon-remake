@@ -998,18 +998,23 @@
     left: 0;
     right: 0;
     bottom: 0;
-    padding: var(--space-7) var(--space-5) var(--space-5);
-    background: linear-gradient(0deg, rgba(23, 36, 58, 0.92) 0%, rgba(23, 36, 58, 0.55) 60%, transparent 100%);
+    padding: var(--space-8) var(--space-5) var(--space-5);
+    background: linear-gradient(0deg, rgba(23, 36, 58, 0.97) 0%, rgba(23, 36, 58, 0.8) 45%, rgba(23, 36, 58, 0.15) 85%, transparent 100%);
     text-align: left;
   }
-  .person__name { font-size: var(--text-xl); color: #FFFFFF; }
+  .person__name {
+    font-size: var(--text-xl);
+    color: #FFFFFF;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  }
   .person__role {
     margin-top: var(--space-2);
     font-family: var(--font-accent);
     font-style: italic;
     font-size: var(--text-base);
     font-weight: 500;
-    color: #F6882B;
+    color: #FFFFFF;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
   }
   /* Кнопка под карточкой — отдельно, не внутри окантовки фото. */
   .person__more {
