@@ -1173,6 +1173,16 @@
   #konsultaciya a { font-family: 'Luga', var(--font-heading); letter-spacing: 0.03em; }
   #konsultaciya .field__control { border-color: #17243A; }
 
+  /* Блок "Ваш уникальный путь к успеху" — тот же приём, что у
+     "Бесплатная консультация": рамка, Luga, обводка пустых полей ввода.
+     Фон намеренно не трогаем. */
+  #zayavka .cta { border-color: #17243A; border-width: 2px; }
+  #zayavka h2,
+  #zayavka p,
+  #zayavka li,
+  #zayavka a { font-family: 'Luga', var(--font-heading); letter-spacing: 0.03em; }
+  #zayavka .field__control { border-color: #17243A; }
+
   /* Заголовочный блок "Услуги" — рамка в фирменном цвете + Luga,
      как в остальных таких блоках по сайту. На всю ширину контейнера
      (было --container-narrow) и секция подтянута к предыдущему блоку. */
