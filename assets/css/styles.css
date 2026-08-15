@@ -1176,7 +1176,11 @@
   /* Блок "Ваш уникальный путь к успеху" — тот же приём, что у
      "Бесплатная консультация": рамка, Luga, обводка пустых полей ввода.
      Фон намеренно не трогаем. */
-  #zayavka .cta { border-color: #17243A; border-width: 2px; }
+  #zayavka .cta {
+    background: linear-gradient(90deg, #B0B6CA 0%, #FFFFFF 100%);
+    border-color: #17243A;
+    border-width: 2px;
+  }
   #zayavka h2,
   #zayavka p,
   #zayavka li,
