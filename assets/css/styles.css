@@ -917,20 +917,16 @@
   }
   /* Кнопка "Посмотреть больше проектов" — во всю ширину, как ряд карточек. */
   .proekty__more { width: 100%; justify-content: center; }
-  /* Декоративный флаг-иконка "стоит" на верхнем крае карточки заявки.
-     Абсолютное позиционирование внутри того же .container, что и .cta,
-     привязывает гору напрямую к краю карточки, а не к отступу через
-     отрицательный margin — так зазор не "плавает" от ширины экрана. */
-  #zayavka .container { position: relative; }
+  /* Место под декоративный флаг-иконку между кнопкой и следующим блоком —
+     крупнее и с отрицательным отступом снизу, чтобы гора "стояла" на
+     верхнем крае следующего блока, а не просто висела в воздухе. */
   .proekty__flag {
-    position: absolute;
+    position: relative;
     z-index: 2;
-    left: 0;
-    right: 0;
-    bottom: 100%;
-    margin-bottom: -3px;
     display: flex;
     justify-content: center;
+    margin-top: var(--space-9);
+    margin-bottom: -176px;
     pointer-events: none;
   }
   .proekty__flag img { width: 390px; height: auto; }
