@@ -1206,6 +1206,21 @@
     background: linear-gradient(90deg, #B0B6CA 0%, #FFFFFF 100%);
     border: 2px solid #17243A;
   }
+  /* Все 4 карточки услуг: Luga, чёрный текст (был серый --fg-muted).
+     "Тренинги"/"Спикеры" (узкие карточки) — без иконки-плашки и с
+     оранжевой рамкой; у широких Коучинг/Оценка рамка остаётся синей. */
+  #uslugi .grid--4 > article:nth-child(1) .card__icon,
+  #uslugi .grid--4 > article:nth-child(4) .card__icon { display: none; }
+  #uslugi .grid--4 > article:nth-child(1),
+  #uslugi .grid--4 > article:nth-child(4) {
+    border: 2px solid #F6882B;
+  }
+  #uslugi .grid--4 .card__title,
+  #uslugi .grid--4 .card__text {
+    font-family: 'Luga', var(--font-heading);
+    letter-spacing: 0.03em;
+  }
+  #uslugi .grid--4 .card__text { color: var(--fg); }
   /* Текст у широких карточек не тянется на всю ширину — узкая колонка слева. */
   #uslugi .grid--4 > article:nth-child(2) .card__text,
   #uslugi .grid--4 > article:nth-child(3) .card__text { max-width: 46ch; }
