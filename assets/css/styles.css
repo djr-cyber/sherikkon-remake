@@ -1168,6 +1168,17 @@
   #konsultaciya a { font-family: 'Luga', var(--font-heading); letter-spacing: 0.03em; }
   #konsultaciya .field__control { border-color: #17243A; }
 
+  /* Заголовочный блок "Услуги" — рамка в фирменном цвете + Luga,
+     как в остальных таких блоках по сайту. */
+  #uslugi .section-head {
+    border: 2px solid #17243A;
+    border-radius: var(--radius-lg);
+    padding: var(--space-6) var(--space-7);
+  }
+  #uslugi .section-head h2,
+  #uslugi .section-head p,
+  #uslugi .section-head a { font-family: 'Luga', var(--font-heading); letter-spacing: 0.03em; }
+
   /* ---------- Контактные строки ---------- */
   .contact-item {
     display: grid;
