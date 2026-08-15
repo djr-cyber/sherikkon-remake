@@ -926,7 +926,7 @@
     display: flex;
     justify-content: center;
     margin-top: var(--space-9);
-    margin-bottom: -190px;
+    margin-bottom: -176px;
     pointer-events: none;
   }
   .proekty__flag img { width: 390px; height: auto; }
