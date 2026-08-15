@@ -970,31 +970,39 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
+    width: 100%;
   }
   .person__media {
+    position: relative;
     aspect-ratio: 1 / 1;
+    width: 100%;
     max-width: 452px;
     border-radius: var(--radius-lg);
     overflow: hidden;
     background: var(--surface-3);
-    border: 1px solid var(--border);
-    margin-bottom: var(--space-5);
+    border: 2px solid #17243A;
+    margin-bottom: var(--space-4);
   }
   .person__media img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center top;
-    filter: brightness(1);
-    transition: filter var(--dur-slow) var(--ease-out),
-                transform var(--dur-slow) var(--ease-out);
+    transition: transform var(--dur-slow) var(--ease-out);
   }
-  .person:hover .person__media img {
-    filter: brightness(0.7);
-    transform: scale(1.04);
+  .person:hover .person__media img { transform: scale(1.04); }
+  /* Тёмный градиент-подложка снизу фото — имя и роль лежат прямо на
+     фото, читаемо на любом фоне, без затемнения самой фотографии. */
+  .person__overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: var(--space-7) var(--space-5) var(--space-5);
+    background: linear-gradient(0deg, rgba(23, 36, 58, 0.92) 0%, rgba(23, 36, 58, 0.55) 60%, transparent 100%);
+    text-align: left;
   }
-  .person__name { font-size: var(--text-xl); }
+  .person__name { font-size: var(--text-xl); color: #FFFFFF; }
   .person__role {
     margin-top: var(--space-2);
     font-family: var(--font-accent);
@@ -1003,6 +1011,26 @@
     font-weight: 500;
     color: #F6882B;
   }
+  /* Кнопка под карточкой — отдельно, не внутри окантовки фото. */
+  .person__more {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    width: 100%;
+    max-width: 452px;
+    padding: var(--space-4) var(--space-6);
+    background: #17243A;
+    color: #FFFFFF;
+    font-family: var(--font-h);
+    font-weight: 600;
+    border: none;
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    transition: background-color var(--dur) var(--ease-soft);
+  }
+  .person__more:hover { background: #24354E; }
+  .person__more svg { flex-shrink: 0; }
 
   /* ---------- Нумерованный список причин ---------- */
   .reason {
