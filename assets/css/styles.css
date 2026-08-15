@@ -243,9 +243,9 @@
     background: var(--chrome-bg);
     border-bottom-color: var(--chrome-border);
   }
-  .header__brand:hover {
-    color: var(--accent-deep);
-  }
+  /* Лого (шапка и футер — общий класс) больше не подсвечивается на
+     наведении, ни цветом, ни чем-либо ещё. */
+  .header__brand:hover { color: inherit; }
   .header__inner {
     display: flex;
     align-items: center;
@@ -1319,21 +1319,19 @@
   }
   .map-frame iframe { width: 100%; height: 100%; border: 0; }
 
-  /* ---------- Футер ---------- Тёмная «рамка» сайта, как и шапка */
+  /* ---------- Футер ---------- Раньше тёмная «рамка» сайта, как шапка —
+     теперь тоже белый, локально переопределяем --chrome-* так же, как
+     на шапке. */
   .footer {
+    --chrome-bg:       var(--bg);
+    --chrome-fg:       var(--fg);
+    --chrome-fg-muted: var(--fg-muted);
+    --chrome-border:   var(--border-strong);
     position: relative;
     background: var(--chrome-bg);
     border-top: 1px solid var(--chrome-border);
     padding-block: var(--space-10) var(--space-6);
     overflow: hidden;
-  }
-  .footer::before {
-    content: '';
-    position: absolute;
-    inset: 0 0 auto 0;
-    height: 1px;
-    background: var(--gradient-line);
-    opacity: 0.5;
   }
   .footer__grid {
     display: grid;
@@ -1462,17 +1460,6 @@
   .quick-contact.is-open .quick-contact__icon--open { display: none; }
   .quick-contact.is-open .quick-contact__icon--close { display: block; }
 
-  .footer__bottom {
-    margin-top: var(--space-9);
-    padding-top: var(--space-5);
-    border-top: 1px solid var(--chrome-border);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    gap: var(--space-4);
-    font-size: var(--text-sm);
-    color: var(--chrome-fg-muted);
-  }
 
   /* ---------- Хлебные крошки ---------- */
   .crumbs {
