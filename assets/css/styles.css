@@ -1535,6 +1535,7 @@
     max-width: 780px;
     background: linear-gradient(0deg, #B0B6CA 0%, #FFFFFF 100%);
     border: 2px solid #17243A;
+    border-top: none;
     border-radius: var(--radius-lg);
     padding: var(--space-7);
   }
@@ -1542,9 +1543,9 @@
     display: none;
     position: absolute;
     top: 50%;
-    right: var(--space-6);
+    right: var(--space-5);
     transform: translateY(-50%);
-    width: 300px;
+    width: 400px;
     height: auto;
     pointer-events: none;
   }
