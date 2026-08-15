@@ -1030,21 +1030,31 @@
      aria-expanded/is-open через JS. */
   .person__more .btn__arrow { transition: transform var(--dur) var(--ease-soft); }
   .person__more.is-open .btn__arrow { transform: rotate(180deg); }
-  /* Панель с биографией — та же стандартная рамка/градиент, что и
-     у section-head. Карточки в других колонках не тянутся по высоте
-     вслед за раскрытой — .grid--4 ниже получает align-items: start. */
+  /* Кнопка и панель — единая раскрывающаяся фигура одного (оранжевого)
+     цвета: у открытой кнопки низ без скругления и без нижней границы,
+     панель встык под ней теми же цветами, скруглена только снизу. */
+  .person__more.is-open {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom: none;
+  }
   .person__bio {
-    margin-top: var(--space-4);
+    margin-top: 0;
     width: 100%;
     max-width: 452px;
     text-align: left;
     padding: var(--space-6);
-    border: 2px solid #17243A;
-    border-radius: var(--radius-lg);
-    background: linear-gradient(90deg, #B0B6CA 0%, #FFFFFF 100%);
+    background-color: #F6882B;
+    border: 1px solid #D9660A;
+    border-top: none;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    border-bottom-left-radius: var(--radius-lg);
+    border-bottom-right-radius: var(--radius-lg);
+    color: #000000;
   }
   .person__bio p + p { margin-top: var(--space-4); }
-  .person__bio strong { color: #17243A; }
+  .person__bio strong { color: #000000; font-weight: 400; }
   #komanda .grid--4 { align-items: start; }
 
   /* ---------- Нумерованный список причин ---------- */
