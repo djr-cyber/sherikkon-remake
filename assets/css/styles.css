@@ -1211,8 +1211,11 @@
   #zayavka .form > p.text-muted { text-align: right; }
   /* Кнопке нужно больше воздуха сверху — при узком gap её тень
      (box-shadow у .btn--primary) наезжала на поле Email. Сама кнопка —
-     в правой части блока, а не впритык к полям слева. */
-  #zayavka .form__foot { margin-top: var(--space-2); justify-content: flex-end; }
+     по центру блока. Свечение по краям (box-shadow, в покое и на
+     hover) убрано — не подошло к белому фону без карточки. */
+  #zayavka .form__foot { margin-top: var(--space-2); justify-content: center; }
+  #zayavka .btn--primary,
+  #zayavka .btn--primary:hover { box-shadow: none; }
   #zayavka h2,
   #zayavka p,
   #zayavka li,
