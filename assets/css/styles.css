@@ -1606,8 +1606,9 @@
   .js [data-reveal] {
     opacity: 0;
     transform: translateY(24px);
+    will-change: transform, opacity;
   }
-  .js [data-reveal-words] { opacity: 0; }
+  .js [data-reveal-words] { opacity: 0; will-change: transform, opacity; }
 
   @media (prefers-reduced-motion: reduce) {
     .js [data-reveal],
