@@ -924,7 +924,7 @@
     position: relative;
     z-index: 2;
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     margin-top: var(--space-9);
     margin-bottom: -176px;
     pointer-events: none;
@@ -1196,6 +1196,9 @@
     border-color: #17243A;
     border-width: 2px;
   }
+  /* Вертикальная компоновка: текст сверху, форма снизу, вместо
+     горизонтального сплита на 2 колонки. */
+  #zayavka .cta__inner { grid-template-columns: 1fr; }
   #zayavka h2,
   #zayavka p,
   #zayavka li,
