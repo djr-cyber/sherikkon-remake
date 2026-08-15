@@ -1187,7 +1187,10 @@
      "Бесплатная консультация": рамка, Luga, обводка пустых полей ввода.
      Фон намеренно не трогаем. */
   /* Карточка заявки — только половина ширины контейнера, иконка горы
-     занимает освободившееся место справа, прижатая к низу карточки. */
+     занимает освободившееся место справа, прижатая к низу карточки.
+     Секция ниже, чем стандартный .section--tight — блок должен
+     помещаться в экран целиком без прокрутки. */
+  #zayavka { padding-block: var(--space-5); }
   #zayavka .container {
     display: flex;
     align-items: flex-end;
@@ -1207,7 +1210,7 @@
      gap делали её слишком высокой. */
   #zayavka .cta__inner { grid-template-columns: 1fr; gap: var(--space-4); }
   #zayavka h2 { font-size: var(--text-4xl); }
-  #zayavka .form { gap: var(--space-3); }
+  #zayavka .form { gap: var(--space-2); }
   #zayavka h2,
   #zayavka p,
   #zayavka li,
