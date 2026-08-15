@@ -1527,10 +1527,13 @@
      ним) подтянут ближе к шапке, было слишком много пустого места. */
   .page-hero--onas { padding-block: var(--space-6) var(--space-5); }
   .page-hero--onas .lead { margin-top: var(--space-4); }
-  /* Заголовочный блок — та же стандартная рамка/градиент, что у
-     "Услуги"/"Проекты"/"Команда" ниже по странице. */
-  .page-hero--onas .page-hero__inner {
-    background: linear-gradient(90deg, #B0B6CA 0%, #FFFFFF 100%);
+  /* Рамка вокруг самого текста (крошки+заголовок+абзац), а не во всю
+     ширину контейнера — иначе иллюстрация справа оказывалась зажата
+     внутри той же рамки. Градиент вертикальный, синий снизу. */
+  .page-hero--onas .page-hero__inner { position: relative; }
+  .page-hero--onas .page-hero__text {
+    max-width: 780px;
+    background: linear-gradient(0deg, #B0B6CA 0%, #FFFFFF 100%);
     border: 2px solid #17243A;
     border-radius: var(--radius-lg);
     padding: var(--space-7);
@@ -1539,7 +1542,7 @@
     display: none;
     position: absolute;
     top: 50%;
-    right: var(--space-8);
+    right: var(--space-6);
     transform: translateY(-50%);
     width: 300px;
     height: auto;
