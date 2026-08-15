@@ -57,6 +57,9 @@
     font-size: var(--text-md);
     line-height: var(--leading-body);
     font-weight: 400;
+    /* Luga (--font-body) читается свободнее с небольшим трекингом —
+       та же пара 0.03em, что уже была расставлена вручную посекционно. */
+    letter-spacing: 0.03em;
   }
 
   /* Блокировка скролла при открытом меню — без сдвига контента */
@@ -70,7 +73,9 @@
     font-family: var(--font-h);
     font-weight: 600;
     line-height: var(--leading-tight);
-    letter-spacing: var(--tracking-tight);
+    /* Luga (--font-h) — тот же трекинг 0.03em, что уже был расставлен
+       вручную посекционно, вместо тесного --tracking-tight под IBM Plex. */
+    letter-spacing: 0.03em;
     color: var(--fg);
   }
 
