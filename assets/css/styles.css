@@ -917,19 +917,14 @@
   }
   /* Кнопка "Посмотреть больше проектов" — во всю ширину, как ряд карточек. */
   .proekty__more { width: 100%; justify-content: center; }
-  /* Место под декоративный флаг-иконку между кнопкой и следующим блоком —
-     крупнее и с отрицательным отступом снизу, чтобы гора "стояла" на
-     верхнем крае следующего блока, а не просто висела в воздухе. */
+  /* Декоративная иконка горы стоит рядом с карточкой заявки, справа,
+     прижата к низу — не над блоком, а вровень с ним. */
   .proekty__flag {
-    position: relative;
-    z-index: 2;
     display: flex;
-    justify-content: flex-end;
-    margin-top: var(--space-9);
-    margin-bottom: -176px;
+    justify-content: center;
     pointer-events: none;
   }
-  .proekty__flag img { width: 390px; height: auto; }
+  .proekty__flag img { width: 340px; height: auto; }
 
   /* Заголовок "Проекты компании" — по центру, синяя рамка как у
      верхних блоков, Luga. */
@@ -1191,11 +1186,20 @@
   /* Блок "Ваш уникальный путь к успеху" — тот же приём, что у
      "Бесплатная консультация": рамка, Luga, обводка пустых полей ввода.
      Фон намеренно не трогаем. */
+  /* Карточка заявки — только половина ширины контейнера, иконка горы
+     занимает освободившееся место справа, прижатая к низу карточки. */
+  #zayavka .container {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--space-7);
+  }
   #zayavka .cta {
+    flex: 0 1 50%;
     background: linear-gradient(90deg, #B0B6CA 0%, #FFFFFF 100%);
     border-color: #17243A;
     border-width: 2px;
   }
+  #zayavka .proekty__flag { flex: 1; }
   /* Вертикальная компоновка: текст сверху, форма снизу, вместо
      горизонтального сплита на 2 колонки. */
   #zayavka .cta__inner { grid-template-columns: 1fr; }
