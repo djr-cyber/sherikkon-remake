@@ -1190,7 +1190,7 @@
      занимает освободившееся место справа, прижатая к низу карточки.
      Секция ниже, чем стандартный .section--tight — блок должен
      помещаться в экран целиком без прокрутки. */
-  #zayavka { padding-block: var(--space-4); }
+  #zayavka { padding-block: var(--space-3); }
   #zayavka .container {
     display: flex;
     align-items: flex-end;
@@ -1198,7 +1198,7 @@
   }
   #zayavka .cta {
     flex: 0 1 50%;
-    padding: var(--space-4) var(--space-7);
+    padding: var(--space-3) var(--space-7);
     background: linear-gradient(90deg, #B0B6CA 0%, #FFFFFF 100%);
     border-color: #17243A;
     border-width: 2px;
@@ -1208,9 +1208,9 @@
      горизонтального сплита на 2 колонки. Меньший заголовок и отступ
      между блоками — карточка стала уже, полноразмерный h2 и большой
      gap делали её слишком высокой. */
-  #zayavka .cta__inner { grid-template-columns: 1fr; gap: var(--space-3); }
+  #zayavka .cta__inner { grid-template-columns: 1fr; gap: var(--space-2); }
   #zayavka h2 { font-size: var(--text-3xl); }
-  #zayavka .form { gap: var(--space-2); }
+  #zayavka .form { gap: var(--space-1); }
   #zayavka h2,
   #zayavka p,
   #zayavka li,
