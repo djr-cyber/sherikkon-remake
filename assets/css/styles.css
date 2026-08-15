@@ -1153,7 +1153,7 @@
   /* Блок "Бесплатная консультация" — компактнее: h2 был на общей
      h2-шкале (до 64px), заголовок и отступы карточки уменьшены. */
   #konsultaciya .cta {
-    padding: var(--space-6) var(--space-7);
+    padding: var(--space-4) var(--space-7);
     background: linear-gradient(90deg, #B0B6CA 0%, #FFFFFF 100%);
     border-color: #17243A;
     border-width: 2px;
