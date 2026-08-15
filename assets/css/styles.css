@@ -1628,8 +1628,17 @@
   #napravlennost .card {
     background: linear-gradient(90deg, #B0B6CA 0%, #FFFFFF 100%);
     border: 2px solid #17243A;
+    transition: transform var(--dur) var(--ease-soft), box-shadow var(--dur) var(--ease-soft);
+  }
+  #napravlennost .card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
   }
   #napravlennost .card__icon svg { color: #17243A; }
+  #napravlennost .card__text { color: #17243A; }
+  /* Слишком много пустого места между блоком "Команда" и следующим
+     заголовком — сокращаем нижний отступ секции. */
+  #komanda { padding-bottom: var(--space-6); }
 
   /* ---------- Крупный блок услуги ---------- */
   .service-block {
