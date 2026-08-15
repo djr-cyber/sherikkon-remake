@@ -222,11 +222,10 @@
     transition: background-color var(--dur) var(--ease-soft),
                 border-color var(--dur) var(--ease-soft),
                 backdrop-filter var(--dur) var(--ease-soft);
-    border-bottom: 1px solid transparent;
-  }
-  .header.is-scrolled {
-    background: var(--chrome-bg);
-    border-bottom-color: var(--chrome-border);
+    /* Раньше граница появлялась только после скролла (header был
+       fixed поверх hero) — теперь header static и всегда на белом
+       фоне, так что граница нужна сразу, а не только в .is-scrolled. */
+    border-bottom: 1px solid var(--chrome-border);
   }
   /* Лого (шапка и футер — общий класс) больше не подсвечивается на
      наведении, ни цветом, ни чем-либо ещё. */
