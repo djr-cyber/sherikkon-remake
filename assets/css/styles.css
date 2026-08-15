@@ -1499,19 +1499,6 @@
     pointer-events: none;
   }
   .page-hero__inner { position: relative; z-index: var(--z-raised); }
-  /* Силуэт-заглушка справа от текста хиро — только десктоп.
-     Прижат к низу, вплотную к волнистой линии-разделителю под hero. */
-  .page-hero__figure {
-    display: none;
-    position: absolute;
-    bottom: 0;
-    right: 2%;
-    width: 260px;
-    height: auto;
-    z-index: var(--z-raised);
-    pointer-events: none;
-  }
-  @media (min-width: 1024px) { .page-hero__figure { display: block; } }
   /* ---------- Детальная страница проекта (title + фото + абзац,
      как в оригинале — минимально, без лишних блоков) ---------- */
   .project-detail__media {
