@@ -464,7 +464,6 @@
      (data-magnetic убран). */
   .btn--primary {
     position: relative;
-    overflow: hidden;
     background-color: #F6882B;
     background-image: none;
     color: #2B1400;
@@ -472,6 +471,7 @@
     letter-spacing: 0.03em;
     border: 1px solid #D9660A;
     box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.15);
+    will-change: transform;
   }
   .btn--primary:hover {
     background-color: #F6882B;
