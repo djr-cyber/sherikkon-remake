@@ -346,10 +346,12 @@
 <script src="assets/js/main.js"></script>
 <script>
 (function(){
+  var panels = [];
   document.querySelectorAll('.person__more').forEach(function(btn){
     var bio = btn.nextElementSibling;
     if (!bio || !bio.classList.contains('person__bio')) return;
     var inner = bio.querySelector('.person__bio-inner');
+    panels.push({ btn: btn, bio: bio, inner: inner });
     btn.addEventListener('click', function(){
       var open = btn.getAttribute('aria-expanded') === 'true';
       btn.setAttribute('aria-expanded', String(!open));
@@ -365,10 +367,21 @@
         bio.style.maxHeight = inner.scrollHeight + 'px';
       }
     });
-    // Пересчитать высоту при ресайзе, пока панель открыта
+    // Пересчитать высоту при ресайзе, пока панель открыта.
     window.addEventListener('resize', function(){
       if (btn.getAttribute('aria-expanded') === 'true') {
         bio.style.maxHeight = inner.scrollHeight + 'px';
+      }
+    });
+  });
+  // Шрифт Luga догружается асинхронно; если панель уже открыта, а
+  // шрифт встаёт позже, текст занимает больше места, чем было
+  // измерено при клике, и обрезается по старому max-height —
+  // пересчитываем высоту открытых панелей, когда шрифты готовы.
+  document.fonts.ready.then(function(){
+    panels.forEach(function(p){
+      if (p.btn.getAttribute('aria-expanded') === 'true') {
+        p.bio.style.maxHeight = p.inner.scrollHeight + 'px';
       }
     });
   });
