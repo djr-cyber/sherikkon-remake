@@ -1642,6 +1642,7 @@
     font-family: var(--font-h);
     font-style: normal;
     font-weight: 700;
+    white-space: nowrap;
   }
   #prichiny h2 { font-weight: 400; }
   /* Заголовок слева, список причин — колонкой справа. */
