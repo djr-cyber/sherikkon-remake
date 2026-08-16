@@ -1644,6 +1644,23 @@
     font-weight: 700;
   }
   #prichiny h2 { font-weight: 400; }
+  /* Заголовок слева, список причин — колонкой справа. */
+  @media (min-width: 900px) {
+    #prichiny .container--narrow {
+      max-width: var(--container);
+      display: grid;
+      grid-template-columns: minmax(0, 340px) 1fr;
+      gap: var(--space-9);
+      align-items: start;
+    }
+    #prichiny .section-head {
+      grid-column: 1;
+      grid-row: 1 / -1;
+      max-width: none;
+      margin-bottom: 0;
+    }
+    #prichiny .reason { grid-column: 2; }
+  }
   /* "Наша направленность" — заголовок по центру, карточки Видение/
      Миссия/Ценности получают стандартную рамку/градиент, иконки были
      на старом фиолетовом токене (var(--primary)) — теперь navy. */
