@@ -1643,8 +1643,11 @@
     font-style: normal;
     font-weight: 700;
     white-space: nowrap;
+    gap: var(--space-2);
   }
+  #prichiny .eyebrow::before { width: 16px; }
   #prichiny h2 { font-weight: 400; }
+  #prichiny .reason__num { color: #17243A; -webkit-text-stroke-width: 0; }
   /* Заголовок слева, список причин — колонкой справа. */
   @media (min-width: 900px) {
     #prichiny .container--narrow {
@@ -1656,7 +1659,7 @@
     }
     #prichiny .section-head { max-width: none; margin-bottom: 0; }
     #prichiny .eyebrow { font-size: var(--text-5xl); }
-    #prichiny h2 { font-size: var(--text-4xl); }
+    #prichiny h2 { font-size: var(--text-3xl); }
     #prichiny .reason {
       grid-template-columns: 64px 1fr;
       gap: var(--space-5);
