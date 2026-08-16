@@ -1654,6 +1654,7 @@
       align-items: start;
     }
     #prichiny .section-head { max-width: none; margin-bottom: 0; }
+    #prichiny .eyebrow { font-size: var(--text-5xl); }
     #prichiny h2 { font-size: var(--text-4xl); }
     #prichiny .reason {
       grid-template-columns: 64px 1fr;
