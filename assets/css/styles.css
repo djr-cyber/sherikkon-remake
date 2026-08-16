@@ -1664,7 +1664,7 @@
     #prichiny h2 { font-size: var(--text-3xl); }
     #prichiny .prichiny-figure {
       width: 100%;
-      max-width: 300px;
+      max-width: 217px;
       height: auto;
       margin-top: var(--space-6);
     }
