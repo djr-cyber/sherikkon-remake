@@ -1647,19 +1647,21 @@
   /* Заголовок слева, список причин — колонкой справа. */
   @media (min-width: 900px) {
     #prichiny .container--narrow {
-      max-width: var(--container);
+      max-width: calc(var(--container) - 4rem);
       display: grid;
       grid-template-columns: minmax(0, 340px) 1fr;
       gap: var(--space-9);
       align-items: start;
     }
     #prichiny .section-head { max-width: none; margin-bottom: 0; }
+    #prichiny h2 { font-size: var(--text-4xl); }
     #prichiny .reason {
       grid-template-columns: 64px 1fr;
       gap: var(--space-5);
       padding-block: var(--space-4);
     }
     #prichiny .reason__num { font-size: var(--text-2xl); }
+    #prichiny .reason__text { max-width: none; }
   }
   /* "Наша направленность" — заголовок по центру, карточки Видение/
      Миссия/Ценности получают стандартную рамку/градиент, иконки были
