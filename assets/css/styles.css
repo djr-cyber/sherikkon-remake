@@ -1070,7 +1070,7 @@
   }
   .person__bio-inner p + p { margin-top: var(--space-4); }
   .person__bio-inner strong { color: #000000; font-weight: 400; }
-  #komanda .grid--4 { align-items: start; gap: var(--space-4); }
+  #komanda .grid--4 { align-items: start; gap: var(--space-2); }
 
   /* ---------- Нумерованный список причин ---------- */
   .reason {
