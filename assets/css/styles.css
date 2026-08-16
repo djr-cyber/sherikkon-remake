@@ -1651,7 +1651,7 @@
   /* Заголовок слева, список причин — колонкой справа. */
   @media (min-width: 900px) {
     #prichiny .container--narrow {
-      max-width: calc(var(--container) - 4rem);
+      max-width: var(--container);
       display: grid;
       grid-template-columns: minmax(0, 340px) 1fr;
       gap: var(--space-9);
