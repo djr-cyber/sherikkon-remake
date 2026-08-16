@@ -1643,11 +1643,11 @@
     font-style: normal;
     font-weight: 700;
     white-space: nowrap;
-    gap: var(--space-2);
+    gap: 0;
     line-height: 1;
     margin-top: 0;
   }
-  #prichiny .eyebrow::before { width: 16px; }
+  #prichiny .eyebrow::before { display: none; }
   #prichiny h2 { font-weight: 400; }
   #prichiny .reason__num { color: #17243A; -webkit-text-stroke-width: 0; }
   /* Заголовок слева, список причин — колонкой справа. */
