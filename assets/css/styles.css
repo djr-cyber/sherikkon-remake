@@ -1653,13 +1653,13 @@
       gap: var(--space-9);
       align-items: start;
     }
-    #prichiny .section-head {
-      grid-column: 1;
-      grid-row: 1 / -1;
-      max-width: none;
-      margin-bottom: 0;
+    #prichiny .section-head { max-width: none; margin-bottom: 0; }
+    #prichiny .reason {
+      grid-template-columns: 64px 1fr;
+      gap: var(--space-5);
+      padding-block: var(--space-4);
     }
-    #prichiny .reason { grid-column: 2; }
+    #prichiny .reason__num { font-size: var(--text-2xl); }
   }
   /* "Наша направленность" — заголовок по центру, карточки Видение/
      Миссия/Ценности получают стандартную рамку/градиент, иконки были
