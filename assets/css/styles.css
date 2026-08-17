@@ -1716,11 +1716,23 @@
   .tag {
     padding: var(--space-2) var(--space-4);
     border-radius: var(--radius-full);
-    border: 1px solid var(--border);
-    background: var(--surface-2);
+    border: 1px solid #17243A;
+    background: none;
     font-size: var(--text-sm);
     color: #17243A;
   }
+  /* Иллюстрация "Тренинги" — справа от заголовка/лида. */
+  #treningi { position: relative; }
+  .service-block__figure {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 380px;
+    height: auto;
+    pointer-events: none;
+  }
+  @media (min-width: 1024px) { .service-block__figure { display: block; } }
 }
 
 /* ============================================================
