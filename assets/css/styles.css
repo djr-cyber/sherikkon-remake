@@ -1621,6 +1621,11 @@
   }
   @media (min-width: 1024px) { .page-hero__figure { display: block; } }
   .page-hero--uslugi .page-hero__figure { width: 480px; }
+  .page-hero--uslugi .page-hero__inner {
+    border: 2px solid #17243A;
+    border-radius: var(--radius-lg);
+    padding: var(--space-7);
+  }
   /* "Сила в единстве: наша команда" — стандартная рамка секции,
      как у "Услуги"/"Проекты". */
   #komanda .section-head {
