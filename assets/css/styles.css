@@ -1614,6 +1614,13 @@
     margin-top: var(--space-4);
     color: #FFFFFF;
   }
+  /* "Контакты" — блок с адресом/телефоном/графиком/email переехал
+     внутрь героя, справа от заголовка, вместо отдельной секции ниже. */
+  .page-hero--kontakti .page-hero__inner { display: grid; gap: var(--space-8); }
+  @media (min-width: 900px) {
+    .page-hero--kontakti .page-hero__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: start; }
+  }
+  .page-hero--kontakti .page-hero__contacts .contact-item:first-child { padding-top: 0; }
   /* ---------- Детальная страница проекта (title + фото + абзац,
      как в оригинале — минимально, без лишних блоков) ---------- */
   .project-detail__media {
