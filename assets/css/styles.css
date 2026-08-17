@@ -1602,13 +1602,6 @@
     background: #17243A url('../img/proekt-hero-bg.jpg') center / 100% 100% no-repeat;
   }
   .page-hero--case::before { display: none; }
-  .page-hero--case .crumbs a,
-  .page-hero--case .crumbs span,
-  .page-hero--case h1 {
-    color: #FFFFFF;
-  }
-  .page-hero--case .crumbs a:hover { color: #F6882B; }
-  .page-hero--case .crumbs__sep { color: #FFFFFF; }
   /* Фото + абзац кейса переехали внутрь героя, справа от заголовка,
      вместо отдельной белой секции под ним. */
   .page-hero--case .page-hero__inner { display: grid; gap: var(--space-8); }
@@ -1625,9 +1618,20 @@
     border-radius: var(--radius-lg);
     border: 2px solid #FFFFFF;
   }
+  /* Заголовок и подпись кейса — каждый в своей белой рамке-плашке
+     (как обычный светлый блок сайта), поверх сине-оранжевого фона. */
+  .page-hero--case .page-hero__title-box,
+  .page-hero--case .page-hero__caption-box {
+    background: var(--surface);
+    border: 2px solid #17243A;
+    border-radius: var(--radius-lg);
+    padding: var(--space-7) var(--space-6);
+  }
+  .page-hero--case .page-hero__caption-box { margin-top: var(--space-4); }
+  .page-hero--case h1 { color: #17243A; }
   .page-hero--case .page-hero__caption {
-    margin-top: var(--space-4);
-    color: #FFFFFF;
+    margin-top: 0;
+    color: #17243A;
   }
   /* "Контакты" — блок с адресом/телефоном/графиком/email переехал
      внутрь героя, справа от заголовка, вместо отдельной секции ниже. */
