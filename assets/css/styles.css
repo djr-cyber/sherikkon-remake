@@ -1602,7 +1602,7 @@
      вместо отдельной белой секции под ним. */
   .page-hero--case .page-hero__inner { display: grid; gap: var(--space-8); }
   @media (min-width: 900px) {
-    .page-hero--case .page-hero__inner { grid-template-columns: 1fr 1fr; align-items: center; }
+    .page-hero--case .page-hero__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; }
   }
   .page-hero--case .page-hero__media img {
     width: 100%;
