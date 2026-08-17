@@ -52,34 +52,6 @@ window.SK.motion = (function () {
   }
 
   /* ============================================================
-     Кастомный курсор (только точный указатель) — просто точка,
-     без сопровождающего кольца/значка
-     ============================================================ */
-  function initCursor() {
-    var dot = $('#cursorDot');
-    if (!dot) return;
-
-    var dotX = gsap.quickTo(dot, 'x', { duration: 0.12, ease: 'power3' });
-    var dotY = gsap.quickTo(dot, 'y', { duration: 0.12, ease: 'power3' });
-
-    window.addEventListener('mousemove', function (e) {
-      dotX(e.clientX); dotY(e.clientY);
-    }, { passive: true });
-
-    // За пределами окна курсор прячем
-    document.addEventListener('mouseleave', function () {
-      gsap.to(dot, { opacity: 0, duration: 0.2 });
-    });
-    document.addEventListener('mouseenter', function () {
-      gsap.to(dot, { opacity: 1, duration: 0.2 });
-    });
-
-    return function cleanup() {
-      gsap.set(dot, { clearProps: 'all' });
-    };
-  }
-
-  /* ============================================================
      Таймлайн героя
      ============================================================ */
   function heroTimeline() {
@@ -323,11 +295,6 @@ window.SK.motion = (function () {
       return function () {
         if (cleanPin) cleanPin();
       };
-    });
-
-    /* --- Ветка 4: курсор только для мыши --- */
-    mm.add('(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)', function () {
-      return initCursor();
     });
 
     // Пины добавляют документу несколько тысяч пикселей, поэтому точки входа,

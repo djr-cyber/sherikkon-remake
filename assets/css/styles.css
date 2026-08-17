@@ -184,25 +184,6 @@
   }
   .skip-link:focus-visible { transform: translateY(0); color: var(--on-accent); }
 
-  /* ---------- Кастомный курсор (только мышь) ---------- */
-  .cursor {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: var(--z-cursor);
-    pointer-events: none;
-    will-change: transform;
-    width: 6px;
-    height: 6px;
-    margin: -3px 0 0 -3px;
-    border-radius: 50%;
-    background: var(--primary);
-  }
-  /* Прячем на тач-устройствах и при reduced-motion */
-  @media (hover: none), (pointer: coarse), (prefers-reduced-motion: reduce) {
-    .cursor { display: none; }
-  }
-
   /* ---------- Шапка ----------
      Светлая на всех страницах — промежуточный шаг к белой: лёгкий тон
      бренд-синего вместо тёмного --chrome-bg. Переопределяет токены
