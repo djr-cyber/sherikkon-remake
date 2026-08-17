@@ -1749,7 +1749,7 @@
   /* Подгонка ширины под объём текста в каждом блоке, чтобы иллюстрация
      не наезжала на теги/границы (см. остальные .service-block__figure
      правила выше). */
-  #spikery .service-block__figure { width: 260px; }
+  #spikery .service-block__figure { width: 360px; }
   #rezultaty .service-block__figure { width: 360px; }
 }
 
