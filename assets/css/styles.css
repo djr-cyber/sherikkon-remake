@@ -1612,25 +1612,27 @@
      вылезает за пределы своей колонки, наезжая на соседнюю. */
   .page-hero--case .page-hero__inner > * { min-width: 0; }
   .page-hero--case h1 { max-width: none; }
+  /* Фото — на оранжевой половине фона, поэтому окантовка navy,
+     чтобы не сливаться. */
   .page-hero--case .page-hero__media img {
     width: 100%;
     display: block;
     border-radius: var(--radius-lg);
-    border: 2px solid #FFFFFF;
-  }
-  /* Заголовок и подпись кейса — каждый в своей белой рамке-плашке
-     (как обычный светлый блок сайта), поверх сине-оранжевого фона. */
-  .page-hero--case .page-hero__title-box,
-  .page-hero--case .page-hero__caption-box {
-    background: var(--surface);
     border: 2px solid #17243A;
+  }
+  /* Заголовок и подпись кейса — вместе в одной белой рамке-плашке
+     (как обычный светлый блок сайта), поверх сине-оранжевого фона.
+     Плашка лежит на тёмно-синей половине фона, поэтому окантовка
+     оранжевая, чтобы не сливаться. */
+  .page-hero--case .page-hero__title-box {
+    background: var(--surface);
+    border: 2px solid #F6882B;
     border-radius: var(--radius-lg);
     padding: var(--space-7) var(--space-6);
   }
-  .page-hero--case .page-hero__caption-box { margin-top: var(--space-4); }
   .page-hero--case h1 { color: #17243A; }
   .page-hero--case .page-hero__caption {
-    margin-top: 0;
+    margin-top: var(--space-4);
     color: #17243A;
   }
   /* "Контакты" — блок с адресом/телефоном/графиком/email переехал
