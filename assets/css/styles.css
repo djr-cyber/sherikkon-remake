@@ -889,6 +889,7 @@
     padding: 0;
     text-decoration: none;
     border: 2px solid #F6882B;
+    overflow: hidden;
   }
   .project__title {
     font-family: 'Luga', var(--font-heading);
@@ -963,6 +964,15 @@
   .project__title {
     font-size: var(--text-xl);
     line-height: var(--leading-snug);
+  }
+  /* Список "Проекты" — тело карточки (не фото) заливаем фирменным
+     оранжевым; кнопку перекрашиваем в navy, иначе стандартная
+     оранжевая .btn--primary сливалась бы с фоном. */
+  #proekty-list .project__body { background: #F6882B; }
+  #proekty-list .project__title { color: #17243A; }
+  #proekty-list .card__link.btn--primary {
+    background-color: #17243A;
+    color: #FFFFFF;
   }
 
   /* ---------- Команда ----------
