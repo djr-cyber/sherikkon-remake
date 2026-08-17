@@ -1598,6 +1598,22 @@
   }
   .page-hero--case .crumbs a:hover { color: #F6882B; }
   .page-hero--case .crumbs__sep { color: #FFFFFF; }
+  /* Фото + абзац кейса переехали внутрь героя, справа от заголовка,
+     вместо отдельной белой секции под ним. */
+  .page-hero--case .page-hero__inner { display: grid; gap: var(--space-8); }
+  @media (min-width: 900px) {
+    .page-hero--case .page-hero__inner { grid-template-columns: 1fr 1fr; align-items: center; }
+  }
+  .page-hero--case .page-hero__media img {
+    width: 100%;
+    display: block;
+    border-radius: var(--radius-lg);
+    border: 2px solid #FFFFFF;
+  }
+  .page-hero--case .page-hero__caption {
+    margin-top: var(--space-4);
+    color: #FFFFFF;
+  }
   /* ---------- Детальная страница проекта (title + фото + абзац,
      как в оригинале — минимально, без лишних блоков) ---------- */
   .project-detail__media {
