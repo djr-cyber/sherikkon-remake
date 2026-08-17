@@ -1727,9 +1727,8 @@
   .service-block__figure {
     display: none;
     position: absolute;
-    top: 50%;
+    top: var(--space-10);
     right: 0;
-    transform: translateY(-50%);
     width: 380px;
     height: auto;
     pointer-events: none;
@@ -1738,6 +1737,9 @@
   /* Тегов больше, чем в остальных блоках — узим иллюстрацию, чтобы
      она не наезжала на последний тег в строке. */
   #ocenka .service-block__figure { width: 320px; }
+  /* У "Тренинги" тегов больше всех (3 строки) — сужаем иллюстрацию ещё
+     сильнее, иначе она наезжает на третью строку тегов. */
+  #treningi .service-block__figure { width: 340px; }
   /* "Оценка бизнеса" — 4 тега сводим в сетку 2×2 вместо одного ряда,
      чтобы не наезжали на иллюстрацию сбоку. */
   #ocenka .tag-list { display: grid; grid-template-columns: repeat(2, max-content); }
