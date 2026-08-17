@@ -189,6 +189,7 @@
 
       <!-- --------------------- СПИКЕРЫ И ПРЕЗЕНТАЦИИ --------------------- -->
       <article class="service-block" id="spikery">
+        <img class="service-block__figure" src="assets/img/spikery-figure.png" alt="" aria-hidden="true">
         <h2 data-reveal style="font-size:var(--text-3xl)">Спикеры и презентации</h2>
 
         <div data-reveal>
@@ -217,6 +218,7 @@
 
       <!-- ----------------------------- РЕЗУЛЬТАТЫ ----------------------------- -->
       <article class="service-block" id="rezultaty">
+        <img class="service-block__figure" src="assets/img/rezultaty-figure.png" alt="" aria-hidden="true">
         <h2 data-reveal style="font-size:var(--text-3xl)">Результаты</h2>
 
         <div data-reveal>
@@ -264,5 +266,24 @@
 <script src="assets/js/forms.js"></script>
 <script src="assets/js/motion.js"></script>
 <script src="assets/js/main.js"></script>
+<script>
+(function(){
+  var figures = document.querySelectorAll('.service-block__figure');
+  if (!figures.length) return;
+  if (!('IntersectionObserver' in window)) {
+    figures.forEach(function(f){ f.classList.add('is-revealed'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-revealed');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+  figures.forEach(function(f){ io.observe(f); });
+})();
+</script>
 </body>
 </html>

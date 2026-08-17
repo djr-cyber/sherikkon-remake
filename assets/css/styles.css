@@ -1723,7 +1723,7 @@
   }
   /* Иллюстрации услуг — справа от заголовка/лида, одинаковая ширина
      и правый край у всех блоков, чтобы визуально стоять в 1 столбик. */
-  #treningi, #kouching, #ocenka { position: relative; }
+  #treningi, #kouching, #ocenka, #spikery, #rezultaty { position: relative; }
   .service-block__figure {
     display: none;
     position: absolute;
@@ -1746,6 +1746,11 @@
   /* "Оценка бизнеса" — 4 тега сводим в сетку 2×2 вместо одного ряда,
      чтобы не наезжали на иллюстрацию сбоку. */
   #ocenka .tag-list { display: grid; grid-template-columns: repeat(2, max-content); }
+  /* Подгонка ширины под объём текста в каждом блоке, чтобы иллюстрация
+     не наезжала на теги/границы (см. остальные .service-block__figure
+     правила выше). */
+  #spikery .service-block__figure { width: 260px; }
+  #rezultaty .service-block__figure { width: 300px; }
 }
 
 /* ============================================================
@@ -1815,9 +1820,23 @@
   }
   .js [data-reveal-words] { opacity: 0; will-change: transform, opacity; }
 
+  /* Иллюстрации услуг на "Услуги" — плавно появляются справа при
+     прокрутке (IntersectionObserver в uslugi.html), а не выезжают
+     резко вместе с остальным контентом. */
+  .js .service-block__figure {
+    opacity: 0;
+    transform: translateX(40px);
+    transition: opacity 0.7s var(--ease-soft), transform 0.7s var(--ease-soft);
+  }
+  .js .service-block__figure.is-revealed {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
   @media (prefers-reduced-motion: reduce) {
     .js [data-reveal],
-    .js [data-reveal-words] {
+    .js [data-reveal-words],
+    .js .service-block__figure {
       opacity: 1 !important;
       transform: none !important;
     }
