@@ -1710,6 +1710,16 @@
     border-top: 2px solid #17243A;
   }
   .service-block h2 { margin-bottom: var(--space-5); }
+  /* Скобка-окантовка над заголовком: верх + бока, без низа, скругление
+     только у верхних углов. */
+  #treningi h2, #kouching h2, #ocenka h2, #spikery h2 {
+    display: inline-block;
+    border-top: 2px solid #17243A;
+    border-left: 2px solid #17243A;
+    border-right: 2px solid #17243A;
+    border-radius: var(--radius) var(--radius) 0 0;
+    padding: var(--space-3) var(--space-5) var(--space-2);
+  }
   .service-block .lead,
   .service-block p { color: #17243A; }
   .tag-list { display: flex; flex-wrap: wrap; gap: var(--space-2); margin-top: var(--space-5); }
