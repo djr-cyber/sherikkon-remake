@@ -1610,7 +1610,16 @@
     display: grid;
     gap: var(--space-8);
     background: var(--surface);
-    border: 2px solid #17243A;
+    border-width: 2px;
+    border-style: solid;
+    /* Рамка идёт по диагональному фону: левый/верхний край лежит на
+       синей половине — там нужна оранжевая линия, иначе сливается;
+       правый/нижний край лежит на оранжевой половине, где синяя
+       линия и так хорошо видна. */
+    border-top-color: #F6882B;
+    border-left-color: #F6882B;
+    border-right-color: #17243A;
+    border-bottom-color: #17243A;
     border-radius: var(--radius-lg);
     padding: var(--space-7) var(--space-6);
   }
