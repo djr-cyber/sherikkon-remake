@@ -1707,7 +1707,7 @@
   /* ---------- Крупный блок услуги ---------- */
   .service-block {
     padding-block: var(--space-10);
-    border-top: 1px solid var(--border);
+    border-top: 2px solid #17243A;
   }
   .service-block h2 { margin-bottom: var(--space-5); }
   .service-block .lead,
@@ -1723,7 +1723,7 @@
   }
   /* Иллюстрации услуг — справа от заголовка/лида, одинаковая ширина
      и правый край у всех блоков, чтобы визуально стоять в 1 столбик. */
-  #treningi, #kouching { position: relative; }
+  #treningi, #kouching, #ocenka { position: relative; }
   .service-block__figure {
     display: none;
     position: absolute;
@@ -1734,6 +1734,9 @@
     pointer-events: none;
   }
   @media (min-width: 1024px) { .service-block__figure { display: block; } }
+  /* Тегов больше, чем в остальных блоках — узим иллюстрацию, чтобы
+     она не наезжала на последний тег в строке. */
+  #ocenka .service-block__figure { width: 320px; }
 }
 
 /* ============================================================
