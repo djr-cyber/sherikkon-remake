@@ -1581,6 +1581,20 @@
     pointer-events: none;
   }
   .page-hero__inner { position: relative; z-index: var(--z-raised); }
+  /* Кейсы проектов — фирменный сине-оранжевый фон вместо белого;
+     текст поверх переключаем на белый для читаемости, а фиолетовое
+     свечение ::before отключаем — оно не сочетается с ярким фоном. */
+  .page-hero--case {
+    background: #17243A url('../img/proekt-hero-bg.jpg') center / cover no-repeat;
+  }
+  .page-hero--case::before { display: none; }
+  .page-hero--case .crumbs a,
+  .page-hero--case .crumbs span,
+  .page-hero--case h1 {
+    color: #FFFFFF;
+  }
+  .page-hero--case .crumbs a:hover { color: #F6882B; }
+  .page-hero--case .crumbs__sep { color: #FFFFFF; }
   /* ---------- Детальная страница проекта (title + фото + абзац,
      как в оригинале — минимально, без лишних блоков) ---------- */
   .project-detail__media {
