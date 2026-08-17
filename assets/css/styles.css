@@ -1721,8 +1721,9 @@
     font-size: var(--text-sm);
     color: #17243A;
   }
-  /* Иллюстрация "Тренинги" — справа от заголовка/лида. */
-  #treningi { position: relative; }
+  /* Иллюстрации услуг — справа от заголовка/лида, одинаковая ширина
+     и правый край у всех блоков, чтобы визуально стоять в 1 столбик. */
+  #treningi, #kouching { position: relative; }
   .service-block__figure {
     display: none;
     position: absolute;
