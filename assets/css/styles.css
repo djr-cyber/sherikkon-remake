@@ -973,6 +973,17 @@
   #proekty-list .project__title { color: #17243A; }
   #proekty-list .card__link.btn--primary {
     background-color: #17243A;
+    border-color: #0B121F;
+    color: #FFFFFF;
+  }
+  /* .btn--primary:hover красит кнопку через background-image
+     (градиент), который перекрывает background-color сверху — без
+     этой отдельной hover-рамки кнопка на карточках проекта при
+     наведении становилась оранжевой поверх navy-заливки. Тот же
+     градиент, но в navy-тонах. */
+  #proekty-list .card__link.btn--primary:hover {
+    background-color: #17243A;
+    background-image: linear-gradient(180deg, #3C5378 0%, #17243A 45%, #0B121F 100%);
     color: #FFFFFF;
   }
 
