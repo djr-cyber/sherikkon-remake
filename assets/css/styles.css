@@ -1622,12 +1622,6 @@
     border-bottom-color: #17243A;
     border-radius: var(--radius-lg);
     padding: var(--space-7) var(--space-6);
-    /* На стыке, где верхний/левый оранжевый край переходит в правый/
-       нижний синий, диагональный фон снаружи режет ровно по цвету
-       линии, и в углу вылезает "хвостик" не в тон. Белый ободок
-       снаружи рамки перекрывает этот стык и делает переход чистым
-       при любой высоте карточки на любой странице. */
-    box-shadow: 0 0 0 3px #FFFFFF;
   }
   @media (min-width: 900px) {
     .page-hero--case .page-hero__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; }
