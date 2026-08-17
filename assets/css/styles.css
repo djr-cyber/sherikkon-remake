@@ -1603,34 +1603,30 @@
   }
   .page-hero--case::before { display: none; }
   /* Фото + абзац кейса переехали внутрь героя, справа от заголовка,
-     вместо отдельной белой секции под ним. */
-  .page-hero--case .page-hero__inner { display: grid; gap: var(--space-8); }
+     вместо отдельной белой секции под ним. Заголовок, подпись и фото
+     всё вместе лежат в одной общей белой рамке-плашке поверх
+     сине-оранжевого фона — не три разных блока, а один. */
+  .page-hero--case .page-hero__inner {
+    display: grid;
+    gap: var(--space-8);
+    background: var(--surface);
+    border: 2px solid #17243A;
+    border-radius: var(--radius-lg);
+    padding: var(--space-7) var(--space-6);
+  }
   @media (min-width: 900px) {
     .page-hero--case .page-hero__inner { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); align-items: center; }
   }
   /* Без min-width:0 длинный текст в колонке отказывается сжиматься и
      вылезает за пределы своей колонки, наезжая на соседнюю. */
   .page-hero--case .page-hero__inner > * { min-width: 0; }
-  .page-hero--case h1 { max-width: none; }
-  /* Фото — на оранжевой половине фона, поэтому окантовка navy,
-     чтобы не сливаться. */
+  .page-hero--case h1 { max-width: none; color: #17243A; }
   .page-hero--case .page-hero__media img {
     width: 100%;
     display: block;
     border-radius: var(--radius-lg);
     border: 2px solid #17243A;
   }
-  /* Заголовок и подпись кейса — вместе в одной белой рамке-плашке
-     (как обычный светлый блок сайта), поверх сине-оранжевого фона.
-     Плашка лежит на тёмно-синей половине фона, поэтому окантовка
-     оранжевая, чтобы не сливаться. */
-  .page-hero--case .page-hero__title-box {
-    background: var(--surface);
-    border: 2px solid #F6882B;
-    border-radius: var(--radius-lg);
-    padding: var(--space-7) var(--space-6);
-  }
-  .page-hero--case h1 { color: #17243A; }
   .page-hero--case .page-hero__caption {
     margin-top: var(--space-4);
     color: #17243A;
