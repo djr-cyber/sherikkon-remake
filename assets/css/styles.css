@@ -1712,7 +1712,7 @@
   .service-block h2 { margin-bottom: var(--space-5); }
   /* Скобка-окантовка над заголовком: верх + бока, без низа, скругление
      только у верхних углов. */
-  #treningi h2, #kouching h2, #ocenka h2, #spikery h2 {
+  #treningi h2, #kouching h2, #ocenka h2, #spikery h2, #rezultaty h2 {
     display: inline-block;
     border-top: 2px solid #17243A;
     border-left: 2px solid #17243A;
@@ -1753,13 +1753,54 @@
   /* "Коучинг" — текста меньше всех, иллюстрация при ширине 380px
      вылезала за нижнюю границу блока. */
   #kouching .service-block__figure { width: 340px; }
+  /* "Спикеры" — внутри рамки-кавычек по центру логотип Sherikkon:
+     позиционирование переносим на обёртку, картинка внутри просто
+     100% ширины, лого — отдельный слой поверх неё по центру. */
+  #spikery .service-block__figure-wrap {
+    display: none;
+    position: absolute;
+    top: var(--space-10);
+    right: 0;
+    width: 360px;
+    pointer-events: none;
+  }
+  @media (min-width: 1024px) { #spikery .service-block__figure-wrap { display: block; } }
+  #spikery .service-block__figure {
+    position: static;
+    display: block;
+    width: 100%;
+  }
+  #spikery .service-block__figure-brand {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+  }
+  #spikery .service-block__figure-brand img { width: 30px; height: auto; }
+  #spikery .service-block__figure-brand-text { display: flex; flex-direction: column; align-items: center; line-height: 1.15; }
+  #spikery .service-block__figure-brand-name {
+    font-family: var(--font-h);
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: #17243A;
+  }
+  #spikery .service-block__figure-brand-sub {
+    font-family: var(--font-h);
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    color: #17243A;
+  }
   /* "Оценка бизнеса" — 4 тега сводим в сетку 2×2 вместо одного ряда,
      чтобы не наезжали на иллюстрацию сбоку. */
   #ocenka .tag-list { display: grid; grid-template-columns: repeat(2, max-content); }
   /* Подгонка ширины под объём текста в каждом блоке, чтобы иллюстрация
      не наезжала на теги/границы (см. остальные .service-block__figure
      правила выше). */
-  #spikery .service-block__figure { width: 360px; }
   #rezultaty .service-block__figure { width: 360px; }
 }
 
@@ -1833,12 +1874,12 @@
   /* Иллюстрации услуг на "Услуги" — плавно появляются справа при
      прокрутке (IntersectionObserver в uslugi.html), а не выезжают
      резко вместе с остальным контентом. */
-  .js .service-block__figure {
+  .js .service-block__reveal {
     opacity: 0;
     transform: translateX(40px);
     transition: opacity 0.7s var(--ease-soft), transform 0.7s var(--ease-soft);
   }
-  .js .service-block__figure.is-revealed {
+  .js .service-block__reveal.is-revealed {
     opacity: 1;
     transform: translateX(0);
   }
@@ -1846,7 +1887,7 @@
   @media (prefers-reduced-motion: reduce) {
     .js [data-reveal],
     .js [data-reveal-words],
-    .js .service-block__figure {
+    .js .service-block__reveal {
       opacity: 1 !important;
       transform: none !important;
     }
