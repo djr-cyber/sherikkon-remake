@@ -1585,7 +1585,7 @@
      текст поверх переключаем на белый для читаемости, а фиолетовое
      свечение ::before отключаем — оно не сочетается с ярким фоном. */
   .page-hero--case {
-    background: #17243A url('../img/proekt-hero-bg.jpg') center / cover no-repeat;
+    background: #17243A url('../img/proekt-hero-bg.jpg') center / 100% 100% no-repeat;
   }
   .page-hero--case::before { display: none; }
   .page-hero--case .crumbs a,
