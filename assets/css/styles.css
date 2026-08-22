@@ -691,6 +691,8 @@
   #reshenie p,
   #reshenie .plain-list__text,
   #reshenie .plain-list__num { font-family: var(--font-heading); letter-spacing: 0.03em; }
+  /* Карточки выше — текст был близко к верхней/нижней границе. */
+  #reshenie .card { padding-block: var(--space-8); }
   /* Только карточка "Наше решение" — цифры в синем цвете логотипа,
      карточку "Результаты" не трогаем. */
   #reshenie .card:first-child .plain-list__num { color: #17243A; }
@@ -1412,7 +1414,8 @@
   /* Текст у широких карточек не тянется на всю ширину — узкая колонка слева. */
   #uslugi .grid--4 > article:nth-child(2) .card__text,
   #uslugi .grid--4 > article:nth-child(3) .card__text { max-width: 46ch; }
-  /* Иконка "переговоры" в "Коучинге" — справа, крупная декоративная картинка. */
+  /* Декоративная иконка справа на карточке "Оценка бизнеса" (в "Коучинге"
+     убрали по просьбе пользователя). */
   .card__meeting-icon {
     display: none;
     position: absolute;
@@ -1424,7 +1427,6 @@
     pointer-events: none;
   }
   @media (min-width: 640px) {
-    #uslugi .grid--4 > article:nth-child(2) .card__meeting-icon,
     #uslugi .grid--4 > article:nth-child(3) .card__meeting-icon { display: block; }
   }
 
