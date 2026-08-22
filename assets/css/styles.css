@@ -691,8 +691,9 @@
   #reshenie p,
   #reshenie .plain-list__text,
   #reshenie .plain-list__num { font-family: var(--font-heading); letter-spacing: 0.03em; }
-  /* Карточки выше — текст был близко к верхней/нижней границе. */
-  #reshenie .card { padding-block: var(--space-8); }
+  /* Карточки выше — текст был близко к верхней/нижней границе.
+     48px не читалось как заметная разница — подняли ещё сильнее. */
+  #reshenie .card { padding-block: var(--space-10); }
   /* Только карточка "Наше решение" — цифры в синем цвете логотипа,
      карточку "Результаты" не трогаем. */
   #reshenie .card:first-child .plain-list__num { color: #17243A; }
