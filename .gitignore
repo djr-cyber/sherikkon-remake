@@ -12,5 +12,8 @@ desktop.ini
 # Промежуточный файл, оставшийся от скачивания шрифтов
 assets/fonts/_google.css
 
+# Claude Code project config (dev-server launch config, local only)
+.claude/
+
 # Логи
 *.log

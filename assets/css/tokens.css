@@ -1,141 +1,51 @@
 /* ============================================================
-   Sherikkon Consulting — Design System "Royal Violet"
+   Sherikkon Consulting — Design System
+   Палитра 60/30/10: 60% белый, 30% синий (#17243A), 10% оранжевый
+   (#F6882B) — по прямому запросу пользователя.
    tokens.css — шрифты и дизайн-токены
    Единственное место, где меняются цвета, шкалы и тайминги.
    ============================================================ */
 
 /* ---------- Шрифты (локальные woff2, вариативные) ---------- */
 
-/* Exo 2 — единый шрифт на весь сайт, вариативный 400–700.
-   Геометричный технический гротеск с полной поддержкой кириллицы —
-   замена Playfair Display + Inter по прямому запросу пользователя. */
+/* Montserrat — единый шрифт на весь сайт (замена Lucida Sans Unicode):
+   тот же шрифт, что используется на оригинальном sherikkon.uz.
+   Вариативный woff2 с Google Fonts, вес 400–700. */
 @font-face {
-  font-family: 'Exo 2';
+  font-family: 'Montserrat';
   font-style: normal;
   font-weight: 400 700;
   font-display: swap;
-  src: url('../fonts/exo2-400-700-cyrillic.woff2') format('woff2');
+  src: url('../fonts/montserrat-400-700-cyrillic.woff2') format('woff2');
   unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
 }
 @font-face {
-  font-family: 'Exo 2';
+  font-family: 'Montserrat';
   font-style: normal;
   font-weight: 400 700;
   font-display: swap;
-  src: url('../fonts/exo2-400-700-cyrillic-ext.woff2') format('woff2');
+  src: url('../fonts/montserrat-400-700-cyrillic-ext.woff2') format('woff2');
   unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
 @font-face {
-  font-family: 'Exo 2';
+  font-family: 'Montserrat';
   font-style: normal;
   font-weight: 400 700;
   font-display: swap;
-  src: url('../fonts/exo2-400-700-latin.woff2') format('woff2');
+  src: url('../fonts/montserrat-400-700-latin.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
     U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
     U+FEFF, U+FFFD;
 }
 @font-face {
-  font-family: 'Exo 2';
+  font-family: 'Montserrat';
   font-style: normal;
   font-weight: 400 700;
   font-display: swap;
-  src: url('../fonts/exo2-400-700-latin-ext.woff2') format('woff2');
+  src: url('../fonts/montserrat-400-700-latin-ext.woff2') format('woff2');
   unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
     U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0,
     U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-
-/* IBM Plex Sans — только заголовки h1–h4 (--font-h), вариативный 500–700.
-   Остальной текст остаётся на Exo 2 (--font-heading/--font-body) — так
-   решили, чтобы не плодить контраст по всему сайту. */
-@font-face {
-  font-family: 'IBM Plex Sans';
-  font-style: normal;
-  font-weight: 500 700;
-  font-display: swap;
-  src: url('../fonts/ibmplexsans-500-700-cyrillic.woff2') format('woff2');
-  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-}
-@font-face {
-  font-family: 'IBM Plex Sans';
-  font-style: normal;
-  font-weight: 500 700;
-  font-display: swap;
-  src: url('../fonts/ibmplexsans-500-700-cyrillic-ext.woff2') format('woff2');
-  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
-}
-@font-face {
-  font-family: 'IBM Plex Sans';
-  font-style: normal;
-  font-weight: 500 700;
-  font-display: swap;
-  src: url('../fonts/ibmplexsans-500-700-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
-    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
-    U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: 'IBM Plex Sans';
-  font-style: normal;
-  font-weight: 500 700;
-  font-display: swap;
-  src: url('../fonts/ibmplexsans-500-700-latin-ext.woff2') format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
-    U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0,
-    U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-
-/* Alegreya Sans — короткие акценты (--font-accent): eyebrow-подписи
-   секций и роли в карточках команды. Курсив, читаемый гуманистический
-   гротеск — замена изначально запрошенной Zeequada (та требовала капчу
-   для скачивания, которую мы не обходим). */
-@font-face {
-  font-family: 'Alegreya Sans';
-  font-style: italic;
-  font-weight: 500;
-  font-display: swap;
-  src: url('../fonts/alegreyasans-500-italic-cyrillic.woff2') format('woff2');
-  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
-}
-@font-face {
-  font-family: 'Alegreya Sans';
-  font-style: italic;
-  font-weight: 500;
-  font-display: swap;
-  src: url('../fonts/alegreyasans-500-italic-cyrillic-ext.woff2') format('woff2');
-  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
-}
-@font-face {
-  font-family: 'Alegreya Sans';
-  font-style: italic;
-  font-weight: 500;
-  font-display: swap;
-  src: url('../fonts/alegreyasans-500-italic-latin.woff2') format('woff2');
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
-    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215,
-    U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: 'Alegreya Sans';
-  font-style: italic;
-  font-weight: 500;
-  font-display: swap;
-  src: url('../fonts/alegreyasans-500-italic-latin-ext.woff2') format('woff2');
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304,
-    U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0,
-    U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
-
-/* Luga — присланный клиентом шрифт, только для текста на кнопке
-   (--font-accent-btn). Файл в исходном .ttf (без конвертации в woff2 —
-   на машине нет инструментов для этого), поэтому чуть тяжелее обычного. */
-@font-face {
-  font-family: 'Luga';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('../fonts/luga.ttf') format('truetype');
 }
 
 /* ============================================================
@@ -143,31 +53,39 @@
    ============================================================ */
 
 :root {
-  /* ---------- Палитра: светлая тема ---------- */
-  /* Поверхности — холодный серо-белый */
+  /* ---------- Палитра 60/30/10 ----------
+     60% белый/нейтральный (фон, поверхности, текст), 30% синий
+     #17243A (карточки, рамки, акцентные блоки), 10% оранжевый
+     #F6882B (ссылки, кнопки, точечные акценты). Никакого фиолетового —
+     нейтральные тона строго серые, без цветного оттенка. */
   --bg:            #FFFFFF;  /* фон страницы */
-  --surface:       #F7F7FA;  /* секции-подложки */
+  --surface:       #FAFAFA;  /* секции-подложки */
   --surface-2:     #FFFFFF;  /* карточки — белее подложки, держатся на border+shadow */
-  --surface-3:     #F3F1FA;  /* карточка/поле в hover — едва заметный фиолетовый тон */
-  --border:        #E4E3ED;  /* границы и разделители */
-  --border-strong: #CFCCDD;  /* границы в hover / focus-within */
+  --surface-3:     #F4F4F5;  /* карточка/поле в hover — нейтральный серый */
+  --border:        #E4E4E7;  /* границы и разделители */
+  --border-strong: #D4D4D8;  /* границы в hover / focus-within */
 
-  /* Бренд: navy/orange = всё интерактивное (было фиолетовым до ребрендинга) */
-  --primary:       #F6882B;  /* фирменный оранжевый — ссылки и акценты */
+  /* Бренд: 30% синий / 10% оранжевый — всё интерактивное и акцентное */
+  --primary:       #F6882B;  /* фирменный оранжевый (10%) — ссылки и акценты */
   --primary-light: #FBB876;  /* декоративный: рамки, свечения — НЕ для текста на светлом */
-  --primary-deep:  #17243A;  /* фирменный navy — для текста, если нужен акцент темнее */
+  --primary-deep:  #17243A;  /* фирменный синий (30%) — карточки, рамки, текст-акцент */
   --on-primary:    #2B1400;
 
-  /* Акцент: шампань-золото = премиальный акцент, CTA, декоративные цифры */
-  --accent:        #D4AF6A;  /* декоративный/фон кнопки — НЕ для текста на светлом (мал контраст) */
-  --accent-light:  #E8C98D;
-  --accent-deep:   #7A5E22;  /* ~5.8:1 на белом, ~5.4:1 на --surface — AA с запасом */
-  --on-accent:     #1A1026;  /* тёмный текст на золотой кнопке */
+  /* Акцент = тот же оранжевый, что и --primary (единый акцентный цвет
+     на весь сайт вместо прежнего золотого). --accent-deep — затемнённый
+     оранжевый для текста (ссылки/hover), достаточный AA-контраст на белом. */
+  --accent:        #F6882B;
+  --accent-light:  #FBB876;
+  --accent-deep:   #B34209;  /* ~5.7:1 на белом — AA с запасом */
+  --on-accent:     #2B1400;
 
-  /* Текст */
-  --fg:            #14101F;  /* ~18:1 на белом — AAA, тёмно-фиолетовый почти-чёрный */
-  --fg-muted:      #5B5470;  /* ~6.3:1 на белом — AA */
-  --fg-subtle:     #726B87;  /* подсказки и мелкие подписи — ~4.9:1 на белом, AA */
+  /* Текст — нейтральный серо-чёрный, без синего и фиолетового оттенка.
+     Затемнено по фидбеку: серый на белом было неудобно читать —
+     --fg-muted (обычный текст абзацев) и --fg-subtle (подписи/подсказки)
+     подняты на ступень темнее. */
+  --fg:            #18181B;  /* ~19:1 на белом — AAA, нейтральный почти-чёрный */
+  --fg-muted:      #3F3F46;  /* ~10.4:1 на белом — AAA, текст карточек/абзацев */
+  --fg-subtle:     #52525B;  /* ~7.7:1 на белом — AAA, подсказки и мелкие подписи */
 
   /* Состояния */
   --success:       #1E9E76;  /* затемнено под белый фон относительно --success-light */
@@ -189,26 +107,22 @@
 
   /* Плёнки и свечения */
   --scrim:         rgba(7, 4, 16, 0.78);   /* оверлей модалок/меню */
-  --glow-violet:   rgba(246, 136, 43, 0.16);
-  --glow-fuchsia:  rgba(192, 38, 211, 0.12);
-  --glow-gold:     rgba(212, 175, 106, 0.18);
+  --glow-violet:   rgba(246, 136, 43, 0.16);  /* название историческое, значение уже оранжевое */
 
-  --gradient-brand: linear-gradient(120deg, var(--primary) 0%, #C026D3 100%);
+  --gradient-brand: linear-gradient(120deg, var(--primary) 0%, var(--primary-deep) 100%);
   --gradient-gold:  linear-gradient(120deg, var(--accent) 0%, var(--accent-light) 100%);
-  --gradient-line:  linear-gradient(90deg, var(--primary) 0%, #C026D3 50%, var(--accent) 100%);
-  /* Более контрастный разбег внутри золота — для акцентных слов в
+  --gradient-line:  linear-gradient(90deg, var(--primary-deep) 0%, var(--primary) 100%);
+  /* Более контрастный разбег внутри оранжевого — для акцентных слов в
      заголовках (.grad), где --gradient-gold читается почти плоским. */
   --gradient-heading-accent: linear-gradient(120deg, var(--accent-deep) 0%, var(--accent) 55%, var(--accent-light) 100%);
 
   /* ---------- Типографика ----------
-     Luga (клиентский фирменный шрифт) — теперь дефолт почти везде,
-     чтобы не переопределять его вручную посекционно. Exo 2/IBM Plex
-     остаются как фолбэк. --font-accent (eyebrow-подписи, роль в
-     карточках команды) нарочно не тронут — отдельный акцентный стиль. */
-  --font-heading: 'Luga', 'Exo 2', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-body: 'Luga', 'Exo 2', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-h: 'Luga', 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-accent: 'Alegreya Sans', Georgia, serif;
+     Montserrat — единственный шрифт на весь сайт, тот же, что на
+     оригинальном sherikkon.uz (заменяет Lucida Sans Unicode). */
+  --font-heading: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-h: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-accent: 'Montserrat', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   /* Шкала 12 → 88, крупные кегли текучие */
   --text-xs:   0.75rem;   /* 12 */
@@ -263,9 +177,9 @@
      На белом фоне чёрная тень читается тяжело даже при небольшой
      непрозрачности — берём тёмный текстовый тон (--fg) вместо
      чистого чёрного, мягче и «в цвет» сайта. */
-  --shadow-sm: 0 1px 2px rgba(20, 16, 31, 0.06);
-  --shadow:    0 8px 20px -8px rgba(20, 16, 31, 0.12);
-  --shadow-lg: 0 20px 48px -16px rgba(20, 16, 31, 0.16);
+  --shadow-sm: 0 1px 2px rgba(24, 24, 27, 0.06);
+  --shadow:    0 8px 20px -8px rgba(24, 24, 27, 0.12);
+  --shadow-lg: 0 20px 48px -16px rgba(24, 24, 27, 0.16);
   --shadow-glow: 0 12px 28px -10px var(--glow-violet);
 
   /* ---------- Слои ---------- */

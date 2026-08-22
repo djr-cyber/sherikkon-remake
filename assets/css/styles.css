@@ -261,7 +261,7 @@
     font-size: 17px;
     font-weight: 500;
     padding-block: var(--space-2);
-    font-family: 'Luga', var(--font-heading);
+    font-family: var(--font-heading);
     letter-spacing: 0.03em;
   }
   .nav__link::after {
@@ -299,7 +299,7 @@
     font-weight: 600;
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
-    font-family: 'Luga', var(--font-heading);
+    font-family: var(--font-heading);
     letter-spacing: 0.03em;
   }
   @media (min-width: 1280px) { .header__phone { display: inline-flex; } }
@@ -435,7 +435,7 @@
     background-color: #F6882B;
     background-image: none;
     color: #2B1400;
-    font-family: 'Luga', var(--font-heading);
+    font-family: var(--font-heading);
     letter-spacing: 0.03em;
     border: 1px solid #D9660A;
     box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.15);
@@ -559,14 +559,14 @@
             mask-image: linear-gradient(to right, transparent, black 30%);
   }
   @media (min-width: 1024px) { .hero__waves { display: block; } }
-  .hero__title { max-width: 30ch; color: #FFFFFF; font-family: 'Luga', var(--font-heading); letter-spacing: 0.03em; }
+  .hero__title { max-width: 30ch; color: #FFFFFF; font-family: var(--font-heading); letter-spacing: 0.03em; }
   @media (min-width: 1024px) { .hero__title { font-size: 48px; } }
   .hero__text {
     margin-top: var(--space-6);
     max-width: 52ch;
     font-size: 22px;
     color: #FFFFFF;
-    font-family: 'Luga', var(--font-body);
+    font-family: var(--font-body);
     letter-spacing: 0.03em;
   }
   .hero__text + .hero__text { font-size: 18px; }
@@ -647,7 +647,10 @@
   /* ---------- Простой нумерованный список ----------
      Как в оригинале: всё видно сразу, без сворачивания/скролла. */
   .plain-list { display: flex; flex-direction: column; gap: var(--space-4); }
-  .plain-list__item { display: flex; gap: var(--space-3); align-items: baseline; }
+  /* center, не baseline: на двустрочных пунктах (текст переносится)
+     baseline цеплялся за первую строку и цифра "уезжала" вверх —
+     выглядело криво относительно всего блока текста. */
+  .plain-list__item { display: flex; gap: var(--space-3); align-items: center; }
   .plain-list__num {
     flex-shrink: 0;
     min-width: 1.4em;
@@ -677,8 +680,8 @@
   .problema__image { width: 100%; height: 100%; object-fit: cover; display: block; }
   #problema h2,
   #problema p,
-  #problema .plain-list__text { font-family: 'Luga', var(--font-heading); letter-spacing: 0.03em; }
-  #problema .plain-list__num { color: #F6882B; font-family: 'Luga', var(--font-heading); letter-spacing: 0.03em; }
+  #problema .plain-list__text { font-family: var(--font-heading); letter-spacing: 0.03em; }
+  #problema .plain-list__num { color: #F6882B; font-family: var(--font-heading); letter-spacing: 0.03em; }
   #problema p,
   #problema .plain-list__text { line-height: var(--leading-normal); }
   /* Заголовок блока крупнее обычного h2 (--text-5xl, до 64px) — приравниваем
@@ -687,17 +690,24 @@
   #reshenie h2,
   #reshenie p,
   #reshenie .plain-list__text,
-  #reshenie .plain-list__num { font-family: 'Luga', var(--font-heading); letter-spacing: 0.03em; }
+  #reshenie .plain-list__num { font-family: var(--font-heading); letter-spacing: 0.03em; }
   /* Только карточка "Наше решение" — цифры в синем цвете логотипа,
      карточку "Результаты" не трогаем. */
-  #reshenie .card:first-child .plain-list__num { color: #095486; }
+  #reshenie .card:first-child .plain-list__num { color: #17243A; }
   /* Фон карточки "Наше решение" — присланная картинка (скруглённая
      рамка + стрелка-график уже нарисованы в самом файле), вместо
      обычной синеватой заливки .card. Текст остаётся как есть. */
   #reshenie .card:first-child {
     background-image: url('../img/card-arrow-orange.png');
-    background-size: cover;
+    /* contain, не cover: пропорции картинки (1403×1121) не совпадают
+       с пропорциями карточки — cover обрезал часть нарисованной рамки.
+       background-color сброшен в прозрачный — иначе в пустых полосах
+       сверху/снизу (от contain) просвечивал светло-серый фон базовой
+       .card, читалось как отдельная серая плашка под картинкой. */
+    background-color: transparent;
+    background-size: contain;
     background-position: center;
+    background-repeat: no-repeat;
     border: none;
   }
   /* Карточка "Результаты" — тот же приём: присланная картинка вместо
@@ -709,8 +719,10 @@
   #reshenie .plain-list__text strong { font-weight: inherit; }
   #reshenie #rezultaty-card {
     background-image: url('../img/card-arrow-blue.png');
-    background-size: cover;
+    background-color: transparent;
+    background-size: contain;
     background-position: center;
+    background-repeat: no-repeat;
     border: none;
   }
 
@@ -792,22 +804,22 @@
   .step__text { margin-top: var(--space-3); color: var(--fg-muted); }
 
   /* ---------- Карточка (общая) ---------- */
-  /* Синяя окантовка (цвет из логотипа SC, #095486) и тускловатый
-     синеватый фон вместо чистого белого. Без сжатия карточки и колец
-     вокруг неё — эффект убран по просьбе клиента. */
+  /* Синяя окантовка (фирменный синий #17243A, палитра 60/30/10) и
+     тускловатый синеватый фон вместо чистого белого. Без сжатия карточки
+     и колец вокруг неё — эффект убран по просьбе клиента. */
   .card {
     position: relative;
     display: flex;
     flex-direction: column;
     padding: var(--space-6);
-    background: color-mix(in srgb, #095486 6%, var(--surface-2));
-    border: 1px solid color-mix(in srgb, #095486 32%, var(--border));
+    background: color-mix(in srgb, #17243A 6%, var(--surface-2));
+    border: 1px solid color-mix(in srgb, #17243A 32%, var(--border));
     border-radius: var(--radius-lg);
     transition: border-color var(--dur) var(--ease-soft);
   }
   .card:hover,
   .card:focus-within {
-    border-color: color-mix(in srgb, #095486 55%, var(--border));
+    border-color: color-mix(in srgb, #17243A 55%, var(--border));
   }
 
   .card__icon {
@@ -873,7 +885,7 @@
     overflow: hidden;
   }
   .project__title {
-    font-family: 'Luga', var(--font-heading);
+    font-family: var(--font-heading);
     letter-spacing: 0.03em;
     font-weight: 400;
   }
@@ -883,8 +895,17 @@
   .project:focus-within {
     border-color: #D9660A;
   }
-  /* Кнопка "Посмотреть больше проектов" — во всю ширину, как ряд карточек. */
-  .proekty__more { width: 100%; justify-content: center; }
+  /* Кнопка "Посмотреть больше проектов" — по ширине как одна карточка
+     ряда (3 колонки, gap var(--space-5), тот же паддинг var(--gutter),
+     что и у .rail__track), а не во всю ширину контейнера. .rail без
+     max-width, поэтому считаем от 100vw, как и сам ряд карточек. */
+  .proekty__more {
+    display: flex;
+    width: calc((100vw - 2 * var(--gutter) - 2 * var(--space-5)) / 3);
+    max-width: 100%;
+    margin-inline: auto;
+    justify-content: center;
+  }
   /* Декоративная иконка горы стоит рядом с карточкой заявки, справа,
      прижата к низу — не над блоком, а вровень с ним. */
   .proekty__flag {
@@ -903,7 +924,7 @@
     border-radius: var(--radius-lg);
     padding: var(--space-6) var(--space-7);
   }
-  #proekty .section-head h2 { font-family: 'Luga', var(--font-heading); letter-spacing: 0.03em; }
+  #proekty .section-head h2 { font-family: var(--font-heading); letter-spacing: 0.03em; }
   .project__media {
     aspect-ratio: 16 / 10;
     overflow: hidden;
@@ -1158,6 +1179,9 @@
     align-items: center;
     gap: var(--space-4);
   }
+  /* Кнопка отправки — во всю ширину, как строки ввода (.field__control),
+     а не по размеру текста. Действует во всех формах сайта. */
+  .form__foot .btn { width: 100%; }
   .form__note {
     font-size: var(--text-sm);
     color: var(--fg-subtle);
@@ -1213,8 +1237,8 @@
     position: relative;
     padding: var(--space-9) var(--gutter);
     border-radius: var(--radius-lg);
-    background: color-mix(in srgb, #095486 6%, var(--surface));
-    border: 1px solid color-mix(in srgb, #095486 32%, var(--border));
+    background: color-mix(in srgb, #17243A 6%, var(--surface));
+    border: 1px solid color-mix(in srgb, #17243A 32%, var(--border));
     overflow: hidden;
   }
   .cta::before {
@@ -1231,24 +1255,47 @@
   /* Блок "Бесплатная консультация" — компактнее: h2 был на общей
      h2-шкале (до 64px), заголовок и отступы карточки уменьшены. */
   #konsultaciya .cta {
-    padding: var(--space-4) var(--space-7);
-    background: linear-gradient(90deg, #B0B6CA 0%, #FFFFFF 100%);
+    padding: var(--space-8) var(--space-7);
+    background: #17243A;
     border-color: #17243A;
     border-width: 2px;
   }
-  /* Рисунок "ручка + лист" по центру между текстом и формой — своя
-     колонка в гриде, только на десктопе (на мобиле .split складывается
-     в один столбец, картинка просто окажется отдельной строкой). */
-  .konsultaciya__pen { display: none; width: 220px; height: auto; justify-self: center; align-self: center; }
-  @media (min-width: 900px) {
-    #konsultaciya .cta__inner { grid-template-columns: 1.15fr auto 0.85fr; }
-    .konsultaciya__pen { display: block; }
+  /* Один широкий столбец вместо двух колонок: заголовок на всю ширину
+     блока первой строкой, дальше "Ваша выгода" и всё остальное, форма
+     ниже — тоже на всю ширину. Перебивает .split/.split--wide-left
+     (они из @layer layout, этот файл — @layer components, весомее). */
+  #konsultaciya .cta__inner { grid-template-columns: 1fr; }
+  /* Текстовый блок (заголовок/выгоды/телефон) центрируем целиком:
+     сам блок по горизонтали (justify-self) и текст внутри него
+     (text-align) — иначе он лишь смещался к центру панели, а строки
+     внутри по-прежнему жались к левому краю блока. Пункты списка —
+     свои display:flex в разметке, text-align на них не действует,
+     центрируем отдельно через justify-content. Форму ниже не трогаем —
+     она и так на всю ширину. */
+  #konsultaciya .cta__inner > div:first-child { justify-self: center; text-align: center; }
+  #konsultaciya .cta ul li { justify-content: center; }
+  /* .lead уже родителя из-за собственного max-width (--measure) — сам
+     блок не центрировался, только текст внутри него. */
+  #konsultaciya .cta .lead { margin-inline: auto; }
+  /* Сплошной синий фон — текст без своего цвета (h2/lead/список/подписи)
+     перекрашиваем в белый, иначе читается тёмным на тёмном. */
+  #konsultaciya .cta h2,
+  #konsultaciya .cta .lead,
+  #konsultaciya .cta .contact-item__value,
+  #konsultaciya .cta .field__label {
+    color: #FFFFFF;
   }
-  #konsultaciya h2 { font-size: var(--text-4xl); }
+  #konsultaciya .cta li { color: #FFFFFF; }
+  #konsultaciya .cta .field__req { color: var(--accent); }
+  #konsultaciya .cta .contact-item__value:hover { color: var(--accent); }
+  /* Блок теперь в один широкий столбец (.cta__inner выше), места под
+     заголовок с запасом — компактный кегль был нужен только под узкую
+     колонку 2-колоночной раскладки, сейчас можно на общей h2-шкале. */
+  #konsultaciya h2 { font-size: var(--text-4xl); text-wrap: balance; }
   #konsultaciya h2,
   #konsultaciya p,
   #konsultaciya li,
-  #konsultaciya a { font-family: 'Luga', var(--font-heading); letter-spacing: 0.03em; }
+  #konsultaciya a { font-family: var(--font-heading); letter-spacing: 0.03em; }
   #konsultaciya .field__control { border-color: #17243A; }
 
   /* Блок "Ваш уникальный путь к успеху" — тот же приём, что у
@@ -1287,7 +1334,7 @@
   #zayavka h2,
   #zayavka p,
   #zayavka li,
-  #zayavka a { font-family: 'Luga', var(--font-heading); letter-spacing: 0.03em; }
+  #zayavka a { font-family: var(--font-heading); letter-spacing: 0.03em; }
   #zayavka .field__control { border-color: #17243A; }
 
   /* Заголовочный блок "Услуги" — рамка в фирменном цвете + Luga,
@@ -1296,7 +1343,7 @@
   #uslugi { padding-top: var(--space-6); }
   #uslugi .section-head {
     max-width: none;
-    background: linear-gradient(90deg, #B0B6CA 0%, #FFFFFF 100%);
+    background: #17243A;
     border: 2px solid #17243A;
     border-radius: var(--radius-lg);
     padding: var(--space-6) var(--space-7);
@@ -1304,7 +1351,11 @@
   }
   #uslugi .section-head h2,
   #uslugi .section-head p,
-  #uslugi .section-head a { font-family: 'Luga', var(--font-heading); letter-spacing: 0.03em; }
+  #uslugi .section-head a { font-family: var(--font-heading); letter-spacing: 0.03em; }
+  /* Сплошной синий фон — заголовок и описание в белый. Кнопка
+     "Все услуги" не трогаем — у неё свой оранжевый фон. */
+  #uslugi .section-head h2,
+  #uslugi .section-head p { color: #FFFFFF; }
 
   /* Карточки услуг — "бенто"-сетка вместо ровного 2×2: чередуются
      квадратные (1 колонка) и широкие (2 колонки) карточки. */
@@ -1321,7 +1372,7 @@
   #uslugi .grid--4 > article:nth-child(3) .card__icon { display: none; }
   #uslugi .grid--4 > article:nth-child(2),
   #uslugi .grid--4 > article:nth-child(3) {
-    background: linear-gradient(90deg, #B0B6CA 0%, #FFFFFF 100%);
+    background: #17243A;
     border: 2px solid #17243A;
   }
   /* Все 4 карточки услуг: Luga, чёрный текст (был серый --fg-muted).
@@ -1331,15 +1382,24 @@
   #uslugi .grid--4 > article:nth-child(4) .card__icon { display: none; }
   #uslugi .grid--4 > article:nth-child(1),
   #uslugi .grid--4 > article:nth-child(4) {
-    background: linear-gradient(90deg, color-mix(in srgb, #F6882B 35%, white) 0%, #FFFFFF 100%);
+    background: #F6882B;
     border: 2px solid #F6882B;
   }
   #uslugi .grid--4 .card__title,
   #uslugi .grid--4 .card__text {
-    font-family: 'Luga', var(--font-heading);
+    font-family: var(--font-heading);
     letter-spacing: 0.03em;
   }
   #uslugi .grid--4 .card__text { color: var(--fg); }
+  /* "Коучинг"/"Оценка бизнеса" — сплошной синий фон, текст в белый
+     (тёмный var(--fg) выше не читается на тёмно-синем). Оранжевые
+     карточки не трогаем — на оранжевом тёмный текст уже читается. */
+  #uslugi .grid--4 > article:nth-child(2) .card__title,
+  #uslugi .grid--4 > article:nth-child(2) .card__text,
+  #uslugi .grid--4 > article:nth-child(3) .card__title,
+  #uslugi .grid--4 > article:nth-child(3) .card__text {
+    color: #FFFFFF;
+  }
   /* Текст у широких карточек не тянется на всю ширину — узкая колонка слева. */
   #uslugi .grid--4 > article:nth-child(2) .card__text,
   #uslugi .grid--4 > article:nth-child(3) .card__text { max-width: 46ch; }
@@ -1666,16 +1726,18 @@
   /* "О нас" — весь блок (крошки, заголовок, текст, силуэт, линия под
      ним) подтянут ближе к шапке, было слишком много пустого места. */
   .page-hero--onas { padding-block: var(--space-6) var(--space-5); }
-  .page-hero--onas .lead { margin-top: var(--space-4); color: #000000; font-weight: 400; }
+  .page-hero--onas .lead { margin-top: var(--space-4); color: #FFFFFF; font-weight: 400; }
+  .page-hero--onas .page-hero__text h1 { color: #FFFFFF; }
   /* Рамка вокруг самого текста (крошки+заголовок+абзац), а не во всю
      ширину контейнера — иначе иллюстрация справа оказывалась зажата
      внутри той же рамки. Градиент вертикальный, синий снизу. */
   .page-hero--onas .page-hero__inner { position: relative; }
   .page-hero--onas .page-hero__text {
     max-width: 780px;
-    background: linear-gradient(0deg, #B0B6CA 0%, #FFFFFF 100%);
+    background: #17243A;
     border: 2px solid #17243A;
     border-top: none;
+    color: #FFFFFF;
     /* Без верхней границы скругление верхних углов оставляло висящий
        "крюк" из левой/правой границы — убираем его, скругляем только низ. */
     border-radius: 0 0 var(--radius-lg) var(--radius-lg);
@@ -1704,7 +1766,7 @@
      как у "Услуги"/"Проекты". */
   #komanda .section-head {
     max-width: none;
-    background: linear-gradient(90deg, #B0B6CA 0%, #FFFFFF 100%);
+    background: #17243A;
     border: 2px solid #17243A;
     border-radius: var(--radius-lg);
     padding: var(--space-6) var(--space-7);
@@ -1715,6 +1777,12 @@
   #prichiny .reason__text {
     color: #000000;
     font-weight: 400;
+  }
+  /* "Команда" — сплошной синий фон, чёрный текст выше не читается,
+     перекрашиваем именно этот section-head обратно в белый. */
+  #komanda .section-head h2,
+  #komanda .section-head p {
+    color: #FFFFFF;
   }
   /* "3 причины" — эйброу как мини-заголовок: шрифт Luga, жирный;
      сам H2 ниже, наоборот, не жирный. */
@@ -1760,7 +1828,7 @@
      Миссия/Ценности получают стандартную рамку/градиент, иконки были
      на старом фиолетовом токене (var(--primary)) — теперь navy. */
   #napravlennost .card {
-    background: linear-gradient(90deg, #B0B6CA 0%, #FFFFFF 100%);
+    background: #17243A;
     border: 2px solid #17243A;
     transition: transform var(--dur) var(--ease-soft), box-shadow var(--dur) var(--ease-soft);
   }
@@ -1768,10 +1836,13 @@
     transform: translateY(-6px);
     box-shadow: var(--shadow-lg);
   }
-  #napravlennost .card__icon svg { color: #17243A; }
-  #napravlennost .card__text { color: #17243A; }
+  /* Сплошной синий фон карточки — иконка/заголовок/текст были синими же
+     (#17243A), сливались с фоном. Перекрашены в белый. */
+  #napravlennost .card__icon svg { color: #FFFFFF; }
+  #napravlennost .card__title { color: #FFFFFF; }
+  #napravlennost .card__text { color: #FFFFFF; }
   #napravlennost .card__icon {
-    border: 2px solid #17243A;
+    border: 2px solid #FFFFFF;
     border-radius: var(--radius-lg);
   }
   /* Слишком много пустого места между блоком "Команда" и следующим
@@ -1901,6 +1972,8 @@
   /* Карточка "Наше решение" на оранжевом фоне картинки — серый плохо
      читался, чёрный (--fg) читаемее. */
   #reshenie .card:first-child .text-muted { color: var(--fg); }
+  /* Блок "Бесплатная консультация" на сплошном синем — серый нечитаем. */
+  #konsultaciya .cta .text-muted { color: rgba(255, 255, 255, 0.72); }
   .text-accent { color: var(--accent-deep); }
   .text-center { text-align: center; }
   .measure     { max-width: var(--measure); }
