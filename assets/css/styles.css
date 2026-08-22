@@ -536,33 +536,20 @@
     align-items: center;
     padding-block: var(--space-9) var(--space-10);
     overflow: hidden;
-    background: #17243A;
+    /* Тёмно-синяя плёнка поверх фото — держит контраст белого текста,
+       фирменный navy остаётся ощутимым тоном, а не просто фильтром. */
+    background:
+      linear-gradient(180deg, rgba(23, 36, 58, 0.82), rgba(23, 36, 58, 0.82)),
+      url('../img/hero-bg.png') center / cover no-repeat;
     border-radius: 0 0 56px 56px;
   }
-  .hero__inner { position: relative; z-index: var(--z-raised); }
-  /* Декоративные волнистые линии справа — только на десктопе, в пустом
-     пространстве под текстом (в оригинале там фото). Растушёвываются
-     слева направо: тёмно-синий (сливается с фоном) → яркий оранжевый
-     у самого края. */
-  .hero__waves {
-    display: none;
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 100%;
-    width: min(46vw, 680px);
-    object-fit: cover;
-    object-position: right center;
-    z-index: 0;
-    pointer-events: none;
-    -webkit-mask-image: linear-gradient(to right, transparent, black 30%);
-            mask-image: linear-gradient(to right, transparent, black 30%);
-  }
-  @media (min-width: 1024px) { .hero__waves { display: block; } }
-  .hero__title { max-width: 30ch; color: #FFFFFF; font-family: var(--font-heading); letter-spacing: 0.03em; }
+  /* Текст и кнопка отцентрированы по горизонтали (было слева). */
+  .hero__inner { position: relative; z-index: var(--z-raised); text-align: center; }
+  .hero__title { max-width: 30ch; margin-inline: auto; color: #FFFFFF; font-family: var(--font-heading); letter-spacing: 0.03em; }
   @media (min-width: 1024px) { .hero__title { font-size: 48px; } }
   .hero__text {
     margin-top: var(--space-6);
+    margin-inline: auto;
     max-width: 52ch;
     font-size: 22px;
     color: #FFFFFF;
@@ -574,7 +561,14 @@
     margin-top: var(--space-8);
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: var(--space-4);
+  }
+  /* Кнопка крупнее обычной .btn--primary — акцент главного экрана. */
+  .hero__actions .btn {
+    min-height: 64px;
+    padding: var(--space-4) var(--space-8);
+    font-size: var(--text-lg);
   }
   .hero__meta {
     margin-top: var(--space-10);
@@ -691,42 +685,20 @@
   #reshenie p,
   #reshenie .plain-list__text,
   #reshenie .plain-list__num { font-family: var(--font-heading); letter-spacing: 0.03em; }
-  /* Карточки заметно выше — задаём высоту напрямую, а не через padding. */
-  #reshenie .card { min-height: 750px; padding-block: var(--space-10); }
-  /* Только карточка "Наше решение" — цифры в синем цвете логотипа,
-     карточку "Результаты" не трогаем. */
-  #reshenie .card:first-child .plain-list__num { color: #17243A; }
-  /* Фон карточки "Наше решение" — присланная картинка (скруглённая
-     рамка + стрелка-график уже нарисованы в самом файле), вместо
-     обычной синеватой заливки .card. Текст остаётся как есть. */
-  #reshenie .card:first-child {
-    background-image: url('../img/card-arrow-orange.png');
-    /* contain, не cover: пропорции картинки (1403×1121) не совпадают
-       с пропорциями карточки — cover обрезал часть нарисованной рамки.
-       background-color сброшен в прозрачный — иначе в пустых полосах
-       сверху/снизу (от contain) просвечивал светло-серый фон базовой
-       .card, читалось как отдельная серая плашка под картинкой. */
-    background-color: transparent;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
+  /* Убрали картинки-стрелки (были фоном обеих карточек) — вместо них
+     сплошная оранжевая заливка на обеих, высота теперь просто от
+     паддинга и текста, без искусственной min-height. Цифры везде синие. */
+  #reshenie .card {
+    padding-block: var(--space-10);
+    background: #F6882B;
+    background-image: none;
     border: none;
   }
-  /* Карточка "Результаты" — тот же приём: присланная картинка вместо
-     обычной заливки, цифры оранжевые. */
-  #reshenie #rezultaty-card .plain-list__num { color: #F6882B; }
+  #reshenie .plain-list__num { color: #17243A; }
   /* Убираем жирность у <strong>-фрагментов в списках "Проблема" и
      "Результаты" — весь текст пункта одного веса. */
   #problema .plain-list__text strong,
   #reshenie .plain-list__text strong { font-weight: inherit; }
-  #reshenie #rezultaty-card {
-    background-image: url('../img/card-arrow-blue.png');
-    background-color: transparent;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    border: none;
-  }
 
   /* Декоративный разделитель между "Проблема" и "Решение" — заполняет
      пустую полосу на стыке секций (фон прозрачный, ложится прямо на
@@ -1006,11 +978,13 @@
     aspect-ratio: 1 / 1;
     width: 100%;
     max-width: 452px;
-    border-radius: var(--radius-lg);
+    /* Низ квадратный и без нижней рамки — карточка встык с кнопкой
+       под ней, единой фигурой (см. .person__more). */
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
     overflow: hidden;
     background: var(--surface-3);
     border: 2px solid #17243A;
-    margin-bottom: var(--space-4);
+    border-bottom: none;
   }
   .person__media img {
     width: 100%;
@@ -1046,14 +1020,35 @@
     color: #FFFFFF;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
   }
-  /* Кнопка под карточкой — отдельно, не внутри окантовки фото. */
-  /* Стандартная кнопка сайта (.btn--primary) — только размер/отступ
-     под карточку свои, цвет/форма/жирность берём из базового класса,
-     жирность сознательно убрана только здесь. */
+  /* Отдельный дизайн кнопки — не как остальные .btn--primary на сайте:
+     синяя, встык с карточкой фото сверху (общая рамка, без зазора),
+     квадратный верх, скруглён только низ. */
   .person__more {
     width: 100%;
     max-width: 452px;
     font-weight: 400;
+    margin-top: 0;
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    background-color: #17243A;
+    background-image: none;
+    border: 2px solid #17243A;
+    border-top: none;
+    color: #FFFFFF;
+  }
+  .person__more:hover {
+    background-color: #17243A;
+    background-image: linear-gradient(180deg, #3C5378 0%, #17243A 45%, #0B121F 100%);
+    color: #FFFFFF;
+    /* Карточка и кнопка — единая фигура: масштабируется вся .person
+       целиком (см. ниже), а не только кнопка — иначе они визуально
+       "разъезжались" при наведении. */
+    transform: none;
+  }
+  .person {
+    transition: transform var(--dur-fast) var(--ease-out);
+  }
+  .person:has(.person__more:hover) {
+    transform: scale(1.04);
   }
   /* Шеврон крутится при раскрытии — сам аккордеон переключает
      aria-expanded/is-open через JS. */
@@ -1087,18 +1082,20 @@
     overflow: hidden;
     transition: max-height var(--dur-slow) var(--ease-soft);
   }
+  /* Синяя, как и кнопка над ней (была оранжевой — не совпадала с
+     перекрашенной в синий кнопкой, выглядело как две разные фигуры). */
   .person__bio-inner {
     text-align: left;
-    background-color: #F6882B;
-    border: 1px solid #D9660A;
+    background-color: #17243A;
+    border: 2px solid #17243A;
     border-top: none;
     border-bottom-left-radius: var(--radius-lg);
     border-bottom-right-radius: var(--radius-lg);
-    color: #000000;
+    color: #FFFFFF;
     padding: var(--space-6);
   }
   .person__bio-inner p + p { margin-top: var(--space-4); }
-  .person__bio-inner strong { color: #000000; font-weight: 400; }
+  .person__bio-inner strong { color: #FFFFFF; font-weight: 600; }
   #komanda .grid--4 { align-items: start; gap: var(--space-2); }
 
   /* ---------- Нумерованный список причин ---------- */
@@ -1342,6 +1339,18 @@
      наезжала на поле Email. Сама кнопка — по центру блока.
      Свечение убрано глобально у .btn--primary (см. выше). */
   #zayavka .form__foot { margin-top: var(--space-2); justify-content: center; }
+  /* Кнопка сливалась с оранжевой иллюстрацией флага рядом — перекрашена
+     в navy, тот же приём, что у карточек проектов (см. #proekty-list). */
+  #zayavka .form__foot .btn--primary {
+    background-color: #17243A;
+    border-color: #0B121F;
+    color: #FFFFFF;
+  }
+  #zayavka .form__foot .btn--primary:hover {
+    background-color: #17243A;
+    background-image: linear-gradient(180deg, #3C5378 0%, #17243A 45%, #0B121F 100%);
+    color: #FFFFFF;
+  }
   #zayavka h2,
   #zayavka p,
   #zayavka li,
@@ -1739,20 +1748,31 @@
   .page-hero--onas { padding-block: var(--space-6) var(--space-5); }
   .page-hero--onas .lead { margin-top: var(--space-4); color: #FFFFFF; font-weight: 400; }
   .page-hero--onas .page-hero__text h1 { color: #FFFFFF; }
-  /* Рамка вокруг самого текста (крошки+заголовок+абзац), а не во всю
-     ширину контейнера — иначе иллюстрация справа оказывалась зажата
-     внутри той же рамки. Градиент вертикальный, синий снизу. */
-  .page-hero--onas .page-hero__inner { position: relative; }
+  /* Текст (780px) + иллюстрация в собственном ограниченном блоке рядом,
+     без абсолютного позиционирования и наложений. Обычному .container
+     (max 1248px) не хватало места на оба блока без сужения текста —
+     здесь контейнер шире. */
+  .page-hero--onas .page-hero__inner {
+    max-width: 1520px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--space-8);
+  }
   .page-hero--onas .page-hero__text {
-    max-width: 780px;
+    /* На всю ширину строки — та уже центрирована в контейнере,
+       поэтому отступы слева и справа выходят одинаковыми. Текст внутри
+       не тянется (у h1/.lead свои max-width), просто больше пространства
+       справа — туда теперь помещена иллюстрация (position:relative
+       нужен как якорь для неё). */
+    position: relative;
+    flex: 1 0 780px;
     background: #17243A;
     border: 2px solid #17243A;
-    border-top: none;
     color: #FFFFFF;
-    /* Без верхней границы скругление верхних углов оставляло висящий
-       "крюк" из левой/правой границы — убираем его, скругляем только низ. */
-    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    border-radius: var(--radius-lg);
     padding: var(--space-7);
+    overflow: hidden;
   }
   .page-hero__figure {
     display: none;
@@ -1766,12 +1786,49 @@
   }
   @media (min-width: 1024px) { .page-hero__figure { display: block; } }
   .page-hero--uslugi .page-hero__figure { width: 480px; }
+  /* Теперь внутри .page-hero__text (в разметке перенесена туда) —
+     абсолютно позиционирована в свободном месте справа от текста,
+     внутри того же блока, а не отдельным элементом снаружи. Скрыта на
+     мобильном, как и остальные .page-hero__figure (та же точка входа). */
+  @media (min-width: 1024px) {
+    .page-hero--onas .page-hero__figure {
+      display: block;
+      position: absolute;
+      /* Базовое правило .page-hero__figure ставит top:50%+translateY(-50%) —
+         сбрасываем оба, иначе они продолжают действовать поверх bottom. */
+      top: auto;
+      transform: none;
+      /* bottom:0 упирается в паддинг-край (внутри рамки на 2px) —
+         гасим рамку, чтобы коснуться реального нижнего края блока. */
+      bottom: -2px;
+      right: var(--space-7);
+      width: 320px;
+      max-width: 30%;
+      height: auto;
+    }
+  }
   .page-hero--proekti .page-hero__figure { width: 200px; right: 110px; top: calc(50% + 32px); }
   .page-hero--proekti { padding-bottom: var(--space-12); }
   .page-hero--uslugi .page-hero__inner {
     border: 2px solid #17243A;
     border-radius: var(--radius-lg);
     padding: var(--space-7);
+    /* Иллюстрация прижата к правому/нижнему краю рамки — обрезаем всё,
+       что вышло бы за неё, вместо того чтобы давать зазор. */
+    overflow: hidden;
+  }
+  /* Прижата к правому нижнему углу окантовки без зазора; базовые
+     top:50%+translateY(-50%) сбрасываем — иначе центрирование по
+     вертикали продолжит действовать поверх bottom. Отрицательный
+     отступ гасит padding блока (--space-7) и рамку (2px), чтобы
+     картинка доходила ровно до края. Правый нижний угол скруглён под
+     стать рамке. */
+  .page-hero--uslugi .page-hero__figure {
+    top: auto;
+    transform: none;
+    right: calc(-1 * (var(--space-7) + 2px));
+    bottom: calc(-1 * (var(--space-7) + 2px));
+    border-bottom-right-radius: var(--radius-lg);
   }
   /* "Сила в единстве: наша команда" — стандартная рамка секции,
      как у "Услуги"/"Проекты". */
@@ -1822,8 +1879,10 @@
     #prichiny .eyebrow { font-size: var(--text-5xl); }
     #prichiny h2 { font-size: var(--text-3xl); }
     #prichiny .prichiny-figure {
+      /* На всю ширину левой колонки (340px, как заголовок) — было
+       заметно уже (217px), не использовало доступное место. */
       width: 100%;
-      max-width: 217px;
+      max-width: 340px;
       height: auto;
       margin-top: var(--space-6);
     }
@@ -1847,15 +1906,20 @@
     transform: translateY(-6px);
     box-shadow: var(--shadow-lg);
   }
-  /* Сплошной синий фон карточки — иконка/заголовок/текст были синими же
+  /* Сплошной синий фон карточки — заголовок/текст были синими же
      (#17243A), сливались с фоном. Перекрашены в белый. */
-  #napravlennost .card__icon svg { color: #FFFFFF; }
   #napravlennost .card__title { color: #FFFFFF; }
   #napravlennost .card__text { color: #FFFFFF; }
+  /* Иконки перенесены с оригинального сайта sherikkon.uz — уже готовая
+     картинка (светлый круг + синяя линия), своя рамка/фон не нужны. */
   #napravlennost .card__icon {
-    border: 2px solid #FFFFFF;
-    border-radius: var(--radius-lg);
+    width: 90px;
+    height: 90px;
+    background: none;
+    border: none;
+    border-radius: 0;
   }
+  #napravlennost .card__icon img { width: 90px; height: 90px; }
   /* Слишком много пустого места между блоком "Команда" и следующим
      заголовком — сокращаем нижний отступ секции. */
   #komanda { padding-bottom: var(--space-6); }
@@ -1900,9 +1964,13 @@
     pointer-events: none;
   }
   @media (min-width: 1024px) { .service-block__figure { display: block; } }
-  /* Тегов больше, чем в остальных блоках — узим иллюстрацию, чтобы
-     она не наезжала на последний тег в строке. */
-  #ocenka .service-block__figure { width: 320px; }
+  /* Текст здесь длиннее, чем в других блоках, и упирался в правый край,
+     где должна быть картинка — сужаем именно его в этом блоке, вместо
+     того чтобы бесконечно ужимать иллюстрацию под текст. Так у картинки
+     появляется место и сверху (можно поднять), и по размеру (можно
+     увеличить), не наезжая ни на текст, ни на следующий блок. */
+  #ocenka .lead, #ocenka p.measure { max-width: 480px; }
+  #ocenka .service-block__figure { width: 380px; top: 190px; }
   /* У "Тренинги" тегов больше всех (3 строки) — сужаем иллюстрацию ещё
      сильнее, иначе она наезжает на третью строку тегов. */
   #treningi .service-block__figure { width: 340px; }
@@ -1926,10 +1994,12 @@
     display: block;
     width: 100%;
   }
+  /* Новая картинка (в service-block__figure) уже содержит логотип SC
+     нарисованным внутри — эта наложенная плашка стала дублировать его. */
   #spikery .service-block__figure-brand {
+    display: none;
     position: absolute;
     inset: 0;
-    display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -1957,7 +2027,10 @@
   /* Подгонка ширины под объём текста в каждом блоке, чтобы иллюстрация
      не наезжала на теги/границы (см. остальные .service-block__figure
      правила выше). */
-  #rezultaty .service-block__figure { width: 360px; }
+  /* Картинка была с тонкой серой рамкой-артефактом по краю (обрезали
+     файл) и с большими белыми полями — обрезали по контенту, теперь
+     можно увеличить (нет тегов и текст короче, места достаточно). */
+  #rezultaty .service-block__figure { width: 460px; }
 }
 
 /* ============================================================
@@ -1988,6 +2061,10 @@
   .text-accent { color: var(--accent-deep); }
   .text-center { text-align: center; }
   .measure     { max-width: var(--measure); }
+  /* Текст почти впритык к картинке (зазор ~15px) — тесно и криво
+     выглядело. Картинку не трогаем (см. #rezultaty .service-block__figure
+     в @layer components), сужаем сам текст. */
+  #rezultaty p.measure { max-width: 600px; }
   .tabular     { font-variant-numeric: tabular-nums; }
   .no-wrap     { white-space: nowrap; }
 
